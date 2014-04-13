@@ -1,0 +1,9 @@
+
+<configuration>
+
+<property>
+<name>fs.default.name</name>
+<value>hdfs://nn1.cluster1.com:9000</value>
+</property>
+
+</configuration>
