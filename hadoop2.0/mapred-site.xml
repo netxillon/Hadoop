@@ -1,13 +1,8 @@
 <configuration>
 
 <property>
-   <name>mapreduce.framework.name</name>
-   <value>yarn</value>
-</property>
-
-<property>
-<name>mapred.job.tracker</name>
-<value>ha-nn2.hacluster1.com:9001</value>
+<name>mapreduce.framework.name</name>
+<value>yarn</value>
 </property>
 
 </configuration>
