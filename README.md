@@ -1,4 +1,0 @@
-hadoop
-======
-
-Hadoop Cluster Configurations
