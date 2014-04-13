@@ -1,0 +1,28 @@
+Namenode
+========
+
+<configuration>
+
+<property>
+    <name>dfs.namenode.name.dir</name>
+    <value>file:/data/namenode</value>
+</property>
+
+<property>
+<name>dfs.replication</name>
+<value>1</value>
+</property>
+
+</configuration>
+
+Datanode
+========
+
+<configuration>
+
+<property>
+    <name>dfs.datanode.data.dir</name>
+    <value>file:/data/datanode</value>
+</property>
+
+</configuration>

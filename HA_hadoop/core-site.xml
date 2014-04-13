@@ -1,0 +1,27 @@
+Both Namenodes
+==============
+
+<configuration>
+
+<property>
+  <name>fs.defaultFS</name>
+  <value>hdfs://mycluster</value>
+</property>
+
+<property>
+<name>dfs.replication</name>
+<value>1</value>
+</property>
+
+</configuration>
+
+Data Nodes
+==========
+<configuration>
+
+<property>
+  <name>fs.defaultFS</name>
+  <value>hdfs://mycluster</value>
+</property>
+
+</configuration>
