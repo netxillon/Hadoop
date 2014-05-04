@@ -1,0 +1,39 @@
+CPU-related parameters:mapred.tasktracker.map and reduce.tasks.maximum
+Decide the maximum number of map/reduce tasks that will be run simultaneously by a task tracker. These two parameters are the most relative ones to CPU utilization. The default value of both parameters is 2. Properly increasing their values according to your cluster condition increases the CPU utilization and therefore improves the performance. For example, assume each node of the cluster has 4 CPUs supporting simultaneous multi-threading, and each CPU has 2 cores; then the total number of daemons should be no more than 4x2x2=16. Considering DN and TT would take 2 slots, there are at most 14 slots for map/reduce tasks, so the best value is 7 for both parameters.
+
+Set this parameter in mapred-site.xml.
+
+Memory-related parameter:mapred.child.java.opts
+This is the main parameter for JVM tuning. The default value is -Xmx200m, which gives each child task thread 200 MB of memory at most. You can increase this value if the job is large, but should make sure it won't cause swap, which significantly reduces performance.
+
+Let's examine how this parameter can affect the total memory usage. Assume the maximum number of map/reduce tasks is set to 7, and mapred.child.java.opts is left to the default value. Then memory cost of running tasks will be 2x7x200 MB =2800 MB. If each worker node has both DN and TT daemons, and each daemon costs 1 GB memory by default, the total memory allocated would be around 4.8 GB.
+
+Set this parameter in mapred-site.xml.
+
+Disk I/O-related parameters:mapred.compress.map.output, mapred.output.compress, and mapred.map.output.compression.codec
+These are parameters that control whether to compress the output, in which mapred.compress.map.output is for map output compression, mapred.output.compress is for job output compression, and mapred.map.output.compression.codec is for compression code. All of these options are turned off by default.
+
+Turning on output compression can speed up disk (local/Hadoop Distributed File System (HDFS)) writes and reduce total time of data transfer (in both shuffle and HDFS writing phase), while on the other hand cost additional overhead during the compression/decompression process.
+
+According to personal experience, turning on compression is not effective for sequence filing with random keys/values. One suggestion is to turn on compression only when the data you're dealing with is large and organized (especially natural language data).
+
+Set these parameters in mapred-site.xml.
+
+io.sort.mb parameter:
+This parameter sets the buffer size for map-side sorting, in units of MB, 100 by default. The greater the value, the fewer spills to the disk, thus reducing I/O times on the map side. Notice that increasing this value increases memory required by each map task.
+
+According to experience, when the map output is large, and the map-side I/O is frequent, you should try increasing this value.
+
+Set this parameter in mapred-site.xml.
+
+io.sort.factor parameter
+This parameter sets the number of input streams (files) to be merged at once in both map and reduce tasks. The greater this value, the fewer spills to the disk, thus reducing I/O times on both the map and reduce sides. Notice that increasing this value might cost more garbage collection activities if memory allocated for each task is not large enough.
+
+According to experience, when there is a large number of spills to the disk, and I/O times of the sort and shuffle phase is high, you should try increasing this value.
+
+Set this parameter in mapred-site.xml.
+
+mapred.job.reduce.input.buffer.percent parameter
+This parameter sets the percentage of memory (relative to the maximum heap size) to retain map outputs during the reduce phase. When the shuffle is concluded, any remaining map outputs in memory must consume less than this threshold before the reduce phase can begin, 0 by default. The greater this value is, the less merge on the disk, thus reducing I/O times on the local disk during the reduce phase. Notice that increasing this value might cost more garbage collection activities if memory allocated for each task is not large enough.
+
+According to experience, when map output is large, and local disk I/O is frequent during the reduce through sort phases, you should try increasing this value. 

@@ -1,0 +1,19 @@
+1) How do you gracefully stop a running job?
+
+a) hadoop job -kill jobid(correct)	b) kill the task tracker	c) it can not be done
+
+2) What will happen, if we set the number of reducers to 0 ?
+
+a) job will fail	b) the map-tasks r written directly to the disk (correct)
+
+3) Where is the intermidiate mapper output stored?
+
+a) It is stored in tmp folder on hdfs	b) It is stored on local filesystem(correct)		c) It is only in Memory
+
+4) When does mappers run ?
+
+a) They start immediately when job is submitted		b) They start only after the mapper finish (correct)
+
+5) Which property set the max number of tasktrackers ? (B is correct)
+
+a) mapred.tasktracker.map.tasks		b) mapred.tasktracker.map.tasks.maximum		c) map.tasks.maximum

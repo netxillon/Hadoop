@@ -1,0 +1,33 @@
+
+Hadoop Upgrade
+===============
+
+1. hadoop dfsadmin -upgradeProgress status
+
+2. Stop all client applications running on the MapReduce cluster.
+
+3. Perform a filesystem check 
+	hadoop fsck / -files -blocks -locations > dfs-v-old-fsck-1.log
+	
+4. Save a complete listing of the HDFS namespace to a local file
+	hadoop dfs -lsr / > dfs-v-old-lsr-1.log
+	
+5. Create a list of DataNodes participating in the cluster:
+	hadoop dfsadmin -report > dfs-v-old-report-1.log
+	
+6. Optionally backup HDFS data
+
+7. Upgrade process:
+	Point to the new directory, update environment variables.
+	
+8. hadoop-daemon.sh start namenode -upgrade
+
+9. hadoop dfsadmin -upgradeProgress status
+
+10. Now start the datanode, after pointing to the new hadoop directory
+
+11. hadoop dfsadmin -safemode get
+
+12. hadoop dfsadmin -finalizeUpgrade
+
+

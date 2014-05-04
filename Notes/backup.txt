@@ -1,0 +1,46 @@
+Hadoop Backup and Recovery
+==========================
+
+
+<property>
+        <name>dfs.secondary.http.address</name>
+        <value>192.168.1.68:50090</value>
+</property>
+
+
+1. Secondary namenode checkpointing
+
+If you want to explicitly specify the file to be used by the namenode
+
+	hadoop-daemons.sh --hosts masters start secondarynamenode
+
+	hdfs secondarynamenode -checkpoint force
+
+2. hadoop namenode -importCheckpoint
+
+<property>
+  	<name>fs.checkpoint.dir</name>
+  	<value>/data/new</value>
+</property>
+
+3. Save NameSpace
+
+hadoop dfsadmin -safemode enter
+
+hadoop dfsadmin -saveNamespace
+
+Remember it updates under the Namespace directory.
+
+4. Metadata Save
+
+hdfs dfsadmin -metasave filename.txt
+
+5. Can do a detailed view of the namespace (above 0.21)
+
+hdfs oiv -i /data/namenode/current/fsimage -o fsimage.txt
+
+
+<property>
+        <name>dfs.secondary.http.address</name>
+        <value>192.168.1.68:50090</value>
+</property>

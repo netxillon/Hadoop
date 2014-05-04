@@ -1,0 +1,25 @@
+1) What is HBase?
+
+a) Is an RDMS database	b) Hbase is Column-Oriented c) Distributed database d) Both b and c
+
+2) Why we use HBase ?
+
+a) It is a DB on top of HDFS	b) Hbase provide random read and write on large data set. c) HBase is same as MySql
+
+3) What is the maximum size of string data type supported by Hive?
+
+a) 64MB		b) It depends upon the HDFS block size		c) 2GB (correct)
+
+4) In Hadoop ‘Reading‘ is done in parallel and ‘Writing‘ is not in HDFS.
+
+a) TRUE (correct)
+b) FALSE
+
+5) Multiple users can use same metastore in 'Embedded metastore Mode'.
+
+a) TRUE 
+b) FALSE (Correct)
+
+6) Hbase 'CopyTable' utlitiy can be used to:
+
+a) Copy a partial table		b) Full table	c) It is not a valid command d) a and b (correct)

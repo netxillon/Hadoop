@@ -1,0 +1,15 @@
+Hadoop nodes communication ports
+
+No.	name	protocol	port #	configuration file	parameter name	description
+1	ssh	tcp	*:22	/etc/ssh/sshd_config	Port	ssh server port for ssh communication
+2	HDFS default port	tcp	localhost:9000	core-site.xml	fs.default.name	HDFS port for clients.
+3	secondary name node administration	tcp	0.0.0.0:50090	hdfs-site.xml	dfs.secondary.http.address	The secondary namenode http server address and port. If the port is 0 then the server will start on a free port.
+4	data node communication	tcp	0.0.0.0:50010	hdfs-site.xml	dfs.datanode.address	
+5	data node administration	tcp	0.0.0.0:50075	hdfs-site.xml	dfs.datanode.http.address	
+6	data node IPC communication	tcp	0.0.0.0:50020	hdfs-site.xml	dfs.datanode.ipc.address	
+7	name node administration	tcp	0.0.0.0:50070	hdfs-site.xml	dfs.http.address	
+8	data node administration	tcp	0.0.0.0:50475	hdfs-site.xml	dfs.datanode.https.address	
+9	name node administration	tcp	0.0.0.0:50470	hdfs-site.xml	dfs.https.address	
+10	MapReduce job tracker	tcp	0.0.0.0:9001	mapred-site.xml	mapred.job.tracker	The port of Job Tracker accepting for job request.
+11	job tracker administration	tcp	0.0.0.0:50030	mapred-site.xml	mapred.job.tracker.http.address	
+12	task tracker administration	tcp	0.0.0.0:50060	mapred-site.xml	mapred.task.tracker.http.address	

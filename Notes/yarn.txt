@@ -1,0 +1,35 @@
+hadoop-daemon.sh start namenode
+hadoop-daemon.sh start datanode
+
+yarn-daemon.sh start resourcemanager
+yarn-daemon.sh start nodemanager
+
+
+<property>
+    <name>yarn.resourcemanager.address</name>
+    <value>ha-nn1.hacluster1.com:8032</value>
+    <description>the host is the hostname of the ResourceManager and the port is the port on
+    which the clients can talk to the Resource Manager. </description>
+</property>
+
+<property>
+    <name>yarn.resourcemanager.scheduler.address</name>
+    <value>ha-nn1.hacluster1.com:8030</value>
+    <description>host is the hostname of the resourcemanager and port is the port
+    on which the Applications in the cluster talk to the Resource Manager.
+    </description>
+</property>
+
+<property>
+    <name>yarn.resourcemanager.resource-tracker.address</name>
+    <value>ha-nn1.hacluster1.com:8031</value>
+    <description>host is the hostname of the resource manager and
+    port is the port on which the NodeManagers contact the Resource Manager.
+    </description>
+</property>
+
+<property>
+    <name>yarn.nodemanager.address</name>
+    <value>0.0.0.0:9004</value>
+    <description>the nodemanagers bind to this port</description>
+</property>

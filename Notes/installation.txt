@@ -1,0 +1,84 @@
+core-site.xml
+
+<property>
+<name>fs.default.name</name>
+<value>hdfs://nn1.cluster1.com:9000</value>
+</property>
+
+hdfs-site.xml
+
+<property>
+<name>dfs.name.dir</name>
+<value>/data/namenode</value>
+<final>true</final>
+</property>
+
+<property>
+<name>dfs.data.dir</name>
+<value>/space/disk1,/space/disk2</value>
+<final>true</final>
+</property>
+
+<property>
+<name>dfs.replication</name>
+<value>1</value>
+</property>
+
+<property>
+<name>dfs.block.size</name>
+<value>67108864</value>
+</property>
+
+<property>
+    	<name>dfs.hosts.exclude</name>
+    	<value>/home/hadoop/excludes</value>
+    	<final>true</final>
+</property>
+
+<property>
+    	<name>dfs.hosts</name>
+    	<value>/home/hadoop/include</value>
+    	<final>true</final>
+</property>
+
+mapred-site
+
+
+<property>
+<name>mapred.job.tracker</name>
+<value>jt.cluster1.com:9001</value>
+</property>
+
+
+
+export JAVA_HOME=/usr/java/jdk1.7.0_25/
+export HADOOP_HOME=/home/hadoop/hadoop
+export HADOOP_PID_DIR=/home/hadoop/pids
+export HADOOP_HEAPSIZE=500
+
+export HADOOP_LOG_DIR=${HADOOP_HOME}/logs
+export HADOOP_HOME_WARN_SUPPRESS="TRUE"
+
+
+
+export JAVA_HOME=/usr/java/jdk1.7.0_25/
+
+PATH=$JAVA_HOME/bin:$PATH:$HOME/bin
+PATH=$PATH:/home/hadoop/hadoop/bin
+
+export PATH
+
+================
+<property>
+ <name>heartbeat.recheck.interval</name>
+ <value>15</value>
+ <description>Determines datanode heartbeat interval in seconds</description>
+</property>
+
+If above doesn't work - try the following (seems to be version-dependent):
+
+<property>
+ <name>dfs.heartbeat.recheck.interval</name>
+ <value>15</value>
+ <description>Determines datanode heartbeat interval in seconds.</description>
+</property>

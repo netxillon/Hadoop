@@ -1,0 +1,9 @@
+Cloudera Manager
+================
+
+./cloudera-manager-installer.bin --skip_repo_package=1
+
+
+
+1. Cloudera Manager - GUI
+2. Cloudera Packages CDH4 - Hadoop packages

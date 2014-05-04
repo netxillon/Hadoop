@@ -1,0 +1,119 @@
+export SQOOP_HOME=/usr/lib/sqoop
+export PATH=$PATH:$SQOOP_HOME/bin
+
+
+Step 2: Configure the MySQL Service and Connector
+
+Download mysql-connector-java-5.0.5.jar file and copy it to $SQOOP_HOME/lib directory.
+
+Step 3: Sqoop Installation
+
+Sqoop Installation Tutorial for instructions of how to install Sqoop.
+
+    Database and table creation in MySQL
+
+First connect to MySQL
+
+$ mysql -u root -p
+
+Enter password:
+
+Create database ‘testDb’ and use ‘testDb’ database as a current database.
+
+mysql> create database testDb;
+
+mysql> use testDb;
+
+Create table ‘student’
+
+mysql> create table student(id integer,name char(20));
+
+Add following 2 records to the table
+
+mysql> insert into student values(1,'Archana');
+
+mysql> insert into student values(2,'XYZ');
+
+ Exit from MySQL
+
+mysql> exit;
+
+Sqoop import
+1. Importing a table into HDFS
+
+    1st way
+
+Command for import
+
+sqoop import --connect jdbc:mysql://localhost/testDb --username root --password hadoop123 --table student --m 1
+
+Execute the sqoop import
+
+Here we are using database ‘testDb’ , username ‘root’, password ‘hadoop123′, and table student.
+
+$ sqoop import --connect jdbc:mysql://localhost/testDb --username root --password hadoop123 --table student --m 1
+
+——————- NOTE——————–
+
+If you have not defined primary key for your table then you have to give ‘-m 1′ option for import.
+Otherwise it gives error
+ERROR tool.ImportTool: Error during import: No primary key could be found for table student1. Please specify one with --split-by or perform a sequential import with '-m 1'.
+
+    2nd Way
+
+Create a config file $HOME/import.txt add following to the config file
+
+              import.txt
+
+import
+--connect
+jdbc:mysql://localhost/testDb
+--username
+root
+--password
+hadoop123
+
+Execute the sqoop import
+
+sqoop --options-file /home/hduser/import.txt --table student -m 1
+
+Once import is done you can find student.jar, student.class and student.java at following location /tmp/sqoop-hduser/compile/—-/student.jar
+
+Files created in HDFS
+
+$ hadoop dfs -ls -R student
+
+Found 3 items
+
+-rw-r--r--   1 hduser supergroup          0 2013-09-13 15:38 /user/hduser/student/_SUCCESS
+
+drwxr-xr-x   - hduser supergroup          0 2013-09-13 15:38 /user/hduser/student/_logs
+
+-rw-r--r--   1 hduser supergroup         16 2013-09-13 15:38 /user/hduser/student/part-m-00000
+
+Data file contents
+
+$ hadoop dfs -cat /user/hduser/student/part-m-00000
+
+1,Archana
+2,XYZ
+
+2 Import all rows of a table in MySQL, but specific columns of the table
+
+$ sqoop import --connect jdbc:mysql://localhost/testDb --username root --password hadoop123 --table student --columns "name" -m 1
+
+Data file contents
+
+$ hadoop dfs -cat  /user/hduser/student/part-m-00000
+
+Archana
+Xyz
+
+3 Import all columns, filter rows using where clause
+
+$ sqoop import --connect jdbc:mysql://localhost/testDb --username root --password hadoop123 --table student --where "id>1" -m 1 --target-dir /user/hduser/ar
+
+Data file contents
+
+$ hadoop dfs -cat  /user/hduser/ar/part-m-00000
+2,XYZ

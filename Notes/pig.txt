@@ -1,0 +1,35 @@
+export PIG_HOME=/home/hadoop/pig/
+
+
+A = load 'passwd' using PigStorage(':'); 
+B = foreach A generate $0 as id;
+dump B; 
+store B into 'id.out';
+
+
+
+pig -x local id.pig
+
+pig -x mapreduce id.pig
+
+
+passwd = LOAD '/etc/passwd' USING PigStorage(':') AS (user:chararray, \
+passwd:chararray, uid:int, gid:int, userinfo:chararray, home:chararray, \
+shell:chararray);
+grunt> DUMP passwd;
+
+
+grunt> counts = FOREACH grp_shell GENERATE group, COUNT(passwd);
+grunt> DUMP counts;
+
+
+
+A = load 'test';
+
+B = foreach A generate flatten(TOKENIZE((chararray)$0)) as word;
+
+C = group B by word;
+
+D = foreach C generate COUNT(B), group;
+
+store D into 'wordcount';

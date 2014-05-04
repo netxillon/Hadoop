@@ -1,0 +1,27 @@
+Test Hadoop
+============
+
+hadoop jar hadoop/hadoop-test-0.20.205.0.jar TestDFSIO -write -nrFiles 10 -fileSize 1000
+hadoop jar hadoop/hadoop-test-0.20.205.0.jar TestDFSIO -read -nrFiles 10 -fileSize 1000
+
+hadoop jar hadoop/hadoop-test-0.20.205.0.jar TestDFSIO -clean
+
+
+Generate Tera Data
+==================
+
+hadoop jar hadoop/hadoop-examples-0.20.205.0.jar teragen 1000 /user/hduser/terasort-input
+
+hadoop jar hadoop/hadoop-examples-0.20.205.0.jar terasort /user/hduser/terasort-input /user/hduser/terasort-output
+
+hadoop job -history all /user/hduser/terasort-input
+
+
+
+hadoop jar hadoop/hadoop-examples-0.20.205.0.jar nnbench -operation create_write \
+    -maps 12 -reduces 6 -blockSize 1 -bytesToWrite 0 -numberOfFiles 1000 \
+    -replicationFactorPerFile 3 -readFileAfterOpen true \
+    -baseDir /benchmarks/NNBench-`hostname -s`
+
+
+hadoop jar hadoop/hadoop-examples-0.20.205.0.jar mrbench -numRuns 50

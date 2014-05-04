@@ -1,0 +1,127 @@
+1) If we add new DataNodes to the cluster will HDFS move the blocks to the newly added nodes in order to balance disk space utilization between the nodes?
+
+a) yes, it will automatically do balancing
+b) no, we have to manually to re-balancing (correct)
+
+2) The name-node will stay in safe mode till all under-replicated files are fully replicated?
+
+a)TRUE		b) FALSE (correct)
+
+3) How do I set up a hadoop data node to use multiple volumes?
+
+a) We cannot do that	b) We can use comma seperated fields (correct)	c) This can only be done with SAN storage
+
+4) Can a Hadoop client renames a file or a directory containing a file while another client is still writing into it?
+
+a) yes, it can	(correct)	b) No, hadoop does locking
+
+5) Will the command bin/hadoop dfs -ls /projects/* list all the files under /projects ?
+
+a) yes (correct, but better to safeguard it with single quotes)		b) no
+
+6) Can we have multiple files in HDFS use different block sizes?
+
+a) yes (correct)	b) no
+
+7) How do you gracefully stop a running job?
+
+a) hadoop job -kill jobid(correct)	b) kill the task tracker	c) it can not be done
+
+8) What is the best java version to use for Hadoop?
+
+a) It does not matter	b) Must be greater then java2.6	c) greater then 1.6 (correct)
+
+9) What is the command for adding the hosts newly added to the mapred.include file?
+
+a) hadoop dfsadmin -refreshNodes	b) hadoop rmadmin -refreshNodes (correct)
+
+10) What will happen, if we set the number of reducers to 0 ?
+
+a) job will fail	b) the map-tasks r written directly to the disk (correct)
+
+11) How many maximum JVM run on the slave node?
+
+a) only one as there is only one tasktracker	b) 2 one each for tasktracker, datanode		c) It depends upon task instances (correct)
+
+12) Where is the intermidiate mapper output stored?
+
+a) It is stored in tmp folder on hdfs	b) It is stored on local filesystem(correct)		c) It is only in Memory
+
+13) When does mappers run ?
+
+a) They start immediately when job is submitted		b) They start only after the mapper finish (correct)
+
+
+14) What action occurs automatically on a cluster when a DataNode is marked as dead?
+
+A. The NameNode forces re-replication of all the blocks which were stored on the dead DataNode.
+B. The next time a client submits job that requires blocks from the dead DataNode, the JobTracker receives no heart beats from the DataNode. The JobTracker tells the NameNode that the DataNode is dead, which triggers block re-replication on the cluster.
+C. The replication factor of the files which had blocks stored on the dead DataNode is temporarily reduced, until the dead DataNode is recovered and returned to the cluster.
+D. The NameNode informs the client which write the blocks that are no longer available; the client then re-writes the blocks to a different DataNode.
+
+15) QUESTION: 5
+Which three distcp features can you utilize on a Hadoop cluster?
+A. Use distcp to copy files only between two clusters or more. You cannot use distcp to copy data between directories inside the same cluster.
+B. Use distcp to copy HBase table files.
+C. Use distcp to copy physical blocks from the source to the target destination in your cluster.
+D. Use distcp to copy data between directories inside the same cluster. E. Use distcp to run an internal MapReduce job to copy files.
+Answer: B, D, E
+
+16) What is the recommended disk configuration for slave nodes in your Hadoop cluster with 6 x 2 TB hard drives?
+A. RAID 10 B. JBOD
+C. RAID 5 D. RAID 1+0
+Answer: B
+
+17) Your Hadoop cluster has 25 nodes with a total of 100 TB (4 TB per node) of raw disk space allocated HDFS storage. Assuming Hadoop's default configuration, how much data will you be able to store?
+A. Approximately 100TB B. Approximately 25TB C. Approximately 10TB D. Approximately 33 TB
+Answer: D
+
+18) The most important consideration for slave nodes in a Hadoop cluster running production jobs that require short turnaround times is:
+A. The ratio between the amount of memory and the number of disk drives.
+B. The ratio between the amount of memory and the total storage capacity.
+C. The ratio between the number of processor cores and the amount of memory. D. The ratio between the number of processor cores and total storage capacity. E. The ratio between the number of processor cores and number of disk drives.
+Answer: D
+
+19) Your existing Hadoop cluster has 30 slave nodes, each of which has 4 x 2T hard drives. You plan to add another 10 nodes. How much disk space can your new nodes contain?
+A. The new nodes must all contain 8TB of disk space, but it does not matter how the disks are configured
+B. The new nodes cannot contain more than 8TB of disk space
+C. The new nodes can contain any amount of disk space
+D. The new nodes must all contain 4 x 2TB hard drives Answer: C
+
+20) On a cluster running MapReduce v1 (MRv1), a MapReduce job is given a directory of 10 plain text as its input directory. Each file is made up of 3 HDFS blocks. How many Mappers will run?
+A. We cannot say; the number of Mappers is determined by the developer B. 30
+C. 10
+D. 1
+Answer: B
+
+21) Which scheduler would you deploy to ensure that your cluster allows short jobs to finish within a reasonable time without starving long-running jobs?
+A. FIFO Scheduler
+B. Fair Scheduler
+C. Capacity Scheduler
+D. Completely Fair Scheduler (CFS)
+Answer: B
+
+22) You are planning a Hadoop duster, and you expect to be receiving just under 1TB of data per week which will be stored on the cluster, using Hadoop's default replication. You decide that your slave nodes will be configured with 4 x 1TB
+www.ipass4sure.com
+www.ipass4sure.com
+www.ipass4sure.com
+CCA-410
+disks. Calculate how many slave nodes you need to deploy at a minimum to store one year's worth of data.
+A. 100 slave nodes B. 100 slave nodes C. 10 slave nodes D. 50 slave nodes
+Answer: D
+
+23) On a cluster running MapReduce v1 (MRv1), a MapReduce job is given a directory of 10 plain text as its input directory. Each file is made up of 3 HDFS blocks. How many Mappers will run?
+A. We cannot say; the number of Mappers is determined by the developer B. 30
+C. 10
+D. 1
+Answer: A
+
+24) For each job, the Hadoop framework generates task log files. Where are Hadoop's task log files stored?
+A. Cached on the local disk of the slave node running the task, then purged immediately upon task completion.
+B. Cached on the local disk of the slave node running the task, then copied into HDFS.
+C. In HDFS, in the directory of the user who generates the job.
+D. On the local disk of the slave node running the task. 
+
+Answer: D
+
+

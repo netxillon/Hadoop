@@ -1,0 +1,74 @@
+Add/Remove a Datanode
+=====================
+
+Decommission a host gracefully
+
+<property>
+    	<name>dfs.hosts.exclude</name>
+    	<value>/home/hadoop/excludes</value>
+    	<final>true</final>
+</property>
+
+Similarly for Jobtracker.
+
+<property>
+    	<name>mapred.hosts.exclude</name>
+    	<value>/home/hadoop/excludes</value>
+    	<final>true</final>
+</property>
+
+mapred.hosts.exclude in mapred-site.xml
+
+Add the FQDN to the exclude file and refresh
+
+Update for the Namenode
+-----------------------
+
+hadoop dfsadmin -refreshNodes
+
+Update for Jobtracker
+----------------------
+
+hadoop mradmin -refreshNodes
+
+
+Add Hosts:
+
+1. dfs.hosts in the hdfs-site.xml, mapred.hosts
+
+
+================================================
+
+Cluster Balancing
+-----------------
+
+hadoop balancer -threshold 40
+
+==============================================
+
+Add Disk Space to a datanode
+----------------------------
+
+How do you add storage to cluster
+
+
+
+
+
+
+<property>
+    	<name>dfs.hosts</name>
+    	<value>/home/hadoop/include</value>
+    	<final>true</final>
+</property>
+
+
+
+
+
+
+
+
+
+
+

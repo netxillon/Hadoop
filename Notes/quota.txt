@@ -1,0 +1,32 @@
+Applying Quota
+--------------
+
+hadoop dfsadmin -setSpaceQuota 1m
+
+
+dfsadmin -setQuota <N> <directory>
+
+dfsadmin -clrQuota <directory>
+
+dfsadmin -setSpaceQuota <N> 
+
+dfsadmin -clrSpaceQuota
+
+
+Distcp
+======
+
+hadoop distcp hdfs://nn1:8020/foo/bar hdfs://nn2:8020/bar/foo
+
+hdfs://nn1:8020/foo/a hdfs://nn1:8020/foo/b
+
+hadoop distcp hdfs://nn1.cluster1.com:9000/jobtracker hdfs://nn1.cluster1.com:9000/newtracker
+
+
+Trash
+=======
+
+<property>
+<name>fs.trash.interval</name>
+<value>40</value>
+</property>
