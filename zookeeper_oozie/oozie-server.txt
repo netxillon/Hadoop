@@ -1,0 +1,140 @@
+Oozie Server Setup
+
+Copy the built binaries to the home directory as ‘oozie’
+
+$ cd ../../
+$ cp -R oozie-3.3.2/distro/target/oozie-3.3.2-distro/oozie-3.3.2/ oozie
+
+Create the required libext directory
+
+$ cd oozie
+$ mkdir libext
+
+Copy all the required jars from hadooplibs to the libext directory using the following command:
+
+$ cp ../oozie-3.3.2/hadooplibs/target/oozie-3.3.2-hadooplibs.tar.gz .
+$ tar xzvf oozie-3.3.2-hadooplibs.tar.gz
+$ cp oozie-3.3.2/hadooplibs/hadooplib-1.1.1.oozie-3.3.2/* libext/
+
+Get Ext2Js – This library is not bundled with Oozie and needs to be downloaded separately. This library is used for the Oozie Web Console:
+
+$ cd libext
+$ wget http://extjs.com/deploy/ext-2.2.zip
+$ cd ..
+
+Update ../hadoop/conf/core-site.xml as follows:
+
+<property>
+<name>hadoop.proxyuser.hduser.hosts</name>
+<value>localhost</value>
+</property>
+<property>
+<name>hadoop.proxyuser.hduser.groups</name>
+<value>hadoop</value>
+</property>
+
+Here, ‘hduser’ is the username and it belongs to ‘hadoop’ group.
+
+Prepare the WAR file
+
+$ ./bin/oozie-setup.sh prepare-war
+
+setting CATALINA_OPTS="$CATALINA_OPTS -Xmx1024m"
+
+INFO: Adding extension: /home/hduser/oozie/libext/commons-beanutils-1.7.0.jar
+INFO: Adding extension: /home/hduser/oozie/libext/commons-beanutils-core-1.8.0.jar
+INFO: Adding extension: /home/hduser/oozie/libext/commons-codec-1.4.jar
+INFO: Adding extension: /home/hduser/oozie/libext/commons-collections-3.2.1.jar
+INFO: Adding extension: /home/hduser/oozie/libext/commons-configuration-1.6.jar
+INFO: Adding extension: /home/hduser/oozie/libext/commons-digester-1.8.jar
+INFO: Adding extension: /home/hduser/oozie/libext/commons-el-1.0.jar
+INFO: Adding extension: /home/hduser/oozie/libext/commons-io-2.1.jar
+INFO: Adding extension: /home/hduser/oozie/libext/commons-lang-2.4.jar
+INFO: Adding extension: /home/hduser/oozie/libext/commons-logging-1.1.jar
+INFO: Adding extension: /home/hduser/oozie/libext/commons-math-2.1.jar
+INFO: Adding extension: /home/hduser/oozie/libext/commons-net-1.4.1.jar
+INFO: Adding extension: /home/hduser/oozie/libext/hadoop-client-1.1.1.jar
+INFO: Adding extension: /home/hduser/oozie/libext/hadoop-core-1.1.1.jar
+INFO: Adding extension: /home/hduser/oozie/libext/hsqldb-1.8.0.7.jar
+INFO: Adding extension: /home/hduser/oozie/libext/jackson-core-asl-1.8.8.jar
+INFO: Adding extension: /home/hduser/oozie/libext/jackson-mapper-asl-1.8.8.jar
+INFO: Adding extension: /home/hduser/oozie/libext/log4j-1.2.16.jar
+INFO: Adding extension: /home/hduser/oozie/libext/oro-2.0.8.jar
+INFO: Adding extension: /home/hduser/oozie/libext/xmlenc-0.52.jar
+
+New Oozie WAR file with added 'ExtJS library, JARs' at /home/hduser/oozie/oozie-server/webapps/oozie.war
+
+INFO: Oozie is ready to be started
+
+Create sharelib on HDFS
+
+$ ./bin/oozie-setup.sh sharelib create -fs hdfs://localhost:54310
+setting CATALINA_OPTS="$CATALINA_OPTS -Xmx1024m"
+the destination path for sharelib is: /user/hduser/share/lib
+
+Create the OoozieDB
+
+$ ./bin/ooziedb.sh create -sqlfile oozie.sql -run
+setting CATALINA_OPTS="$CATALINA_OPTS -Xmx1024m"
+
+Validate DB Connection
+DONE
+Check DB schema does not exist
+DONE
+Check OOZIE_SYS table does not exist
+DONE
+Create SQL schema
+DONE
+Create OOZIE_SYS table
+DONE
+
+Oozie DB has been created for Oozie version '3.3.2'
+
+The SQL commands have been written to: oozie.sql
+
+To start Oozie as a daemon use the following command:
+
+$ ./bin/oozied.sh start
+
+Setting OOZIE_HOME: /home/hduser/oozie
+Setting OOZIE_CONFIG: /home/hduser/oozie/conf
+Sourcing: /home/hduser/oozie/conf/oozie-env.sh
+setting CATALINA_OPTS="$CATALINA_OPTS -Xmx1024m"
+Setting OOZIE_CONFIG_FILE: oozie-site.xml
+Setting OOZIE_DATA: /home/hduser/oozie/data
+Setting OOZIE_LOG: /home/hduser/oozie/logs
+Setting OOZIE_LOG4J_FILE: oozie-log4j.properties
+Setting OOZIE_LOG4J_RELOAD: 10
+Setting OOZIE_HTTP_HOSTNAME: rohit-VirtualBox
+Setting OOZIE_HTTP_PORT: 11000
+Setting OOZIE_ADMIN_PORT: 11001
+Setting OOZIE_HTTPS_PORT: 11443
+Setting OOZIE_BASE_URL: http://rohit-VirtualBox:11000/oozie
+Setting CATALINA_BASE: /home/hduser/oozie/oozie-server
+Setting OOZIE_HTTPS_KEYSTORE_FILE: /home/hduser/.keystore
+Setting OOZIE_HTTPS_KEYSTORE_PASS: password
+Setting CATALINA_OUT: /home/hduser/oozie/logs/catalina.out
+Setting CATALINA_PID: /home/hduser/oozie/oozie-server/temp/oozie.pid
+
+Using CATALINA_OPTS: -Xmx1024m -Dderby.stream.error.file=/home/hduser/oozie/logs/derby.log
+Adding to CATALINA_OPTS: -Doozie.home.dir=/home/hduser/oozie -Doozie.config.dir=/home/hduser/oozie/conf -Doozie.log.dir=/home/hduser/oozie/logs -Doozie.data.dir=/home/hduser/oozie/data -Doozie.config.file=oozie-site.xml -Doozie.log4j.file=oozie-log4j.properties -Doozie.log4j.reload=10 -Doozie.http.hostname=rohit-VirtualBox -Doozie.admin.port=11001 -Doozie.http.port=11000 -Doozie.https.port=11443 -Doozie.base.url=http://rohit-VirtualBox:11000/oozie -Doozie.https.keystore.file=/home/hduser/.keystore -Doozie.https.keystore.pass=password -Djava.library.path=
+
+Using CATALINA_BASE: /home/hduser/oozie/oozie-server
+Using CATALINA_HOME: /home/hduser/oozie/oozie-server
+Using CATALINA_TMPDIR: /home/hduser/oozie/oozie-server/temp
+Using JRE_HOME: /usr/lib/jvm/java-6-oracle
+Using CLASSPATH: /home/hduser/oozie/oozie-server/bin/bootstrap.jar
+Using CATALINA_PID: /home/hduser/oozie/oozie-server/temp/oozie.pid
+
+To start Oozie as a foreground process use the following command:
+
+$ ./bin/oozied.sh run
+
+Check the Oozie log file logs/oozie.log to ensure Oozie started properly.
+
+Use the following command to check the status of Oozie from command line:
+
+$ ./bin/oozie admin -oozie http://localhost:11000/oozie -status
+System mode: NORMAL
+
+URL for the Oozie Web Console is http://localhost:11000/oozie
