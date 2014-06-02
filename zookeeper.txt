@@ -1,0 +1,143 @@
+Deploying ZooKeeper Cluster (Multi-Server) Setup
+
+Let’s begin installation and configuration of ZooKeeper.
+
+Step 1: Directory Structure creation, as decided in the designing section
+
+mac-book-pro:demo aman$ mkdir -p /Users/aman/zookeeper/zk-server-1 \
+/Users/aman/zookeeper/zk-server-2 \
+/Users/aman/zookeeper/zk-server-3 \
+/Users/aman/zookeeper/zk-server-4 \
+/Users/aman/zookeeper/zk-server-5
+
+mac-book-pro:demo aman$ mkdir -p /Users/aman/zookeeper/data/zk1 \
+/Users/aman/zookeeper/data/zk2 \
+/Users/aman/zookeeper/data/zk3 \
+/Users/aman/zookeeper/data/zk4 \
+/Users/aman/zookeeper/data/zk5
+
+mac-book-pro:demo aman$ mkdir -p /Users/aman/zookeeper/log/zk1 \
+/Users/aman/zookeeper/log/zk2 \
+/Users/aman/zookeeper/log/zk3 \
+/Users/aman/zookeeper/log/zk4 \
+/Users/aman/zookeeper/log/zk5
+
+Let’s take a look above created directory structure-
+
+mac-book-pro:demo aman$ tree /Users/aman/zookeeper
+
+/Users/aman/zookeeper
+|-data
+|---zk1
+|---zk2
+|---zk3
+|---zk4
+|---zk5
+|-log
+|---zk1
+|---zk2
+|---zk3
+|---zk4
+|---zk5
+|-zk-server-1
+|-zk-server-2
+|-zk-server-3
+|-zk-server-4
+|-zk-server-5
+
+mac-book-pro:demo aman$
+
+Okay, looks good!
+
+Step 2: Creating a ZooKeeper Server ID, basically this file reside in the ZooKeeper data directory.  Go on choose your favorite text editor
+
+# just enter a value '1' in the file. Save the file, do the same for rest of ZooKeeper
+mac-book-pro:demo aman$  vi /Users/aman/zookeeper/data/zk1/myid
+
+# follow the same way to fill server id
+vi /Users/aman/zookeeper/data/zk2/myid
+vi /Users/aman/zookeeper/data/zk3/myid
+vi /Users/aman/zookeeper/data/zk4/myid
+vi /Users/aman/zookeeper/data/zk5/myid
+
+Step 3: Downloading ZooKeeper Release
+
+Download a ZooKeeper from http://hadoop.apache.org/zookeeper/releases.html; this article utilize the version 3.4.4 of ZooKeeper.  However same principle is applied for other version too.
+
+Step 4: Extract & prepare ZooKeeper for deployment
+
+mac-book-pro:demo aman$ gzip -dc ~/Downloads/soft/zookeeper-3.4.4.tar.gz | tar -xf - -C /tmp
+mac-book-pro:demo aman$ cp -r /tmp/zookeeper-3.4.4/* /Users/aman/zookeeper/zk-server-1/
+mac-book-pro:demo aman$ cp -r /tmp/zookeeper-3.4.4/* /Users/aman/zookeeper/zk-server-2/
+mac-book-pro:demo aman$ cp -r /tmp/zookeeper-3.4.4/* /Users/aman/zookeeper/zk-server-3/
+mac-book-pro:demo aman$ cp -r /tmp/zookeeper-3.4.4/* /Users/aman/zookeeper/zk-server-4/
+mac-book-pro:demo aman$ cp -r /tmp/zookeeper-3.4.4/* /Users/aman/zookeeper/zk-server-5/
+
+Once done don’t forget to cleanup the ‘/tmp/zookeeper-3.4.4′
+
+Step 5: Preparing ZooKeeper configuration called ‘zoo.cfg‘ at ‘{zk-server-1}/conf/zoo.cfg‘.  Here I will show you for Server 1 and perform same steps with appropriate values (clientPort, dataDir, dataLogDir) for respective ZooKeeper server.
+
+mac-book-pro:demo aman$ vi /Users/aman/zookeeper/zk-server-1/conf/zoo.cfg
+
+Place below configuration into it.
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+	
+# The number of milliseconds of each tick
+tickTime=2000
+ 
+# The number of ticks that the initial synchronization phase can take
+initLimit=10
+ 
+# The number of ticks that can pass between
+# sending a request and getting an acknowledgement
+syncLimit=5
+ 
+# the directory where the snapshot is stored.
+# Choose appropriately for your environment
+dataDir=/Users/aman/zookeeper/data/zk1
+ 
+# the port at which the clients will connect
+clientPort=2181
+ 
+# the directory where transaction log is stored.
+# this parameter provides dedicated log device for ZooKeeper
+dataLogDir=/Users/aman/zookeeper/log/zk1
+ 
+# ZooKeeper server and its port no.
+# ZooKeeper ensemble should know about every other machine in the ensemble
+# specify server id by creating 'myid' file in the dataDir
+# use hostname instead of IP address for convenient maintenance
+server.1=localhost:2888:3888
+server.2=localhost:2889:3889
+server.3=localhost:2890:3890
+server.4=localhost:2891:3891
+server.5=localhost:2892:3892
