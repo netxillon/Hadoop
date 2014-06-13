@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+
+<property>
+<name>dfs.name.dir</name>
+<value>/data/namenode2</value>
+<final>true</final>
+</property>
+
+<property>
+<name>dfs.data.dir</name>
+<value>/data/datanode2</value>
+<final>true</final>
+</property>
+
+<property>
+<name>dfs.replication</name>
+<value>1</value>
+</property>
+
+
+
+<property> 
+	<name>dfs.block.access.token.enable</name> 
+  	<value>true</value> 
+</property>
+
+<!-- NameNode security config -->
+
+<property> 
+	<name>dfs.https.address</name> 	
+	<value>nn1.cluster1.com:50470</value> 
+</property>
+
+<property> 
+	<name>dfs.https.port</name> 
+  	<value>50470</value> 
+</property>
+
+<property> 
+  	<name>dfs.namenode.keytab.file</name> 
+	<value>/home/hadoop/hadoop/conf/hdfs.keytab</value> <!-- path to the HDFS keytab --> 
+</property>
+
+<property> 
+	<name>dfs.namenode.kerberos.principal</name> 
+	<value>admin/_HOST@cluster1.com</value> 
+</property>
+
+<property> 
+	<name>dfs.namenode.kerberos.https.principal</name> 
+	<value>admin/_HOST@cluster1.com</value> 
+</property>
+
+<!-- DataNode security config -->
+
+<property> 
+	<name>dfs.datanode.data.dir.perm</name> 
+  	<value>700</value> 
+</property>
+
+<property> 
+  	<name>dfs.datanode.address</name> 
+  	<value>0.0.0.0:1004</value> 
+</property>
+
+<property> 
+  	<name>dfs.datanode.http.address</name> 
+  	<value>0.0.0.0:1006</value> 
+</property>
+
+<property> 
+  	<name>dfs.datanode.keytab.file</name> 
+	<value>/home/hadoop/hadoop/conf/hdfs.keytab</value> <!-- path to the HDFS keytab --> 
+</property> 
+
+<property> 
+	<name>dfs.datanode.kerberos.principal</name> 
+	<value>admin/_HOST@cluster1.com</value> 
+</property>
+
+<property> 
+	<name>dfs.datanode.kerberos.https.principal</name> 
+	<value>admin/_HOST@cluster1.com</value> 
+</property>
+<property> 
+    <name>dfs.web.authentication.kerberos.principal</name> 
+    <value>admin/_HOST@cluster1.com</value> 
+</property>
+
+
+</configuration>
