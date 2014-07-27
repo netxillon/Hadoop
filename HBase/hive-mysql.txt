@@ -1,0 +1,124 @@
+mysql> CREATE DATABASE metastore_db;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> CREATE USER 'hadoop'@'%' IDENTIFIED BY 'hivepassword';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> GRANT all on *.* to 'hadoop'@client.cluster1.com identified by 'hivepassword';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> flush privileges;
+Query OK, 0 rows affected (0.00 sec)
+
+====================
+
+<configuration>
+
+<property>
+
+	<name>hive.metastore.local</name>
+	<value>true</value>
+
+</property>
+
+
+<property>
+
+            <name>javax.jdo.option.ConnectionURL</name>
+
+            <value>jdbc:mysql://client.cluster1.com:3306/metastore_db?createDatabaseIfNotExist=true</value>
+
+            <description>metadata is stored in a MySQL server</description>
+
+            </property>
+
+            <property>
+
+            <name>javax.jdo.option.ConnectionDriverName</name>
+
+            <value>com.mysql.jdbc.Driver</value>
+
+            <description>MySQL JDBC driver class</description>
+
+            </property>
+
+            <property>
+
+            <name>javax.jdo.option.ConnectionUserName</name>
+
+            <value>hadoop</value>
+
+            <description>user name for connecting to mysql server </description>
+
+            </property>
+
+            <property>
+
+            <name>javax.jdo.option.ConnectionPassword</name>
+
+            <value>hivepassword</value>
+
+            <description>password for connecting to mysql server </description>
+
+            </property>
+            </configuration>
+			
+===================
+Start hive Server
+===================
+
+hive  --service hiveserver&
+
+============================
+
+mysql> use metastore_db;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++---------------------------+
+| Tables_in_metastore_db    |
++---------------------------+
+| BUCKETING_COLS            |
+| CDS                       |
+| COLUMNS_V2                |
+| DATABASE_PARAMS           |
+| DBS                       |
+| PARTITION_KEYS            |
+| SDS                       |
+| SD_PARAMS                 |
+| SEQUENCE_TABLE            |
+| SERDES                    |
+| SERDE_PARAMS              |
+| SKEWED_COL_NAMES          |
+| SKEWED_COL_VALUE_LOC_MAP  |
+| SKEWED_STRING_LIST        |
+| SKEWED_STRING_LIST_VALUES |
+| SKEWED_VALUES             |
+| SORT_COLS                 |
+| TABLE_PARAMS              |
+| TBLS                      |
+| VERSION                   |
++---------------------------+
+20 rows in set (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| employee           |
+| metastore_db       |
+| mysql              |
+| test               |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from TBLS;
++--------+-------------+-------+------------------+--------+-----------+-------+-------------+---------------+--------------------+--------------------+
+| TBL_ID | CREATE_TIME | DB_ID | LAST_ACCESS_TIME | OWNER  | RETENTION | SD_ID | TBL_NAME    | TBL_TYPE      | VIEW_EXPANDED_TEXT | VIEW_ORIGINAL_TEXT |
++--------+-------------+-------+------------------+--------+-----------+-------+-------------+---------------+--------------------+--------------------+
+|      1 |  1403283170 |     1 |                0 | hadoop |         0 |     1 | hivetesting | MANAGED_TABLE | NULL               | NULL               |
++--------+-------------+-------+------------------+--------+-----------+-------+-------------+---------------+--------------------+--------------------+
+1 row in set (0.00 sec)

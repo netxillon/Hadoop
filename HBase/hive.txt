@@ -1,0 +1,85 @@
+export JAVA_HOME=/usr/java/jdk1.7.0_25/
+export HIVE_HOME=/home/hadoop/hive/
+export HBASE_HOME=/home/hadoop/hbase/
+
+PATH=$PATH:$HOME/bin
+PATH=$PATH:/home/hadoop/hadoop/bin:$JAVA_HOME/bin:$HIVE_HOME/bin:/$HBASE_HOME/bin
+
+export PIG_HOME=/home/hadoop/pig
+export PIG_INSTALL=/home/hadoop/pig
+
+export HIVE_HOME=/home/hadoop/hive
+export HBASE_HOME=/home/hadoop/hbase
+
+=============
+
+
+$ hadoop fs -mkdir /tmp
+$ hadoop fs -mkdir /user/hive/warehouse
+$ hadoop fs -chmod g+w /tmp
+$ hadoop fs -chmod g+w /user/hive/warehouse
+
+you must create /tmp and /user/hive/warehouse (aka hive.metastore.warehouse.dir) and set aprpopriate permissions in HDFS
+
+hive> SET mapred.job.tracker=myhost.mycompany.com:50030;
+
+
+CREATE DATABASE test_hive_db;
+
+
+Creating Hive Tables
+==================
+  hive> CREATE TABLE pokes (foo INT, bar STRING);
+
+LOAD DATA LOCAL INPATH './examples/files/kv1.txt' OVERWRITE INTO TABLE pokes;
+
+
+creates a table called pokes with two columns, the first being an integer and the other a string.
+
+ ================= 
+  
+  
+  hive> CREATE TABLE invites (foo INT, bar STRING) PARTITIONED BY (ds STRING);
+
+
+hive> LOAD DATA LOCAL INPATH './hive/examples/files/kv2.txt' OVERWRITE INTO TABLE invites PARTITION (ds='2008-08-15');
+  hive> LOAD DATA LOCAL INPATH './examples/files/kv3.txt' OVERWRITE INTO TABLE invites PARTITION (ds='2008-08-08');
+  
+
+Loading from hdfs
+
+hive> LOAD DATA INPATH '/user/myname/kv2.txt' OVERWRITE INTO TABLE invites PARTITION (ds='2008-08-15');
+
+
+Browsing through Tables
+
+  hive> SHOW TABLES;
+
+lists all the tables.
+
+  hive> SHOW TABLES '.*s';
+
+hive> DESCRIBE invites;
+
+shows the list of columns.
+Altering and Dropping Tables
+
+Table names can be changed and columns can be added or replaced:
+
+  hive> ALTER TABLE events RENAME TO 3koobecaf;
+  hive> ALTER TABLE pokes ADD COLUMNS (new_col INT);
+  hive> ALTER TABLE invites ADD COLUMNS (new_col2 INT COMMENT 'a comment');
+  hive> ALTER TABLE invites REPLACE COLUMNS (foo INT, bar STRING, baz INT COMMENT 'baz replaces new_col2');
+
+Note that REPLACE COLUMNS replaces all existing columns and only changes the table's schema, not the data. The table must use a native SerDe. REPLACE COLUMNS can also be used to drop columns from the table's schema:
+
+  hive> ALTER TABLE invites REPLACE COLUMNS (foo INT COMMENT 'only keep the first column');
+
+Dropping tables:
+
+  hive> DROP TABLE pokes;
+  
+  
+  hive> LOAD DATA LOCAL INPATH './examples/files/kv2.txt' OVERWRITE INTO TABLE invites PARTITION (ds='2008-08-15');
+    hive> LOAD DATA LOCAL INPATH './examples/files/kv3.txt' OVERWRITE INTO TABLE invites PARTITION (ds='2008-08-08');
+

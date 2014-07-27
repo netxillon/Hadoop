@@ -1,0 +1,196 @@
+<?xml version="1.0"?>
+
+<configuration>
+
+<!-- system limit, across all queues -->
+
+<property>
+  <name>mapred.capacity-scheduler.maximum-system-jobs</name>
+  <value>3000</value>
+<description>Maximum number of jobs in the system which can be initialized,
+concurrently, by the CapacityScheduler.
+</description>
+</property>
+
+<!-- queue: queueA -->
+<property>
+  <name>mapred.capacity-scheduler.queue.queueA.capacity</name>
+  <value>8</value>
+</property>
+
+<property>
+  <name>mapred.capacity-scheduler.queue.queueA.supports-priority</name>
+  <value>false</value>
+</property>
+<property>
+  <name>mapred.capacity-scheduler.queue.queueA.minimum-user-limit-percent</name>
+  <value>20</value>
+</property>
+<property>
+  <name>mapred.capacity-scheduler.queue.queueA.user-limit-factor</name>
+  <value>10</value>
+</property>
+<property>
+  <name>mapred.capacity-scheduler.queue.queueA.maximum-initialized-active-tasks</name>
+  <value>200000</value>
+</property>
+<property>
+  <name>mapred.capacity-scheduler.queue.queueA.maximum-initialized-active-tasks-per-user</name>
+  <value>100000</value>
+</property>
+<property>
+  <name>mapred.capacity-scheduler.queue.queueA.init-accept-jobs-factor</name>
+  <value>100</value>
+</property>
+
+<!-- queue: queueB -->
+<property>
+  <name>mapred.capacity-scheduler.queue.queueB.capacity</name>
+  <value>2</value>
+</property>
+<property>
+  <name>mapred.capacity-scheduler.queue.queueB.supports-priority</name>
+  <value>false</value>
+</property>
+<property>
+  <name>mapred.capacity-scheduler.queue.queueB.minimum-user-limit-percent</name>
+  <value>20</value>
+</property>
+<property>
+  <name>mapred.capacity-scheduler.queue.queueB.user-limit-factor</name>
+  <value>1</value>
+</property>
+<property>
+  <name>mapred.capacity-scheduler.queue.queueB.maximum-initialized-active-tasks</name>
+  <value>200000</value>
+</property>
+<property>
+  <name>mapred.capacity-scheduler.queue.queueB.maximum-initialized-active-tasks-per-user</name>
+  <value>100000</value>
+</property>
+<property>
+  <name>mapred.capacity-scheduler.queue.queueB.init-accept-jobs-factor</name>
+  <value>10</value>
+</property>
+
+<!-- queue: queueC -->
+<property>
+  <name>mapred.capacity-scheduler.queue.queueC.capacity</name>
+  <value>30</value>
+</property>
+<property>
+  <name>mapred.capacity-scheduler.queue.queueC.supports-priority</name>
+  <value>false</value>
+</property>
+<property>
+  <name>mapred.capacity-scheduler.queue.queueC.minimum-user-limit-percent</name>
+  <value>20</value>
+</property>
+<property>
+  <name>mapred.capacity-scheduler.queue.queueC.user-limit-factor</name>
+  <value>1</value>
+</property>
+<property>
+  <name>mapred.capacity-scheduler.queue.queueC.maximum-initialized-active-tasks</name>
+  <value>200000</value>
+</property>
+<property>
+  <name>mapred.capacity-scheduler.queue.queueC.maximum-initialized-active-tasks-per-user</name>
+  <value>100000</value>
+</property>
+<property>
+  <name>mapred.capacity-scheduler.queue.queueC.init-accept-jobs-factor</name>
+  <value>10</value>
+</property>
+
+<!-- queue: queueD -->
+<property>
+  <name>mapred.capacity-scheduler.queue.queueD.capacity</name>
+  <value>1</value>
+</property>
+<property>
+  <name>mapred.capacity-scheduler.queue.queueD.supports-priority</name>
+  <value>false</value>
+</property>
+<property>
+  <name>mapred.capacity-scheduler.queue.queueD.minimum-user-limit-percent</name>
+  <value>20</value>
+</property>
+<property>
+  <name>mapred.capacity-scheduler.queue.queueD.user-limit-factor</name>
+  <value>20</value>
+</property>
+<property>
+  <name>mapred.capacity-scheduler.queue.queueD.maximum-initialized-active-tasks</name>
+  <value>200000</value>
+</property>
+<property>
+  <name>mapred.capacity-scheduler.queue.queueD.maximum-initialized-active-tasks-per-user</name>
+  <value>100000</value>
+</property>
+<property>
+  <name>mapred.capacity-scheduler.queue.queueD.init-accept-jobs-factor</name>
+  <value>10</value>
+</property>
+
+<!-- queue: queueE -->
+<property>
+  <name>mapred.capacity-scheduler.queue.queueE.capacity</name>
+  <value>31</value>
+</property>
+<property>
+  <name>mapred.capacity-scheduler.queue.queueE.supports-priority</name>
+  <value>false</value>
+</property>
+<property>
+  <name>mapred.capacity-scheduler.queue.queueE.minimum-user-limit-percent</name>
+  <value>20</value>
+</property>
+<property>
+  <name>mapred.capacity-scheduler.queue.queueE.user-limit-factor</name>
+  <value>1</value>
+</property>
+<property>
+  <name>mapred.capacity-scheduler.queue.queueE.maximum-initialized-active-tasks</name>
+  <value>200000</value>
+</property>
+<property>
+  <name>mapred.capacity-scheduler.queue.queueE.maximum-initialized-active-tasks-per-user</name>
+  <value>100000</value>
+</property>
+<property>
+  <name>mapred.capacity-scheduler.queue.queueE.init-accept-jobs-factor</name>
+  <value>10</value>
+</property>
+
+<!-- queue: queueF -->
+<property>
+  <name>mapred.capacity-scheduler.queue.queueF.capacity</name>
+  <value>28</value>
+</property>
+<property>
+  <name>mapred.capacity-scheduler.queue.queueF.supports-priority</name>
+  <value>false</value>
+</property>
+<property>
+  <name>mapred.capacity-scheduler.queue.queueF.minimum-user-limit-percent</name>
+  <value>20</value>
+</property>
+<property>
+  <name>mapred.capacity-scheduler.queue.queueF.user-limit-factor</name>
+  <value>1</value>
+</property>
+<property>
+  <name>mapred.capacity-scheduler.queue.queueF.maximum-initialized-active-tasks</name>
+  <value>200000</value>
+</property>
+<property>
+  <name>mapred.capacity-scheduler.queue.queueF.maximum-initialized-active-tasks-per-user</name>
+  <value>100000</value>
+</property>
+<property>
+  <name>mapred.capacity-scheduler.queue.queueF.init-accept-jobs-factor</name>
+  <value>10</value>
+</property>
+
+</configuration> 

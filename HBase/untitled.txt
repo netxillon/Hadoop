@@ -1,0 +1,11 @@
+parted /dev/sdb --script -- mklabel msdos
+parted /dev/sdb --script -- mkpart primary 0 -1
+mkfs.ext3 /dev/sdb1
+mkdir -p /space/disk1
+mount /dev/sdb1 /space/disk1
+
+useradd hadoop; echo hadoop | passwd --stdin hadoop
+chown -R hadoop:hadoop /space
+
+
+yum install jdk -y

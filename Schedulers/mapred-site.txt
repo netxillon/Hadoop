@@ -1,0 +1,39 @@
+<property>
+  <name>mapred.tasktracker.map.tasks.maximum</name>
+  <value>8</value>
+   <description>the number of available cores on the tasktracker machines
+for map tasks
+  </description>
+</property>
+<property>
+  <name>mapred.tasktracker.reduce.tasks.maximum</name>
+  <value>8</value>
+   <description>the number of available cores on the tasktracker machines
+for reduce tasks
+  </description>
+</property>
+
+
+
+<property>
+    <name>mapred.cluster.max.map.memory.mb</name>
+    <value>4096</value>
+  </property>
+
+<property>
+    <name>mapred.cluster.max.reduce.memory.mb</name>
+    <value>4096</value>
+</property>
+
+
+
+
+
+
+
+
+
+
+
+CORES=`cat /proc/cpuinfo | grep processor | wc -l`
+sed -i "s/{cores}/$CORES/g" mapred-site.xml

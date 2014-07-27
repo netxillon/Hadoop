@@ -1,0 +1,5 @@
+$ hadoop jar contrib/streaming/hadoop-*streaming*.jar -file /home/hadoop/mapper.py -mapper /home/hadoop/mapper.py -file /home/hadoop/reducer.py  -reducer /home/hadoop/reducer.py -input /input -output /output
+
+
+
+hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar -D stream.num.map.output.key.fields=2 -input /input /out -mapper /home/hadoop/mapper.sh -reducer /home/hadoop/reducer.sh

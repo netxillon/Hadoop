@@ -1,0 +1,9 @@
+start-hbase.sh
+stop-hbase.sh
+
+hbase shell;
+
+
+create 't1', {NAME => 'f1', VERSIONS => 5}
+
+describe 't1'
