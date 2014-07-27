@@ -30,3 +30,7 @@ Trash
 <name>fs.trash.interval</name>
 <value>40</value>
 </property>
+
+SetRep
+=====
+hadoop dfs -setrep -R -w 3 /chandra

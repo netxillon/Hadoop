@@ -2,8 +2,7 @@ export PIG_HOME=/home/hadoop/pig/
 
 
 A = load 'passwd' using PigStorage(':'); 
-B = foreach A generate $0 as id;
-dump B; 
+B = foreach A generate $0 as id; 
 store B into 'id.out';
 
 
@@ -33,3 +32,31 @@ C = group B by word;
 D = foreach C generate COUNT(B), group;
 
 store D into 'wordcount';
+
+==================
+
+A = load 'http_access_2011-07-07.log' using PigStorage('-') as (f0,f1,f2,f3,f4);
+B = foreach A generate f0;
+C = distinct B;
+dump C;
+
+A = load 'http_access_2011-07-07.log' using PigStorage('"') as (f0,f1,f2,f3,f4,f5);
+B = foreach A generate f5;
+C = distinct B;
+dump C;
+
+A = load 'http_access_2011-07-07.log' using PigStorage('"') as (f0,f1,f2,f3,f4);
+B = foreach A generate f1;
+C = distinct B;
+dump C;
+
+==============
+yum install ant*
+
+For Hadoop-2.0
+
+ant clean jar-withouthadoop -Dhadoopversion=23
+
+or
+
+ant clean jar-all -Dhadoopversion=23

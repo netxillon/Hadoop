@@ -101,12 +101,7 @@ C. Capacity Scheduler
 D. Completely Fair Scheduler (CFS)
 Answer: B
 
-22) You are planning a Hadoop duster, and you expect to be receiving just under 1TB of data per week which will be stored on the cluster, using Hadoop's default replication. You decide that your slave nodes will be configured with 4 x 1TB
-www.ipass4sure.com
-www.ipass4sure.com
-www.ipass4sure.com
-CCA-410
-disks. Calculate how many slave nodes you need to deploy at a minimum to store one year's worth of data.
+22) You are planning a Hadoop duster, and you expect to be receiving just under 1TB of data per week which will be stored on the cluster, using Hadoop's default replication. You decide that your slave nodes will be configured with 4 x 1TB disks. Calculate how many slave nodes you need to deploy at a minimum to store one year's worth of data.
 A. 100 slave nodes B. 100 slave nodes C. 10 slave nodes D. 50 slave nodes
 Answer: D
 

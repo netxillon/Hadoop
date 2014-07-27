@@ -1,0 +1,32 @@
+sqoop list-databases --connect jdbc:mysql://client.cluster1.com/employee --username sqoop --password passwd
+
+sqoop list-tables --connect jdbc:mysql://client.cluster1.com/employee --username sqoop --password passwd
+
+
+sqoop import --connect jdbc:mysql://client.cluster1.com/employee --username sqoop --password passwd --table student -m 1 --target-dir /user/sqoop/employee
+
+sqoop import --connect jdbc:mysql://client.cluster1.com/employee --username sqoop --password passwd --table student -m 1 --target-dir /user/sqoop/employee
+
+
+sqoop --options-file SqoopImportOptions.txt \
+--table employees  \
+--where "emp_no > 499948" \
+--as-textfile \
+-m 1 \
+--target-dir /user/airawat/sqoop-mysql/employeeGtTest
+
+
+sqoop --options-file SqoopImportOptions.txt \
+--query 'select EMP_NO,FIRST_NAME,LAST_NAME from employees where $CONDITIONS' \
+--fetch-size=50000 \
+--split-by EMP_NO \
+--direct \
+--target-dir /user/airawat/sqoop-mysql/FetchSize
+
+sqoop --options-file SqoopImportOptions.txt \
+
+--query 'select EMP_NO,FIRST_NAME,LAST_NAME from employees where $CONDITIONS' \
+-z \
+--split-by EMP_NO \
+--direct \
+--target-dir /user/airawat/sqoop-mysql/CompressedSampl
