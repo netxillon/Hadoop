@@ -23,3 +23,19 @@
 <name>hbase.zookeeper.property.clientPort</name>
 <value>2181</value>
 </property>
+
+Standalone Only
+===============
+<configuration>
+
+<property>
+<name>hbase.rootdir</name>
+<value>file:///home/hadoop/hdata</value>
+</property>
+
+<property>
+<name>hbase.zookeeper.property.dataDir</name>
+<value>/home/hadoop/zookeeper</value>
+</property>
+
+</configuration>
