@@ -1,9 +1,25 @@
-create 'class', 'cf'
+<property>
+<name>hbase.master</name>
+<value>client.cluster1.com:60000</value>
+</property>
 
-put 'class', 'row1', 'cf:a', 'value1'
-put 'class', 'row2', 'cf:b', 'value2'
-put 'class', 'row3', 'cf:c', 'value3'
-scan 'test1'
+<property>
+<name>hbase.rootdir</name>
+<value>hdfs://nn1.cluster1.com:9000/hbase</value>
+</property>
 
-put 'test', 'row1', 'cf:a', 'value1'
-put 'test', 'row3', 'cf:c', 'value3'
+<property>
+<name>hbase.cluster.distributed</name>
+<value>true</value>
+</property>
+
+<property>
+<name>hbase.zookeeper.quorum</name>
+<value>dn1.cluster1.com,dn2.cluster1.com</value>
+</property>
+
+
+<property>
+<name>hbase.zookeeper.property.clientPort</name>
+<value>2181</value>
+</property>
