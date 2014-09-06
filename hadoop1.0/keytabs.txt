@@ -1,0 +1,123 @@
+[hdfs@nn1 ~]$ klist -k -t user.keytab
+Keytab name: FILE:user.keytab
+KVNO Timestamp         Principal
+---- ----------------- --------------------------------------------------------
+   2 09/04/14 18:04:00 host/nn1.cluster1.com@CLUSTER1.COM
+   2 09/04/14 18:04:00 host/nn1.cluster1.com@CLUSTER1.COM
+   2 09/04/14 18:04:00 host/nn1.cluster1.com@CLUSTER1.COM
+   2 09/04/14 18:04:00 host/nn1.cluster1.com@CLUSTER1.COM
+   2 09/04/14 18:04:00 host/nn1.cluster1.com@CLUSTER1.COM
+   2 09/04/14 18:04:00 host/dn1.cluster1.com@CLUSTER1.COM
+   2 09/04/14 18:04:00 host/dn1.cluster1.com@CLUSTER1.COM
+   2 09/04/14 18:04:00 host/dn1.cluster1.com@CLUSTER1.COM
+   2 09/04/14 18:04:00 host/dn1.cluster1.com@CLUSTER1.COM
+   2 09/04/14 18:04:00 host/dn1.cluster1.com@CLUSTER1.COM
+   1 09/04/14 18:04:11 hdfs@CLUSTER1.COM
+   1 09/04/14 18:04:11 hdfs@CLUSTER1.COM
+   1 09/04/14 18:04:11 hdfs@CLUSTER1.COM
+   1 09/04/14 18:04:11 hdfs@CLUSTER1.COM
+   1 09/04/14 18:04:11 hdfs@CLUSTER1.COM
+
+================================
+
+[root@dn1 ~]# klist -k -t user.keytab
+Keytab name: FILE:user.keytab
+KVNO Timestamp         Principal
+---- ----------------- --------------------------------------------------------
+   2 09/04/14 18:04:00 host/nn1.cluster1.com@CLUSTER1.COM
+   2 09/04/14 18:04:00 host/nn1.cluster1.com@CLUSTER1.COM
+   2 09/04/14 18:04:00 host/nn1.cluster1.com@CLUSTER1.COM
+   2 09/04/14 18:04:00 host/nn1.cluster1.com@CLUSTER1.COM
+   2 09/04/14 18:04:00 host/nn1.cluster1.com@CLUSTER1.COM
+   2 09/04/14 18:04:00 host/dn1.cluster1.com@CLUSTER1.COM
+   2 09/04/14 18:04:00 host/dn1.cluster1.com@CLUSTER1.COM
+   2 09/04/14 18:04:00 host/dn1.cluster1.com@CLUSTER1.COM
+   2 09/04/14 18:04:00 host/dn1.cluster1.com@CLUSTER1.COM
+   2 09/04/14 18:04:00 host/dn1.cluster1.com@CLUSTER1.COM
+   1 09/04/14 18:04:11 hdfs@CLUSTER1.COM
+   1 09/04/14 18:04:11 hdfs@CLUSTER1.COM
+   1 09/04/14 18:04:11 hdfs@CLUSTER1.COM
+   1 09/04/14 18:04:11 hdfs@CLUSTER1.COM
+   1 09/04/14 18:04:11 hdfs@CLUSTER1.COM
+
+===================================
+
+
+[hdfs@dn1 ~]$ klist -k -t user.keytab
+Keytab name: FILE:user.keytab
+KVNO Timestamp         Principal
+---- ----------------- --------------------------------------------------------
+   2 09/04/14 18:04:00 host/nn1.cluster1.com@CLUSTER1.COM
+   2 09/04/14 18:04:00 host/nn1.cluster1.com@CLUSTER1.COM
+   2 09/04/14 18:04:00 host/nn1.cluster1.com@CLUSTER1.COM
+   2 09/04/14 18:04:00 host/nn1.cluster1.com@CLUSTER1.COM
+   2 09/04/14 18:04:00 host/nn1.cluster1.com@CLUSTER1.COM
+   2 09/04/14 18:04:00 host/dn1.cluster1.com@CLUSTER1.COM
+   2 09/04/14 18:04:00 host/dn1.cluster1.com@CLUSTER1.COM
+   2 09/04/14 18:04:00 host/dn1.cluster1.com@CLUSTER1.COM
+   2 09/04/14 18:04:00 host/dn1.cluster1.com@CLUSTER1.COM
+   2 09/04/14 18:04:00 host/dn1.cluster1.com@CLUSTER1.COM
+   1 09/04/14 18:04:11 hdfs@CLUSTER1.COM
+   1 09/04/14 18:04:11 hdfs@CLUSTER1.COM
+   1 09/04/14 18:04:11 hdfs@CLUSTER1.COM
+   1 09/04/14 18:04:11 hdfs@CLUSTER1.COM
+   1 09/04/14 18:04:11 hdfs@CLUSTER1.COM
+
+======================================
+
+[hdfs@dn1 ~]$ klist -k -t /usr/local/hadoop/conf/dn.service.keytab
+Keytab name: FILE:/usr/local/hadoop/conf/dn.service.keytab
+KVNO Timestamp         Principal
+---- ----------------- --------------------------------------------------------
+   1 09/04/14 13:01:54 dn/dn1.cluster1.com@CLUSTER1.COM
+   1 09/04/14 13:01:54 dn/dn1.cluster1.com@CLUSTER1.COM
+   1 09/04/14 13:01:54 dn/dn1.cluster1.com@CLUSTER1.COM
+   1 09/04/14 13:01:54 dn/dn1.cluster1.com@CLUSTER1.COM
+   1 09/04/14 13:01:54 dn/dn1.cluster1.com@CLUSTER1.COM
+   2 09/04/14 13:01:54 host/dn1.cluster1.com@CLUSTER1.COM
+   2 09/04/14 13:01:54 host/dn1.cluster1.com@CLUSTER1.COM
+   2 09/04/14 13:01:54 host/dn1.cluster1.com@CLUSTER1.COM
+   2 09/04/14 13:01:54 host/dn1.cluster1.com@CLUSTER1.COM
+   2 09/04/14 13:01:54 host/dn1.cluster1.com@CLUSTER1.COM
+   1 09/04/14 13:58:57 nn/nn1.cluster1.com@CLUSTER1.COM
+   1 09/04/14 13:58:57 nn/nn1.cluster1.com@CLUSTER1.COM
+   1 09/04/14 13:58:57 nn/nn1.cluster1.com@CLUSTER1.COM
+   1 09/04/14 13:58:57 nn/nn1.cluster1.com@CLUSTER1.COM
+   1 09/04/14 13:58:57 nn/nn1.cluster1.com@CLUSTER1.COM
+   2 09/04/14 14:01:52 host/nn1.cluster1.com@CLUSTER1.COM
+   2 09/04/14 14:01:52 host/nn1.cluster1.com@CLUSTER1.COM
+   2 09/04/14 14:01:52 host/nn1.cluster1.com@CLUSTER1.COM
+   2 09/04/14 14:01:52 host/nn1.cluster1.com@CLUSTER1.COM
+   2 09/04/14 14:01:52 host/nn1.cluster1.com@CLUSTER1.COM
+   2 09/04/14 15:07:29 host/repo.cluster1.com@CLUSTER1.COM
+   2 09/04/14 15:07:29 host/repo.cluster1.com@CLUSTER1.COM
+   2 09/04/14 15:07:29 host/repo.cluster1.com@CLUSTER1.COM
+   2 09/04/14 15:07:29 host/repo.cluster1.com@CLUSTER1.COM
+   2 09/04/14 15:07:29 host/repo.cluster1.com@CLUSTER1.COM
+
+====================================
+
+[hdfs@nn1 ~]$ klist -k -t /usr/local/hadoop/conf/nn.service1.keytab
+Keytab name: FILE:/usr/local/hadoop/conf/nn.service1.keytab
+KVNO Timestamp         Principal
+---- ----------------- --------------------------------------------------------
+   1 09/05/14 20:02:52 nn/nn1.cluster1.com@CLUSTER1.COM
+   1 09/05/14 20:02:52 nn/nn1.cluster1.com@CLUSTER1.COM
+   1 09/05/14 20:02:52 nn/nn1.cluster1.com@CLUSTER1.COM
+   1 09/05/14 20:02:52 nn/nn1.cluster1.com@CLUSTER1.COM
+   1 09/05/14 20:02:52 nn/nn1.cluster1.com@CLUSTER1.COM
+   2 09/05/14 20:02:52 host/nn1.cluster1.com@CLUSTER1.COM
+   2 09/05/14 20:02:52 host/nn1.cluster1.com@CLUSTER1.COM
+   2 09/05/14 20:02:52 host/nn1.cluster1.com@CLUSTER1.COM
+   2 09/05/14 20:02:52 host/nn1.cluster1.com@CLUSTER1.COM
+   2 09/05/14 20:02:52 host/nn1.cluster1.com@CLUSTER1.COM
+   1 09/05/14 20:02:52 http/nn1.cluster1.com@CLUSTER1.COM
+   1 09/05/14 20:02:52 http/nn1.cluster1.com@CLUSTER1.COM
+   1 09/05/14 20:02:52 http/nn1.cluster1.com@CLUSTER1.COM
+   1 09/05/14 20:02:52 http/nn1.cluster1.com@CLUSTER1.COM
+   1 09/05/14 20:02:52 http/nn1.cluster1.com@CLUSTER1.COM
+   1 09/05/14 20:02:52 HTTP/nn1.cluster1.com@CLUSTER1.COM
+   1 09/05/14 20:02:52 HTTP/nn1.cluster1.com@CLUSTER1.COM
+   1 09/05/14 20:02:52 HTTP/nn1.cluster1.com@CLUSTER1.COM
+   1 09/05/14 20:02:52 HTTP/nn1.cluster1.com@CLUSTER1.COM
+   1 09/05/14 20:02:52 HTTP/nn1.cluster1.com@CLUSTER1.COM
