@@ -1,5 +1,6 @@
-core-site.xml
---------------
+core-site.xml - All Namenode and Datanodes
+------------------------------------------
+
 <configuration>
 
 <property>
@@ -23,7 +24,6 @@ core-site.xml
 hdfs-site.xml
 -------------
 
-
 <configuration>
 
 <property>
@@ -34,9 +34,24 @@ hdfs-site.xml
 
 <property>
 <name>dfs.replication</name>
-<value>2</value>
+<value>1</value>
 </property>
 
+<property>
+<name>dfs.http.address</name>
+<value>nn1.cluster1.com:50070</value>
+</property>
+
+<property>
+    <name>dfs.permissions.supergroup</name>
+        <value>hadoop</value>
+            <description>The name of the group of super-users.</description>
+              </property>
+
+<property>
+    <name>dfs.permissions.superusergroup</name>
+    <value>hadoop</value>
+</property>
 
 <property>
 <name>dfs.block.access.token.enable</name>
@@ -44,19 +59,11 @@ hdfs-site.xml
 </property>
 
 <!-- NameNode security config -->
-<property>
-<name>dfs.https.address</name>
-<value>nn1.cluster1.com:50470</value>
-</property>
 
-<property>
-<name>dfs.https.port</name>
-<value>50470</value>
-</property>
 
 <property>
 <name>dfs.namenode.keytab.file</name>
-<value>/home/hadoop/hdfs.keytab</value> <!-- path to the HDFS keytab -->
+<value>/usr/local/hadoop/conf/nn.service1.keytab</value> <!-- path to the HDFS keytab -->
 </property>
 
 <property>
@@ -65,8 +72,69 @@ hdfs-site.xml
 </property>
 
 <property>
-<name>dfs.namenode.kerberos.https.principal</name>
-<value>http/_HOST@CLUSTER1.COM</value>
+<name>dfs.namenode.kerberos.http.principal</name>
+<value>host/_HOST@CLUSTER1.COM</value>
 </property>
 
-</configuration>
+<property>
+  <name>dfs.namenode.kerberos.internal.spnego.principal</name>
+    <value>HTTP/_HOST@CLUSTER1.COM</value>
+    </property>
+
+hdfs-site - Datanode
+--------------------
+
+<configuration>
+
+<property>
+<name>dfs.data.dir</name>
+<value>/space/disk1</value>
+<final>true</final>
+</property>
+
+<property>
+<name>dfs.replication</name>
+<value>1</value>
+</property>
+
+<property>
+    <name>dfs.permissions.supergroup</name>
+            <value>hadoop</value>
+                        <description>The name of the group of super-users.</description>
+                                      </property>
+
+<property>
+	<name>dfs.datanode.data.dir.perm</name>
+	  	<value>700</value>
+	  	</property>
+
+<property>
+  	<name>dfs.datanode.address</name>
+  	  	<value>192.168.1.72:1004</value>
+  	  	</property>
+
+<property>
+  	<name>dfs.datanode.http.address</name>
+  	  	<value>192.168.1.72:1006</value>
+  	  	</property>
+
+<property>
+  	<name>dfs.datanode.keytab.file</name>
+  		<value>/usr/local/hadoop/conf/dn.service.keytab</value> <!-- path to the HDFS keytab -->
+</property>
+
+
+<property>
+	<name>dfs.datanode.kerberos.principal</name>
+		<value>dn/_HOST@CLUSTER1.COM</value>
+		</property>
+
+<property>
+	<name>dfs.datanode.kerberos.https.principal</name>
+		<value>host/_HOST@CLUSTER1.COM</value>
+		</property>
+<property>
+<name>dfs.namenode.kerberos.principal</name>
+<value>nn/_HOST@CLUSTER1.COM</value>
+</property>
+
