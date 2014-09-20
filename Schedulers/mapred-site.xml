@@ -1,0 +1,25 @@
+<property>
+<name>mapred.job.tracker</name>
+<value>jt.cluster1.com:9001</value>
+</property>
+
+<property>
+<name>mapred.jobtracker.taskScheduler</name>
+<value>org.apache.hadoop.mapred.FairScheduler</value>
+</property>
+
+<property>
+<name>mapred.fairscheduler.allocation.file</name>
+<value>/home/hadoop/hadoop/conf/fair-scheduler.xml</value>
+</property>
+
+<property>
+  <name>mapred.fairscheduler.poolnameproperty</name>
+  <value>mapred.job.queue.name</value>
+  <final>true</final>
+</property>
+
+<property>
+  <name>mapred.queue.names</name>
+  <value>default,high,low</value>
+</property>

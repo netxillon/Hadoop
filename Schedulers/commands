@@ -1,0 +1,3 @@
+hadoop jar hadoop/hadoop-examples-1.2.1.jar wordcount -Dmapred.job.queue.name=high /project/input /output2233231
+
+

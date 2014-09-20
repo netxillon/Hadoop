@@ -1,0 +1,9 @@
+<allocations>
+
+
+<pool name="ads">
+<minMaps>10</minMaps>
+<minReduces>5</minReduces>
+</pool>
+
+</allocations>

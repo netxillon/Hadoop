@@ -1,4 +1,0 @@
-<property>
-<name>mapred.jobtracker.taskScheduler</name>
-<value>org.apache.hadoop.mapred.CapacityTaskScheduler</value>
-</property> 
