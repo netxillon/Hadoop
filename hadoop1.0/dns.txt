@@ -22,39 +22,59 @@ zone "1.168.192.in-addr.arpa" IN {
         file "/var/named/named.hadoop.rev";
 };
 ============
-zone files
+zone files (cluster1.com) forward zone
+=========
 
-$TTL	86400
-@		IN SOA	cluster1.com root (
-					42		; serial
-					3H		; refresh
-					15M		; retry
-					1W		; expiry
-					1D )		; minimum
-
-	        IN NS		ns1.cluster1.com
-ns1		IN A		192.168.1.70
-
-nn1		IN A		192.168.1.70
-nn2		IN A		192.168.1.77
-dn1		IN A		192.168.1.71
-dn2		IN A		192.168.1.72
-dn3		IN A		192.168.1.73
-snn		IN A		192.168.1.68
-jt		IN A		192.168.1.69
-db		IN A		192.168.1.99
-kdc		IN A		192.168.1.40
-cm		IN A		192.168.1.41
-base		IN A		192.168.1.10
-cm1		IN A		192.168.1.11
-node1		IN A		192.168.1.12
-filer		IN A		192.168.1.222
-cloudera	IN A		192.168.1.151
-datanode	IN A		192.168.1.152
-hadooplab	IN A		192.168.1.33
+$TTL 1D
+@	IN SOA	@ rname.invalid. (
+					0	; serial
+					1D	; refresh
+					1H	; retry
+					1W	; expire
+					3H )	; minimum
 
 
-================
+		IN 	NS 	ns1.cluster1.com.
+ns1 	IN 	A 	192.168.1.254
+repo 	IN 	A 	192.168.1.254
+
+;namenodes
+nn1 	IN 	A 	192.168.1.70
+nn2 	IN 	A 	192.168.1.71
+
+;Datanodes
+dn1 	IN 	A 	192.168.1.72
+dn2 	IN 	A 	192.168.1.73
+dn3 	IN 	A 	192.168.1.74
+dn4 	IN 	A 	192.168.1.75
+
+;Other Masters
+
+snn 		IN 	A 	192.168.1.68
+jt 		IN 	A 	192.168.1.69
+client 		IN 	A 	192.168.1.99
+kdc 		IN 	A 	192.168.1.102
+
+;Cloudera
+
+cm 		IN 	A 	192.168.1.40
+node1 		IN 	A 	192.168.1.41
+node2 		IN 	A 	192.168.1.42
+server		IN 	A 	192.168.1.44
+
+;Storage
+
+filer 		IN 	A 	192.168.1.253
+
+;Databases;
+
+mynode1		IN	A	192.168.1.81
+mynode2		IN	A	192.168.1.82
+labserver	IN	A	192.168.1.14
+===========
+
+Reverse zone for  cluster1.com
+==============================
 
 $TTL	86400
 @       IN      SOA     ns1.cluster1.com. root.cluster1.com.  (
