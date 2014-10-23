@@ -1,0 +1,172 @@
+DNS Installation
+================
+
+# yum install bind -y
+
+# vi /etc/named.conf
+
+remove everything and just use the lines below (Change IP's accordingly)
+
+options {
+<<<<<<< HEAD:DNS/dns_installation.txt
+	listen-on port 53 { 192.168.1.254; };
+	directory 	"/var/named";
+=======
+		listen-on port 53 { 192.168.1.254; };
+		directory "/var/named";
+>>>>>>> 925912d1565c9ba263d928397d065c93178cb463:hadoop1.0/dns.txt
+
+		allow-query { any; };
+
+		forwarders { 192.168.1.1; };
+
+};
+
+zone "cluster1.com" IN {
+	type master;
+	file "/var/named/named.hadoop.forw";
+};
+
+<<<<<<< HEAD:DNS/dns_installation.txt
+zone "1.168.192.in-addr.arpa" IN {
+        type master;
+        file "/var/named/named.ha.rev";
+
+};
+
+=================================================
+
+# vi /var/named/named.hadoop.forward.zone
+
+$TTL	86400
+@		IN SOA	cluster1.com root (
+					42		; serial
+					3H		; refresh
+					15M		; retry
+					1W		; expiry
+					1D )		; minimum
+
+	        IN NS		ns1.cluster1.com
+ns1		IN A		192.168.1.70
+
+nn1		IN A		192.168.1.70
+nn2		IN A		192.168.1.77
+dn1		IN A		192.168.1.71
+dn2		IN A		192.168.1.72
+dn3		IN A		192.168.1.73
+snn		IN A		192.168.1.68
+jt		IN A		192.168.1.69
+db		IN A		192.168.1.99
+kdc		IN A		192.168.1.40
+cm		IN A		192.168.1.41
+base		IN A		192.168.1.10
+cm1		IN A		192.168.1.11
+node1		IN A		192.168.1.12
+filer		IN A		192.168.1.222
+cloudera	IN A		192.168.1.151
+datanode	IN A		192.168.1.152
+hadooplab	IN A		192.168.1.33
+
+===================
+
+# vi /var/named/named.ha.rev
+=======
+
+zone "1.168.192.in-addr.arpa" IN {
+        type master;
+        file "/var/named/named.hadoop.rev";
+};
+============
+zone files (cluster1.com) forward zone
+=========
+
+$TTL 1D
+@	IN SOA	@ rname.invalid. (
+					0	; serial
+					1D	; refresh
+					1H	; retry
+					1W	; expire
+					3H )	; minimum
+
+
+		IN 	NS 	ns1.cluster1.com.
+ns1 	IN 	A 	192.168.1.254
+repo 	IN 	A 	192.168.1.254
+
+;namenodes
+nn1 	IN 	A 	192.168.1.70
+nn2 	IN 	A 	192.168.1.71
+
+;Datanodes
+dn1 	IN 	A 	192.168.1.72
+dn2 	IN 	A 	192.168.1.73
+dn3 	IN 	A 	192.168.1.74
+dn4 	IN 	A 	192.168.1.75
+
+;Other Masters
+
+snn 		IN 	A 	192.168.1.68
+jt 		IN 	A 	192.168.1.69
+client 		IN 	A 	192.168.1.99
+kdc 		IN 	A 	192.168.1.102
+
+;Cloudera
+
+cm 		IN 	A 	192.168.1.40
+node1 		IN 	A 	192.168.1.41
+node2 		IN 	A 	192.168.1.42
+server		IN 	A 	192.168.1.44
+
+;Storage
+
+filer 		IN 	A 	192.168.1.253
+
+;Databases;
+
+mynode1		IN	A	192.168.1.81
+mynode2		IN	A	192.168.1.82
+labserver	IN	A	192.168.1.14
+===========
+
+Reverse zone for  cluster1.com
+==============================
+>>>>>>> 925912d1565c9ba263d928397d065c93178cb463:hadoop1.0/dns.txt
+
+$TTL	86400
+@       IN      SOA     ns1.cluster1.com. root.cluster1.com.  (
+                                      1997022700 ; Serial
+                                      28800      ; Refresh
+                                      14400      ; Retry
+                                      3600000    ; Expire
+                                      86400 )    ; Minimum
+
+1.168.192.in-addr.arpa.                IN      NS      ns1.cluster1.com.
+
+70             IN      PTR     nn1.cluster1.com.
+40             IN      PTR     kdc.cluster1.com.
+41             IN      PTR     cm.cluster1.com.
+20             IN      PTR     node1.cluster1.com.
+71             IN      PTR     dn1.cluster1.com.
+72             IN      PTR     dn2.cluster1.com.
+73             IN      PTR     dn3.cluster1.com.
+10	       IN	PTR	base.cluster1.com.
+11	       IN	PTR	cm1.cluster1.com.
+12	       IN	PTR	node1.cluster1.com.
+151	       IN	PTR	cloudera.cluster1.com.
+152	       IN	PTR	datanode.cluster1.com.
+
+==============================================
+
+# chown -R root:named /var/named/
+
+
+
+# service named restart
+
+===========================
+
+On all client machines
+
+# vi /etc/resolv.conf
+
+nameserver 192.168.1.254

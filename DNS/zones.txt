@@ -1,0 +1,54 @@
+$TTL	86400
+@		IN SOA	cluster1.com root (
+					42		; serial
+					3H		; refresh
+					15M		; retry
+					1W		; expiry
+					1D )		; minimum
+
+	        IN NS		ns1.cluster1.com
+ns1		IN A		192.168.1.70
+
+nn1		IN A		192.168.1.70
+nn2		IN A		192.168.1.77
+dn1		IN A		192.168.1.71
+dn2		IN A		192.168.1.72
+dn3		IN A		192.168.1.73
+snn		IN A		192.168.1.68
+jt		IN A		192.168.1.69
+db		IN A		192.168.1.99
+kdc		IN A		192.168.1.40
+cm		IN A		192.168.1.41
+base		IN A		192.168.1.10
+cm1		IN A		192.168.1.11
+node1		IN A		192.168.1.12
+filer		IN A		192.168.1.222
+cloudera	IN A		192.168.1.151
+datanode	IN A		192.168.1.152
+hadooplab	IN A		192.168.1.33
+
+
+================
+
+$TTL	86400
+@       IN      SOA     ns1.cluster1.com. root.cluster1.com.  (
+                                      1997022700 ; Serial
+                                      28800      ; Refresh
+                                      14400      ; Retry
+                                      3600000    ; Expire
+                                      86400 )    ; Minimum
+
+1.168.192.in-addr.arpa.                IN      NS      ns1.cluster1.com.
+
+70             IN      PTR     nn1.cluster1.com.
+40             IN      PTR     kdc.cluster1.com.
+41             IN      PTR     cm.cluster1.com.
+20             IN      PTR     node1.cluster1.com.
+71             IN      PTR     dn1.cluster1.com.
+72             IN      PTR     dn2.cluster1.com.
+73             IN      PTR     dn3.cluster1.com.
+10	       IN	PTR	base.cluster1.com.
+11	       IN	PTR	cm1.cluster1.com.
+12	       IN	PTR	node1.cluster1.com.
+151	       IN	PTR	cloudera.cluster1.com.
+152	       IN	PTR	datanode.cluster1.com.
