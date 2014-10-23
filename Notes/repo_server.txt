@@ -1,0 +1,35 @@
+Setup Repo Server
+=================
+
+Mount Centos DVD and install:
+
+cd /media/Rhel 6 DVD/Packages/
+
+# yum install vsftpd*
+# yum install createrepo*
+
+# mkdir /var/ftp/pub/Centos65
+
+cp -a /media/RHEL_6_DVD/* /var/ftp/pub/Centos65/
+
+# createrepo -v /var/ftp/pub/Centos65/
+
+
+# service vsftpd restart
+
+========================
+
+On all the nodes
+
+# rm -rf /etc/yum.repos.d/*
+# vi /etc/yum.repos.d/server.repo
+
+[server]
+name=Centos 6.5 repository
+baseurl=ftp://<server ip>/pub/Centos65/
+gpgcheck=0
+enable=1
+
+
+
+

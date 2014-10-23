@@ -1,35 +1,3 @@
-/etc/named.conf
-===============
-
-options {
-	listen-on port 53 { 192.168.1.70; };
-	directory 	"/var/named";
-
-	allow-query     { any; };
-
-	forwarders { 192.168.1.1; };
-
-};
-
-zone "cluster1.com" IN {
-	type master;
-	file "/var/named/named.hadoop.forward.zone";
-};
-
-zone "hacluster1.com" IN {
-	type master;
-	file "/var/named/named.ha.forward.zone";
-};
-
-zone "1.168.192.in-addr.arpa" IN {
-        type master;
-        file "/var/named/named.ha.rev";
-#         file "/var/named/named.hadoop.rev";
-};
-
-============
-zone files
-
 $TTL	86400
 @		IN SOA	cluster1.com root (
 					42		; serial
