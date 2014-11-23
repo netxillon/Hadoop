@@ -98,5 +98,10 @@ Datanodes
   <value>ha-nn2.hacluster1.com:9000</value>
 </property>
 
+<property>
+<name>dfs.client.failover.proxy.provider.mycluster</name>
+<value>org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider</value>
+</property>
+
 </configuration>
 
