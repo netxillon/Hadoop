@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+
+<property>
+<name>dfs.namenode.name.dir</name>
+<value>file:/data/namenode</value>
+</property>
+
+<property>
+<name>dfs.replication</name>
+<value>1</value>
+</property>
+
+<property>
+<name>dfs.nameservices</name>
+<value>mycluster</value>
+</property>
+
+<property>
+<name>dfs.ha.namenodes.mycluster</name>
+<value>nn1,nn2</value>
+</property>
+
+<property>
+<name>dfs.namenode.rpc-address.mycluster.nn1</name>
+<value>nn1.cluster1.com:9000</value>
+</property>
+
+<property>
+<name>dfs.namenode.rpc-address.mycluster.nn2</name>
+<value>nn2.cluster1.com:9000</value>
+</property>
+
+<property>
+<name>dfs.namenode.http-address.mycluster.nn1</name>
+<value>nn1.cluster1.com:50070</value>
+</property>
+
+<property>
+<name>dfs.namenode.http-address.mycluster.nn2</name>
+<value>nn2.cluster1.com:50070</value>
+</property>
+
+<property>
+<name>dfs.ha.automatic-failover.enabled</name>
+<value>true</value>
+</property>
+
+<property>
+<name>dfs.journalnode.edits.dir</name>
+<value>/data/mycluster</value>
+</property>
+
+<property>
+<name>dfs.namenode.shared.edits.dir</name>
+<value>qjournal://nn1.cluster1.com:8485;nn2.cluster1.com:8485;jt.cluster1.com:8485/mycluster</value>
+</property>
+
+<property>
+<name>dfs.client.failover.proxy.provider.mycluster</name>
+<value>org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider</value>
+</property>
+
+<property>
+  <name>dfs.ha.fencing.ssh.private-key-files</name>
+      <value>/home/hadoop/.ssh/id_rsa</value>
+      </property>
+
+<property>
+  <name>dfs.ha.fencing.methods</name>
+      <value>sshfence
+                   shell(/bin/true)
+                                  </value>
+                                  </property>
+</configuration>

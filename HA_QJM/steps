@@ -1,0 +1,32 @@
+QJM Steps
+=========
+1. Setup zookeeper quorum and make sure they are running
+	- ./zookeeper-3.4.5/bin/zkServer.sh start
+  	- ./zookeeper-3.4.5/bin/zkCli.sh
+  	- ./zookeeper-3.4.5/bin/zkCli.sh -server nn1.cluster1.com:2181
+
+2. Setup core and hdfs file on each node as given.
+
+3. Start Journalnode on all journal node machines
+	- hadoop-daemon.sh start journalnode
+
+4. Format namenode
+	- hdfs namenode -format
+
+5. Format zkFC
+	- hdfs zkfc -formatZK
+
+6. Start namenode
+	- hadoop-daemon.sh start namenode
+
+7. Start ZKFC
+	- hadoop-daemon.sh start zkfc
+
+8. Bootstrap StandbyNamenode
+	- hdfs namenode -bootstrapStandby
+
+9. Start Namenode on standby
+
+10 .Start ZKFC on standy
+
+Now you cluster is HA with one active Namenode
