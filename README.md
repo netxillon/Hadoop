@@ -11,4 +11,4 @@ Feel free to use them.
 
 I have uploaded a 64-bit version of the latest stable release hadoop-2.5.2.
 
-For any help you can reach me at: gurmukh.dhillon@gmail.com or gurmukh@netxillon.com
+For any help you can reach me at: gurmukh@netxillon.com
