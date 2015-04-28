@@ -1,0 +1,5 @@
+dn: dc=cluster1,dc=com
+objectClass: dcObject
+objectClass: organization
+dc: cluster1
+o : cluster1

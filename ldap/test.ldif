@@ -1,0 +1,9 @@
+dn: cn=Jim Bob,ou=people,dc=cluster1,dc=com
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+cn: Jim Bob
+sn: Bob
+mail: jimbob@example.com
+ou: sales
