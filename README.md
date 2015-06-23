@@ -7,7 +7,7 @@ This is intended to help Hadoop Users, specifically users with System Administra
 
 The config files are from running cluster.
 
-Feel free to use them.
+Feel free to use them, but please drop an email with your feedback.
 
 I have uploaded a 64-bit version of the latest stable release hadoop-2.6.0
 
