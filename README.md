@@ -9,7 +9,7 @@ The config files are from running cluster.
 
 Feel free to use them.
 
-I have uploaded a 64-bit version of the latest stable release hadoop-2.5.2.
+I have uploaded a 64-bit version of the latest stable release hadoop-2.6.0
 
 For any help you can reach me at: info@netxillon.com or trainings@netxillon.com
 
