@@ -1,0 +1,18 @@
+[hdfs@edge1 conf]$ hbase org.apache.hadoop.hbase.io.hfile.HFile -v -f /hbase/data/default/class/9c4785ae4c37c4679773326224d7f5fe/cf/e90064527dda44d1b09f12b36edb4dd7
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/opt/cluster/hbase-1.0.1.1/lib/slf4j-log4j12-1.7.7.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/opt/cluster/hadoop-2.6.0/share/hadoop/common/lib/slf4j-log4j12-1.7.5.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]
+Scanning -> /hbase/data/default/class/9c4785ae4c37c4679773326224d7f5fe/cf/e90064527dda44d1b09f12b36edb4dd7
+2016-01-26 00:06:50,390 INFO  [main] hfile.CacheConfig: CacheConfig:disabled
+Scanned kv count -> 5
+[hdfs@edge1 conf]$ hbase org.apache.hadoop.hbase.io.hfile.HFile -v -f hdfs://nn1.dilithium.com:9000/hbase/data/default/class/9c4785ae4c37c4679773326224d7f5fe/cf/e90064527dda44d1b09f12b36edb4dd7
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/opt/cluster/hbase-1.0.1.1/lib/slf4j-log4j12-1.7.7.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/opt/cluster/hadoop-2.6.0/share/hadoop/common/lib/slf4j-log4j12-1.7.5.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]
+Scanning -> hdfs://nn1.dilithium.com:9000/hbase/data/default/class/9c4785ae4c37c4679773326224d7f5fe/cf/e90064527dda44d1b09f12b36edb4dd7
+2016-01-26 00:07:16,371 INFO  [main] hfile.CacheConfig: CacheConfig:disabled
+Scanned kv count -> 5
