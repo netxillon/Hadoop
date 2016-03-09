@@ -29,6 +29,10 @@ Build 64 bit Hadoop
 	cd /opt/hadoop-2.7.2-src
 	mvn package -Pdist,native -DskipTests -Dtar
 	
+	you will see a tar ball under hadoop-2.7.2-src/hadoop-dist/target/
+	
+	Enjoy !!
+	
 	
 
 	
