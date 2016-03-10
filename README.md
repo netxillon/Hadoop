@@ -22,25 +22,29 @@ Advanced Hadoop Training: I will be covering topics like: detailed kerberos, Enc
 
 Duration: 24 hours
 
-Module 1: Hadoop High Availability for HDFS and Resource Manager. 
+Module 1: Hadoop High Availability for HDFS and Resource Manager.
+
 −	Using both JQM and Shared storage.
--  Zookeeper Details.
+- Zookeeper Details.
+
 
 Module 2: Hadoop Queuing and pools details.
+
 −	Fair and Capacity Scheduler details.
 −	Dynamic pool configuration.
 −	User management and LDAP integration.
--  Dynamic shares and scheduling policies
+- Dynamic shares and scheduling policies.
 
 Module 3: HDFS Advanced Features
+
 −	Hadoop Centralised Caching.
 −	Hadoop Storage Policy and Archive Storage.
 −	Hadoop memory as storage tier.
 −	HDFS Extended Attributes.
 −	HDFS Short circuit Read.
 −	Quotas per storage type.
-−	Snapshots and HDFS over NFS
--  Yarn Labels 
+−	Snapshots and HDFS over NFS.
+- Yarn Labels
 
 Module 4: In-depth Performance tuning and Cluster Sizing. 
 −	JVM tuning for Hadoop.
