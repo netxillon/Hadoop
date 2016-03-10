@@ -70,6 +70,7 @@ Module 7: HBASE and Hive.
 -  HBase and Hive production use cases and common issues.
 
 Course 2: Advanced Hadoop: Data Lake and Streaming
+-----------------------------------------------------------------
 
 Duration: 24 hours
 
