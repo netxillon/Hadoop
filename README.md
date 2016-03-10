@@ -18,6 +18,7 @@ Advanced Hadoop Training: I will be covering topics like: detailed kerberos, Enc
  "Doing a course is not a guarantee for a job, but having a solid foundation surely is"
  
  Course 1: Hadoop Administration
+ ------------------------------------------------
  
  This is Hadoop Administration course, for which you see all the configs in this github.
  
