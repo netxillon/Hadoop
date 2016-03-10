@@ -17,7 +17,14 @@ Advanced Hadoop Training: I will be covering topics like: detailed kerberos, Enc
 
  "Doing a course is not a guarantee for a job, but having a solid foundation surely is"
  
- Course 1: Advanced Hadoop: Performance Tuning and Security
+ Course 1: Hadoop Administration
+ 
+ This is Hadoop Administration course, for which you see all the configs in this github.
+ 
+ Demo: https://www.youtube.com/channel/UC6vfYICj0azZkuc5sVw71PA
+ 
+ 
+ Course 2: Advanced Hadoop: Performance Tuning and Security
 -------------------------------------------------
 
 Duration: 24 hours
@@ -69,7 +76,7 @@ Module 7: HBASE and Hive.
 −	Hive and Hbase recovery and upgrades.
 -  HBase and Hive production use cases and common issues.
 
-Course 2: Advanced Hadoop: Data Lake and Streaming
+Course 3: Advanced Hadoop: Data Lake and Streaming
 -----------------------------------------------------------------
 
 Duration: 24 hours
