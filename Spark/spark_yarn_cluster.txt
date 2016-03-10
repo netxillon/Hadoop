@@ -1,0 +1,68 @@
+Spark Yarn Cluster Setup
+=========================
+
+# nodes
+
+edge1.dilithium.com(master)
+edge2.dilithium.com(worker)
+hbm1.dilithium.com(worker)
+-------------------------------------
+[hdfs@edge1 conf]$ cat spark-env.sh
+
+HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
+
+SPARK_LOCAL_IP=192.168.1.18
+SPARK_MASTER_IP=edge1.dilithium.com
+
+export SPARK_WORKER_MEMORY=256m
+export SPARK_EXECUTOR_MEMORY=128m
+export SPARK_WORKER_INSTANCES=1
+export SPARK_WORKER_CORES=1
+export SPARK_WORKER_DIR=/home/hdfs/work/sparkdata
+-------------------------------------------------
+[hdfs@edge2 conf]$ cat spark-env.sh
+
+HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
+
+SPARK_LOCAL_IP=192.168.1.19
+SPARK_MASTER_IP=edge1.dilithium.com
+
+export SPARK_WORKER_MEMORY=256m
+export SPARK_EXECUTOR_MEMORY=128m
+export SPARK_WORKER_INSTANCES=2
+export SPARK_WORKER_CORES=1
+export SPARK_WORKER_DIR=/home/hdfs/work/sparkdata
+-------------------------------------------------
+[hdfs@hbm1 conf]$ cat spark-env.sh
+
+HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
+
+SPARK_LOCAL_IP=192.168.1.30
+SPARK_MASTER_IP=edge1.dilithium.com
+
+export SPARK_WORKER_MEMORY=256m
+export SPARK_EXECUTOR_MEMORY=128m
+export SPARK_WORKER_INSTANCES=2
+export SPARK_WORKER_CORES=1
+export SPARK_WORKER_DIR=/home/hdfs/work/sparkdata
+--------------------------------------------------
+on Master node(edge1)
+
+[hdfs@edge1 conf]$ cat slaves
+# A Spark Worker will be started on each of the machines listed below.
+
+edge2.dilithium.com
+hbm1.dilithium.com
+--------------------
+On all nodes in the cluster
+
+[hdfs@edge1 conf]$ cat spark-defaults.conf
+# Default system properties included when running spark-submit.
+# This is useful for setting default environmental settings.
+
+# Example:
+spark.master                     spark://edge1.dilithium.com:7077
+spark.eventLog.enabled           true
+spark.serializer                 org.apache.spark.serializer.KryoSerializer
+spark.eventLog.dir               hdfs://nn1.dilithium.com:9000/user/hdfs/spark_logs
+

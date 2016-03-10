@@ -1,0 +1,27 @@
+Start cluster, after settign ssh-passphrase from master
+
+$ /opt/cluster/spark/sbin/stop-all.sh
+$ /opt/cluster/spark/sbin/start-all.sh
+
+
+Tip
+===
+To avoid loading assembly jar every time, set env variable as below, as copying jar to hadoop
+
+export SPARK_JAR=hdfs://nn1.dilithium.com:9000/user/hdfs/share/lib/spark-assembly-1.4.1-hadoop2.6.0.jar
+
+
+
+Submit jobs in 3 modes
+
+$ spark-submit --master yarn-client --class org.apache.spark.examples.SparkPi /opt/cluster/spark/lib/spark-examples-1.4.1-hadoop2.6.0.jar 10
+$ spark-submit --master yarn-cluster --class org.apache.spark.examples.SparkPi /opt/cluster/spark/lib/spark-examples-1.4.1-hadoop2.6.0.jar 10
+$ spark-submit --master spark://edge1.dilithium.com:7077 --class org.apache.spark.examples.SparkPi /opt/cluster/spark/lib/spark-examples-1.4.1-hadoop2.6.0.jar 10
+
+Other ways of running it
+-------------------------
+$ spark-shell --master yarn
+$ spark-submit --verbose ~/sparkPython/square.py --master yarn --deploy-mode cluster
+$ spark-submit --verbose ~/sparkPython/square.py --master yarn-cluster --deploy-mode cluster
+$ spark-submit --verbose ~/sparkPython/square.py --master yarn-client --deploy-mode cluster
+
