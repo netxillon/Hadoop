@@ -1,0 +1,32 @@
+-XX:-UseGCOverheadLimit
+
+SET mapred.child.java.opts="-server1g -XX:+UseConcMarkSweepGC -XX:-UseGCOverheadLimit";
+
+To enable the optimization
+
+  set hive.auto.convert.join = true
+  set hive.optimize.skewjoin = true
+  
+  
+When you are working with a large number of small files, Hive uses CombineHiveInputFormat by default. 
+In terms of MapReduce, it ultimately translates to using CombineFileInputFormat that creates virtual splits over multiple files, 
+grouped by common node, rack when possible. The size of the combined split is determined by
+
+mapred.max.split.size
+or 
+mapreduce.input.fileinputformat.split.maxsize ( in yarn/MR2);
+
+So if you want to have less splits(less mapper) you need to set this parameter higher.
+
+http://stackoverflow.com/questions/17852838/what-is-the-default-size-that-each-hadoop-mapper-will-read
+
+http://www.ericlin.me/how-to-control-the-number-of-mappers-required-for-a-hive-query
+
+
+set hive.input.format=org.apache.hadoop.hive.ql.io.HiveInputFormat;
+set mapred.map.tasks = 20;
+
+Controlling split size:
+
+set mapreduce.input.fileinputformat.split.minsize==100000000;
+reference: https://hadoopjournal.wordpress.com/2015/06/13/set-mappers-in-pig-hive-and-mapreduce/
