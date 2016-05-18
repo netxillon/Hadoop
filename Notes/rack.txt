@@ -21,3 +21,6 @@ done
 <name>topology.script.file.name</name>
 <value>/home/hadoop/hadoop/conf/topology.sh</value>
 </property>
+====================
+The Above works very well on Hadoop 1 but for hadoop 2, make sure to have the correct format emiited by the script. It
+takes IP addresses instead of DNS name and also there are multiple classes like simpleDNS and Table based. We do not need to do anything if we are using a script as above, but for Java invocations and other tabular formats we need to modify the "topology.node.switch.mapping.impl"
