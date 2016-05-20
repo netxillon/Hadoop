@@ -19,4 +19,9 @@ Effective level: INFO
 
 The logs are of the format /var/log/hadoop/hadoop-hadoop-$HADOOP_IDENT_STRING-<hostname>.log
 
-We can set or own $HADOOP_IDENT_STRING
+Thinking of changing $HADOOP_IDENT_STRING ?
+
+Not a good idea:
+
+$HADOOP_IDENT_STRING=$USER (Do not try to change to any custom value, because the PID etc all are tracked by this 
+and your scripts like hadoop-daemon.sh will fail.
