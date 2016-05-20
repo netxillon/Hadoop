@@ -1,0 +1,15 @@
+
+We can get and set the log level dynamically using the daemonlog command
+
+$ hadoop daemonlog -getlevel master1.cyrus.com:50070 org.apache.hadoop.dfs.NameNode
+Connecting to http://master1.cyrus.com:50070/logLevel?log=org.apache.hadoop.dfs.NameNode
+Submitted Log Name: org.apache.hadoop.dfs.NameNode
+Log Class: org.apache.commons.logging.impl.Log4JLogger
+Effective level: INFO
+
+
+$ hadoop daemonlog -getlevel master1.cyrus.com:50070 org.apache.hadoop.hdfs.server.namenode.NodeNode
+Connecting to http://master1.cyrus.com:50070/logLevel?log=org.apache.hadoop.hdfs.server.namenode.NodeNode
+Submitted Log Name: org.apache.hadoop.hdfs.server.namenode.NodeNode
+Log Class: org.apache.commons.logging.impl.Log4JLogger
+Effective level: INFO
