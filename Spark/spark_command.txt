@@ -10,13 +10,10 @@ To avoid loading assembly jar every time, set env variable as below, as copying 
 
 export SPARK_JAR=hdfs://nn1.dilithium.com:9000/user/hdfs/share/lib/spark-assembly-1.4.1-hadoop2.6.0.jar
 
-
-
 Submit jobs in 3 modes
 
-$ spark-submit --master yarn-client --class org.apache.spark.examples.SparkPi /opt/cluster/spark/lib/spark-examples-1.4.1-hadoop2.6.0.jar 10
-$ spark-submit --master yarn-cluster --class org.apache.spark.examples.SparkPi /opt/cluster/spark/lib/spark-examples-1.4.1-hadoop2.6.0.jar 10
-$ spark-submit --master spark://edge1.dilithium.com:7077 --class org.apache.spark.examples.SparkPi /opt/cluster/spark/lib/spark-examples-1.4.1-hadoop2.6.0.jar 10
+$ spark-submit --class org.apache.spark.examples.SparkPi /opt/cluster/spark/lib/spark-examples-1.6.1-hadoop2.2.0.jar 10 --master spark://rt1.cyrus.com:7077
+$ spark-submit --class org.apache.spark.examples.SparkPi /opt/cluster/spark/lib/spark-examples-1.6.1-hadoop2.2.0.jar 100 --master yarn --deploy-mode cluster
 
 Other ways of running it
 -------------------------
