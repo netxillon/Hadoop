@@ -16,6 +16,8 @@ $ spark-submit --class org.apache.spark.examples.SparkPi /opt/cluster/spark/lib/
 $ spark-submit --class org.apache.spark.examples.SparkPi /opt/cluster/spark/lib/spark-examples-1.6.1-hadoop2.2.0.jar 100 --master yarn --deploy-mode cluster
 $ spark-submit --class org.apache.spark.examples.SparkPi /opt/cluster/spark/lib/spark-examples-1.6.1-hadoop2.2.0.jar 100 --master yarn --deploy-mode client
 
+$ spark-submit --class org.apache.spark.examples.SparkPi /usr/lib/spark/lib/spark-examples-1.6.1-hadoop2.7.2-amzn-1.jar 100 --master yarn-master
+
 Other ways of running it
 -------------------------
 $ spark-shell --master yarn
