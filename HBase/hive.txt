@@ -82,4 +82,10 @@ Dropping tables:
   
   hive> LOAD DATA LOCAL INPATH './examples/files/kv2.txt' OVERWRITE INTO TABLE invites PARTITION (ds='2008-08-15');
     hive> LOAD DATA LOCAL INPATH './examples/files/kv3.txt' OVERWRITE INTO TABLE invites PARTITION (ds='2008-08-08');
+==============
 
+CREATE TABLE tags (userId INT,movieId INT,tag STRING,time timestamp) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',';
+
+CREATE TABLE test (userId INT,movieId INT,tag STRING,time timestamp) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n';
+
+CREATE external TABLE test1 (name STRING,Id INT,roll INT) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' stored as textfile location '/user/hadoop/dump';
