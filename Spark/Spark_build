@@ -15,4 +15,4 @@ $ mvn -Pyarn -Phadoop-2.4 -Dhadoop.version=2.4.0 -Dscala-2.11 -Phive -Phive-thri
 
 To build a distribution:
 
-./dev/make-distribution.sh --name custom-spark --tgz -Psparkr -Phadoop-2.4 -Phive -Phive-thriftserver -Pyarn
+./dev/make-distribution.sh --tgz -Phadoop-2.7 -Phive -Phive-thriftserver -Pyarn -DskipTests
