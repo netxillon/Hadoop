@@ -89,3 +89,13 @@ CREATE TABLE tags (userId INT,movieId INT,tag STRING,time timestamp) ROW FORMAT 
 CREATE TABLE test (userId INT,movieId INT,tag STRING,time timestamp) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n';
 
 CREATE external TABLE test1 (name STRING,Id INT,roll INT) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' stored as textfile location '/user/hadoop/dump';
+
+Hive VERSION Table
+
+mysql> CREATE TABLE VERSION ( VER_ID bigint(20) NOT NULL, SCHEMA_VERSION varchar(127) NOT NULL, VERSION_COMMENT varchar(255), PRIMARY KEY (VER_ID));
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> insert into VERSION (VER_ID,SCHEMA_VERSION,VERSION_COMMENT) values (1,"0.14.0","Hive release version 0.14.0");
+Query OK, 1 row affected (0.00 sec)
+
+/usr/lib/hive/bin/schematool -dbType mysql -initSchema
