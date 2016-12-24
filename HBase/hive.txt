@@ -99,3 +99,12 @@ mysql> insert into VERSION (VER_ID,SCHEMA_VERSION,VERSION_COMMENT) values (1,"0.
 Query OK, 1 row affected (0.00 sec)
 
 /usr/lib/hive/bin/schematool -dbType mysql -initSchema
+
+
+Performance tune Hive after checking stats on a table
+
+analyze table store compute statistics noscan;
+analyze table store compute statistics;
+analyze table store compute statistics for columns;
+ANALYZE TABLE Table1 CACHE METADATA;
+ANALYZE TABLE Table1 PARTITION(ds='2008-04-09', hr) COMPUTE STATISTICS NOSCAN;
