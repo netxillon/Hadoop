@@ -12,3 +12,5 @@ so which meta data name node is refering to if both mount points are up?
 what is the read policy? will it be only from the first disk specified?
 does two disk drives follow propotional fill algoritm?
 So in that case we dont have control how end clients are sending jobs? they can send any size
+So when name node is down and we have to make secondary as primary. I am confused why we need to change the hostname of secondary to primary? Instead of that if we would have configured namenode location by GSLB instead of direct hostname. Then we don’t need to change hostname 
+you are setting Quota from command line. So it will be flushed once we restart the namenode?
