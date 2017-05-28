@@ -1,0 +1,14 @@
+https://www.packtpub.com/books/content/sizing-and-configuring-your-hadoop-cluster
+why do we need replication of replication? why do we need to have replication of data on the same server again
+what was that sdb1 & sdc1, is that new partition for dn1 & dn2
+is this similar to RAID 1(mirroring)?
+do we need to setup this only if we do not have raid 1 already?
+Isnt its a good practice to create these directories on NFS server? other than local?
+after chaning any configuration setting , do we need to run --format everytime to reflect the change?
+will thses two disks need to be kept in different racks to avaoid data loss
+If the disk io speed is different significantly between the local and NFS one, will this cause adverse effect for namenode?
+it will be overhead because instead of rsyncing 1 directory it has to copy 2 dirs to DR right?
+so which meta data name node is refering to if both mount points are up?
+what is the read policy? will it be only from the first disk specified?
+does two disk drives follow propotional fill algoritm?
+So in that case we dont have control how end clients are sending jobs? they can send any size
