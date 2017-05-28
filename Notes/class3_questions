@@ -1,0 +1,19 @@
+1. when name node started what will be "keyword" to identify from log that at what timestamp namenode started and which log should we see?
+2. Does Secondary Name node  starts automatically? 
+3. "copyFromLocal" is locally load the data from the same node.. if yes, than if we want to load data from NAS or SAN or any client is there any specific command ..
+4. Is there any command we can use to override if same file is present in HDFS already? or we always have to remove existing first?
+5. If we change path hdfs then we need to reformat?
+6. how different is hadoop fsck from linux fsck
+7. Should we run  "hadoop dfsadmin"  & "hadoop fsck"  (Admin) commands only from name node and "hadoop fs" files related command from any of the name or datanode in cluster?
+8. how to start data node on selected machines instead of all as this earlier command is doing?
+9. what is .meta and .curr files are created and what is difference. what if .meta file is deleted will data also be lost
+10. in what cicumstances it will choose another node in case dn1 near to full capacity
+11. only shows 1 live node, although running it several time, it's changing between the live datanodes, but only shows 1 live at a time. Is it normal? What could be the problem
+12. is it possible to force the data to go into a particular data node?
+13. so at some edits will too huge , does it rotate also?
+14. can we have both NN and SNN on same node? or is it best practice to separate them
+15. how we know which rack machine belongs to? 
+16. editing nodes in include and exclude files does not require a reboot?
+17. In what kind of cases we might need to exclude a particular data node? Why would we create a DN and exclude it from the cluster?
+18. Let say I have servers from 2 datacenters one in new ATLANTA and one in NEW YORK. Let say ATLANTA datacenter is down because of FLOOD. How can we recover our cluster from such disaster recovery. In that case can we configure our data file to consider servers of ATLANTA datacenter as ONE RACK and NEWYORK servers as another rack?
+
