@@ -21,6 +21,25 @@
 
 Option Parameters
 =================
+<property>
+    <name>mapred.map.tasks</name>
+    <value>2</value>
+</property>
+
+<property>
+    <name>mapred.reduce.tasks</name>
+    <value>1</value>
+</property>
+
+<property>
+    <name>mapred.map.tasks</name>
+    <value>2</value>
+</property>
+
+<property>
+    <name>mapred.job.map.memory.mb</name>
+    <value>1024</value>
+</property>
 
 <property>
   <name>mapred.tasktracker.map.tasks.maximum</name>
