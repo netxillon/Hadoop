@@ -7,3 +7,14 @@ hbase shell;
 create 't1', {NAME => 'f1', VERSIONS => 5}
 
 describe 't1'
+
+
+create 'class', 'cf'
+
+put 'class', 'row1', 'cf:a', 'value1'
+put 'class', 'row2', 'cf:b', 'value2'
+put 'class', 'row3', 'cf:c', 'value3'
+scan 'test1'
+
+put 'test', 'row1', 'cf:a', 'value1'
+put 'test', 'row3', 'cf:c', 'value3'
