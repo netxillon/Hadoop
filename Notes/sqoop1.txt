@@ -32,11 +32,13 @@ sqoop --options-file SqoopImportOptions.txt \
 --target-dir /user/airawat/sqoop-mysql/CompressedSampl
 
 
-create table employee(emp_id varchar(20),name varchar(20),salary varchar(10));
+mysql> create table employee(id varchar(20),name varchar(20),salary varchar(10));
+
+hive -> CREATE External TABLE emp_hive (id INT, name STRING, salary STRING) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' STORED AS TEXTFILE location '/user/hadoop/table';
 
 #!/bin/bash
 
 for i in `seq 1 100`
 do
-	echo "insert into test.employee(emp_id,name,salary) values('${i}','Am${i}','10000');"
+	echo "insert into test.employee(id,name,salary) values('${i}','Am${i}','10000');"
 done
