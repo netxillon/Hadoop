@@ -32,7 +32,7 @@ sqoop --options-file SqoopImportOptions.txt \
 --target-dir /user/airawat/sqoop-mysql/CompressedSampl
 
 
-
+create table employee(emp_id varchar(20),name varchar(20),salary varchar(10));
 
 #!/bin/bash
 
