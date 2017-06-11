@@ -30,3 +30,13 @@ sqoop --options-file SqoopImportOptions.txt \
 --split-by EMP_NO \
 --direct \
 --target-dir /user/airawat/sqoop-mysql/CompressedSampl
+
+
+
+
+#!/bin/bash
+
+for i in `seq 1 100`
+do
+	echo "insert into test.employee(emp_id,name,salary) values('${i}','Am${i}','10000');"
+done
