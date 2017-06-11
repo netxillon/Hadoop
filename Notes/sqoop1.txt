@@ -31,10 +31,13 @@ sqoop --options-file SqoopImportOptions.txt \
 --direct \
 --target-dir /user/airawat/sqoop-mysql/CompressedSampl
 
-
+=================
 mysql> create table employee(id varchar(20),name varchar(20),salary varchar(10));
 
 hive -> CREATE External TABLE emp_hive (id INT, name STRING, salary STRING) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' STORED AS TEXTFILE location '/user/hadoop/table';
+
+
+sqoop import --connect jdbc:mysql://repo.cluster1.com/test --username hadoop --password hivepassword --table employee --target-dir /user/hadoop/table -m 1 --incremental append -check-column id
 
 #!/bin/bash
 
