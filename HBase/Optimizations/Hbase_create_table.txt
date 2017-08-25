@@ -1,0 +1,27 @@
+
+hbase(main):001:0> create 'emp', 'personal data', 'professional data', {SPLITS => (1..n_splits).map {|i| "user#{1000+i*(9999-1000)/n_splits}"}}
+
+create 'emp1', 'personal data', 'professional data', {REPLICATION_SCOPE => 1}
+
+
+hbase(main):001:0> n_splits = 200 # HBase recommends (10 * number of regionservers)
+hbase(main):002:0> create 'usertable', 'family', {SPLITS => (1..n_splits).map {|i| "user#{1000+i*(9999-1000)/n_splits}"}}
+
+
+scan 'hbase:meta',{FILTER=>"PrefixFilter('emp1')"}
+
+
+Snapshots:
+
+
+hbase snapshot create -n snapshotName -t tableName
+
+hbase shell
+>> delete_snapshot 'snapshotName'
+>> restore_snapshot snapshotName
+>> list_snapshots
+>> clone_snapshot 'snapshotName', 'newTableName'
+
+hbase snapshot info -snapshot snapshotName
+
+

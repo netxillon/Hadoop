@@ -1,0 +1,13 @@
+Steps:
+
+1. tar -xzvf ycsb-0.13.0-SNAPSHOT.tar.gz
+2. cd ycsb-0.13.0-SNAPSHOT
+3. cp /usr/lib/hbase/lib/slf4j-api-1.6.1.jar .
+4. cp /usr/lib/hbase/lib/zookeeper.jar .
+
+hbase> create 'usertable', {NAME => 'f1', VERSIONS => '1', COMPRESSION => 'SNAPPY'}
+
+5. cd ycsb-0.13.0-SNAPSHOT/bin
+
+$ ycsb load hbase12 -P workloads/workloada -p columnfamily=f1 -p recordcount=1000000 -p threadcount=4 -s | tee -a write.txt
+$ ycsb load hbase12 -P workloads/workloadb -p columnfamily=f1 -p recordcount=100000 -p operationcount=10000 -p threadcount=4 -s | tee -a workloadread.dat
