@@ -12,13 +12,15 @@ create 'emp', 'personal data', 'professional data'
 for i in `seq 1 1000000`
 do
        
-                echo "put 'emp', '$i', 'personal data:name', 'raju$i'"
-								echo "put 'emp', '$i', 'personal data:city', 'hyderabad$i'"
-								echo "put 'emp', '$i', 'professional data:designation', 'manager$i'"
-								echo "put 'emp', '$i', 'professional data:salary', '20000$i'"
+        echo "put 'emp', '$i', 'personal data:name', 'raju$i'"
+	echo "put 'emp', '$i', 'personal data:city', 'hyderabad$i'"
+	echo "put 'emp', '$i', 'professional data:designation', 'manager$i'"
+	echo "put 'emp', '$i', 'professional data:salary', '20000$i'"
        
 done
 
+# Optimized versions
+====================
 
 #!/bin/bash
 
