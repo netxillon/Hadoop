@@ -78,3 +78,7 @@ VERTICES: 02/02  [==========================>>] 100%  ELAPSED TIME: 6.88 s
 OK
 500
 Time taken: 9.721 seconds, Fetched: 1 row(s)
+
+
+Important thing to keep in mind that the env must be set on the nodes which are edge nodes, i.e hive client nodes. 
+Hive server and metaserver etc will be as talked previously.
