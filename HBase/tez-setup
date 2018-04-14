@@ -55,3 +55,26 @@ $ vi hive/conf/hive-site.xml
 This can be done at the hive/beeline prompt as well:
 
 hive> set hive.execution.engine=tez;
+
+
+Test by running any example:
+
+hive> select count(*) from pokes;
+Query ID = hadoop_20180414105904_37f4b946-30cc-447a-8878-be956d0b222e
+Total jobs = 1
+Launching Job 1 out of 1
+
+
+Status: Running (Executing on YARN cluster with App id application_1523714759756_0007)
+
+--------------------------------------------------------------------------------
+        VERTICES      STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED
+--------------------------------------------------------------------------------
+Map 1 ..........   SUCCEEDED      1          1        0        0       0       0
+Reducer 2 ......   SUCCEEDED      1          1        0        0       0       0
+--------------------------------------------------------------------------------
+VERTICES: 02/02  [==========================>>] 100%  ELAPSED TIME: 6.88 s
+--------------------------------------------------------------------------------
+OK
+500
+Time taken: 9.721 seconds, Fetched: 1 row(s)
