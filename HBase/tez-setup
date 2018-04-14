@@ -14,7 +14,7 @@ Copy the tez tarball to a path on HDFS.
 
 $ hadoop fs -mkdir -p /apps/tez
 $ hadoop fs -put tez/share/tez.tar.gz /apps/tez
-$ hadoop fs -put hive/lib/hive/hive-exec-1.2.2.jar /apps/tez
+$ hadoop fs -put hive/lib/hive-exec-1.2.2.jar /apps/tez
 
 $ vi tez/conf/tez-site.xml
 
