@@ -1,0 +1,57 @@
+Tez Configuration
+
+1. Download Tez tar ball: 
+
+$ su - hadoop
+$ wget www-us.apache.org/dist/tez/0.8.4/apache-tez-0.8.4-bin.tar.gz
+
+untar it in any directory and set path to it. Should be readable by the user running hive.
+
+$ tar xzvf apache-tez-0.8.4-bin.tar.gz
+$ ln -s apache-tez-0.8.4-bin tez
+
+Copy the tez tarball to a path on HDFS.
+
+$ hadoop fs -mkdir -p /apps/tez
+$ hadoop fs -put tez/share/tez.tar.gz /apps/tez
+$ hadoop fs -put hive/lib/hive/hive-exec-1.2.2.jar /apps/tez
+
+$ vi tez/conf/tez-site.xml
+
+<configuration>
+
+<property>
+<name>tez.lib.uris</name>
+<value>/apps/tez/tez.tar.gz</value> "This path is the HDFS path, can be speficied using the hdfs://path syntax as well"
+</property>
+
+<property>
+<name>tez.am.resource.memory.mb</name>
+<value>2048</value>
+</property>
+
+</configuration>
+
+Set ENV
+
+vi /etc/profile.d/hadoopenv.sh or .bash_profile
+
+export TEZ_CONF_DIR=/home/hadoop/tez/conf
+export TEZ_JARS=/home/hadoop/tez/
+
+export HADOOP_CLASSPATH=${TEZ_CONF_DIR}:${TEZ_JARS}/*:${TEZ_JARS}/lib/*:$HADOOP_CLASSPATH
+
+Set the execution mode in the hive configuration:
+
+$ vi hive/conf/hive-site.xml
+
+<property>
+
+        <name>hive.execution.engine</name>
+        <value>tez</value>
+
+</property>
+
+This can be done at the hive/beeline prompt as well:
+
+hive> set hive.execution.engine=tez;
