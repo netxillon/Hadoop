@@ -11,6 +11,7 @@ PATH=$PATH:$HOME/bin
 
 export JAVA_HOME=/usr/java/jdk1.7.0_25/
 export HADOOP_HOME=/home/hadoop/hadoop/
+export HADOOP_HOME_WARN_SUPPRESS=true
 PATH=$JAVA_HOME/bin:$HADOOP_HOME/bin:$PATH
 
 export PATH
