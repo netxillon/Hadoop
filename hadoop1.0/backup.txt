@@ -14,7 +14,8 @@ If you want to explicitly specify the file to be used by the namenode
 
 	hadoop-daemons.sh --hosts masters start secondarynamenode
 
-	hdfs secondarynamenode -checkpoint force
+        hadoop secondarynamenode -checkpoint force (hadoop 1)
+	hdfs secondarynamenode -checkpoint force (hadoop 2)
 
 2. hadoop namenode -importCheckpoint
 
