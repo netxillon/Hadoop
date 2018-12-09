@@ -7,7 +7,7 @@ This is intended to help Hadoop Users, specifically users with System Administra
 
 The config files are from running cluster. Feel free to use them, but please drop an email with your feedback.
 
-I have uploaded a 64-bit version of the latest stable release hadoop-2.6.0 and 2.7.1.
+I have uploaded a 64-bit version of the latest stable release hadoop-2.9.2 to google drive.
 
 For any help you can reach me at: trainings@netxillon.com
 
@@ -34,7 +34,6 @@ Module 1: Hadoop High Availability for HDFS and Resource Manager.
 
 −	Using both JQM and Shared storage.
 - Zookeeper Details.
-
 
 Module 2: Hadoop Queuing and pools details.
 
@@ -117,6 +116,6 @@ Module 6: Storm Architecture.
 −	Adding Storm to the Data Pipeline.
 −	Storm performance tuning.
 
-Module 7: Real Life Project.
+Module 7: Project.
 
 
