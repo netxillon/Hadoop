@@ -1,5 +1,7 @@
 <configuration>
 
+# The framework can be local, classic or yarn
+
 <property>
 <name>mapreduce.framework.name</name>
 <value>yarn</value>

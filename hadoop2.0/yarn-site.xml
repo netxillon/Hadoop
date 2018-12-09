@@ -12,17 +12,17 @@
 
 <property>
 <name>yarn.resourcemanager.resource-tracker.address</name>
-<value>ha-nn2.hacluster1.com:9001</value>
+<value>nn2.cluster1.com:9001</value>
 </property>
 
 <property>
 <name>yarn.resourcemanager.scheduler.address</name>
-<value>ha-nn2.hacluster1.com:9002</value>
+<value>nn2.cluster1.com:9002</value>
 </property>
 
 <property>
 <name>yarn.resourcemanager.address</name>
-<value>ha-nn2.hacluster1.com:9003</value>
+<value>nn2.cluster1.com:9003</value>
 </property>
 
 </configuration>
