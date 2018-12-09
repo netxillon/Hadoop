@@ -19,7 +19,7 @@ export YARN_HOME=$HADOOP_HOME
 export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
 export YARN_CONF_DIR=$HADOOP_HOME/etc/hadoop
 
-export JAVA_HOME=/usr/java/jdk1.7.0_25/
+export JAVA_HOME=/usr/java/default
 
 
 PATH=$HADOOP_HOME/bin/:$HADOOP_HOME/sbin/:$JAVA_HOME/bin/:$PATH
