@@ -17,7 +17,7 @@ Build 64 bit Hadoop
 	
 3. Download protobuf: wget https://github.com/google/protobuf/releases/download/v2.5.0/protobuf-2.5.0.tar.gz
 
-	tar -xzf protobuf-2.5.0.tar.gz -C /root
+	tar -xzf protobuf-2.5.0.tar.gz -C /opt/
 	
 	cd /opt/protobuf-2.5.0/
 	./configure
