@@ -2,22 +2,21 @@ QJM Steps
 =========
 1. Setup zookeeper quorum and make sure they are running
 	- ./zookeeper-3.4.5/bin/zkServer.sh start
-  	- ./zookeeper-3.4.5/bin/zkCli.sh
-  	- ./zookeeper-3.4.5/bin/zkCli.sh -server nn1.cluster1.com:2181
+  	- ./zookeeper-3.4.5/bin/zkCli.sh -server nn1.dilithium.com:2181
 
 2. Setup core and hdfs file on each node as given.
 
 3. Start Journalnode on all journal node machines
 	- hadoop-daemon.sh start journalnode
 
-4. Format namenode (Do not run this command, if you already have a NN runing and updating it to HA)
+4. Format namenode (Do not run this command, if you already have a NN runing and want to update it to HA)
 	- hdfs namenode -format
 
-5. Initialize shared edits for Journal node to see: (namenode must be stopped for this step;This statement is valid if step 4 is not executed)
+5. Initialize shared edits for Journal node to see: (namenode must be stopped for this step)
         - hdfs namenode -initializeSharedEdits -force
 
 6. Format zkFC
-	- hdfs zkfc -formatZK
+	- hdfs zkfc -formatZK -force
 
 7. Start namenode
 	- hadoop-daemon.sh start namenode
@@ -29,7 +28,29 @@ QJM Steps
 	- hdfs namenode -bootstrapStandby
 
 10. Start Namenode on standby
+	- hadoop-daemon.sh start namenode
 
-11 .Start ZKFC on standy
+11. Start ZKFC on standy
+	- hadoop-daemon.sh start zkfc
 
-Now you cluster is HA with one active Namenode
+Now your cluster is HA with one active Namenode
+
+[hdfs@nn1 ~]$ hdfs haadmin -getServiceState nn1
+active
+[hdfs@nn1 ~]$ hdfs haadmin -getServiceState nn2
+standby
+
+The "start-dfs.sh" script understands that it is a HA with Journal nodes and automatically starts:
+	- Both namenodes
+	- All Journal nodes
+	- Datanode nodes
+	- Both ZkFC
+
+Note: Make sure you start the ZK quorum before hand.
+
+[hdfs@nn1 ~]$ jps
+7828 Jps
+7336 JournalNode
+7512 DFSZKFailoverController
+7162 NameNode
+
