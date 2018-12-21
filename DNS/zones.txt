@@ -1,3 +1,6 @@
+#Forward lookup zone
+;Make sure you understand that comments could be using # or ; and it might change in future versions
+
 $TTL	86400
 @		IN SOA	cluster1.com root (
 					42		; serial
@@ -29,6 +32,8 @@ hadooplab	IN A		192.168.1.33
 
 
 ================
+# Reverse lookup Zone
++++++++++++++++++++++++
 
 $TTL	86400
 @       IN      SOA     ns1.cluster1.com. root.cluster1.com.  (
