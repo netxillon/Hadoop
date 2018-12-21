@@ -1,5 +1,5 @@
 options {
-	listen-on port 53 { 192.168.1.70; };
+	listen-on port 53 { 192.168.1.254; };
 	directory 	"/var/named";
 
 	allow-query     { any; };
@@ -13,6 +13,7 @@ zone "cluster1.com" IN {
 	file "/var/named/named.hadoop.forward.zone";
 };
 
+;Second Zone
 zone "hacluster1.com" IN {
 	type master;
 	file "/var/named/named.ha.forward.zone";
