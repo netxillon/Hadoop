@@ -1,8 +1,15 @@
 QJM Steps
 =========
-1. Setup zookeeper quorum and make sure they are running
+1. Setup zookeeper quorum and make sure that it is healthy
 	- ./zookeeper-3.4.5/bin/zkServer.sh start
   	- ./zookeeper-3.4.5/bin/zkCli.sh -server nn1.dilithium.com:2181
+
+	or
+
+[hdfs@nn2 ~]$ zkServer.sh status
+ZooKeeper JMX enabled by default
+Using config: /opt/cluster/zoo/bin/../conf/zoo.cfg
+Mode: follower
 
 2. Setup core and hdfs file on each node as given.
 
