@@ -1,0 +1,16 @@
+# To get rid of the warning on Hadoop native library
+export LD_LIBRARY_PATH=$HADOOP_HOME/lib/native
+
+[hdfs@edge1 ~]$ spark-shell --master yarn --driver-memory 512m --executor-memory 512m
+scala> 
+val file = sc.textFile("/test")
+val counts = file.flatMap(line => line.split(" ")).map(word => (word, 1)).reduceByKey(_ + _)
+counts.saveAsTextFile("/tmp/wordcount")
+counts.count()
+
+
+Examples using Python:
+
+spark-submit  ~/sparkPython/square.py --master yarn --deploy-mode cluster
+
+spark-submit  ~/sparkPython/wordcount.py --master yarn --deploy-mode cluster (Copy the file on which count needs to be done on hdfs path)

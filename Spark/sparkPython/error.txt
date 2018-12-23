@@ -1,0 +1,27 @@
+Spark Command: /Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home//bin/java -cp /usr/local/spark/spark-1.3.1-bin-hadoop2.6/sbin/../conf:/usr/local/spark/spark-1.3.1-bin-hadoop2.6/lib/spark-assembly-1.3.1-hadoop2.6.0.jar:/usr/local/spark/spark-1.3.1-bin-hadoop2.6/lib/datanucleus-api-jdo-3.2.6.jar:/usr/local/spark/spark-1.3.1-bin-hadoop2.6/lib/datanucleus-core-3.2.10.jar:/usr/local/spark/spark-1.3.1-bin-hadoop2.6/lib/datanucleus-rdbms-3.2.9.jar -Dspark.akka.logLifecycleEvents=true -Xms512m -Xmx512m org.apache.spark.deploy.master.Master --ip BGLC02M965AFH01 --port 7077 --webui-port 8080
+========================================
+
+Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
+16/02/17 20:19:40 INFO Master: Registered signal handlers for [TERM, HUP, INT]
+16/02/17 20:20:11 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+16/02/17 20:20:11 INFO SecurityManager: Changing view acls to: pkuma380
+16/02/17 20:20:11 INFO SecurityManager: Changing modify acls to: pkuma380
+16/02/17 20:20:11 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: Set(pkuma380); users with modify permissions: Set(pkuma380)
+16/02/17 20:20:11 INFO Slf4jLogger: Slf4jLogger started
+16/02/17 20:20:11 INFO Remoting: Starting remoting
+16/02/17 20:20:12 INFO Remoting: Remoting started; listening on addresses :[akka.tcp://sparkMaster@BGLC02M965AFH01:7077]
+16/02/17 20:20:12 INFO Remoting: Remoting now listens on addresses: [akka.tcp://sparkMaster@BGLC02M965AFH01:7077]
+16/02/17 20:20:12 INFO Utils: Successfully started service 'sparkMaster' on port 7077.
+16/02/17 20:20:12 INFO Server: jetty-8.y.z-SNAPSHOT
+16/02/17 20:20:12 INFO AbstractConnector: Started SelectChannelConnector@BGLC02M965AFH01:6066
+16/02/17 20:20:12 INFO Utils: Successfully started service on port 6066.
+16/02/17 20:20:12 INFO StandaloneRestServer: Started REST server for submitting applications on port 6066
+16/02/17 20:20:12 INFO Master: Starting Spark master at spark://BGLC02M965AFH01:7077
+16/02/17 20:20:12 INFO Master: Running Spark version 1.3.1
+16/02/17 20:20:13 INFO Server: jetty-8.y.z-SNAPSHOT
+16/02/17 20:20:13 INFO AbstractConnector: Started SelectChannelConnector@0.0.0.0:8080
+16/02/17 20:20:13 INFO Utils: Successfully started service 'MasterUI' on port 8080.
+16/02/17 20:20:13 INFO MasterWebUI: Started MasterWebUI at http://192.168.0.51:8080
+16/02/17 20:20:13 INFO Master: I have been elected leader! New state: ALIVE
+16/02/18 15:14:37 ERROR Master: RECEIVED SIGNAL 15: SIGTERM
+16/02/18 15:14:37 ERROR Master: RECEIVED SIGNAL 15: SIGTERM
