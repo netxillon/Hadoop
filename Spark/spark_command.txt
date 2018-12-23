@@ -1,4 +1,4 @@
-Start cluster, after settign ssh-passphrase from master
+Start cluster, after settign ssh-passphrase from master (Only for non Yarn cluster)
 
 $ /opt/cluster/spark/sbin/stop-all.sh
 $ /opt/cluster/spark/sbin/start-all.sh
