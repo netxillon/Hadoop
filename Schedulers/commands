@@ -1,3 +1,9 @@
+Hadoop 1:
 hadoop jar hadoop/hadoop-examples-1.2.1.jar wordcount -Dmapred.job.queue.name=high /project/input /output2233231
 
+Hadoop 2:
+yarn jar hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.3.jar wordcount -Dmapred.job.queue.name=sales /test /out
 
+Useful Commands:
+$ yarn rmadmin -refreshQueues
+$ mapred queue -list
