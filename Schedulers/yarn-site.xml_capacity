@@ -1,0 +1,8 @@
+# Capacity Scheduler is the default scheduler. So, we do not need to configure the below in Hadoop 2.x
+
+
+<property>
+<name>yarn.resourcemanager.scheduler.class</name>
+<value>org.apache.hadoop.yarn.server.resourcemanager.scheduler.capacity.CapacityScheduler</value>
+<source>yarn-default.xml</source>
+</property>
