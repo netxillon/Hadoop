@@ -174,7 +174,7 @@
 
   <property>
     <name>yarn.scheduler.capacity.queue-mappings</name>
-    <value>u:hdfs:marketing</value>
+    <value></value>
     <description>
       A list of mappings that will be used to assign jobs to queues
       The syntax for this list is [u|g]:[name]:[queue_name][,next mapping]*
