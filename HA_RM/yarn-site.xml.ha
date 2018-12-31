@@ -34,7 +34,7 @@
 
 <property>
  <name>yarn.resourcemanager.cluster-id</name>
- <value>yarn-cluster</value>
+ <value>netxillon</value>
 </property>
 
 <property>
