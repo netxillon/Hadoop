@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <configuration>
 
-<!-- Site specific YARN configuration properties -->
+<!-- If you do not have Spark Yarn shuffle jar in the Path, remove the Spark entries -->
 
 <property>
 <name>yarn.nodemanager.aux-services</name>
