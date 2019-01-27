@@ -11,7 +11,7 @@ I have uploaded a 64-bit version of the latest stable release hadoop-2.9.2 to go
 
 For any help you can reach me at: trainings@netxillon.com
 
-I provide Hadoop Adminstration, DevOps and Advanced Hadoop trainings.
+I provide Advanced Hadoop Adminstration, DevOps, HBase, Kafka and other traings.
 
 Advanced Hadoop Training: I will be covering topics like: detailed kerberos, Encryption, Centerlized caching, Storage policy, Ranger, Knox, Hadoop Performance Tuning and Production Use cases. Contact me for details.
 
@@ -118,4 +118,15 @@ Module 6: Storm Architecture.
 
 Module 7: Project.
 
+Course 4: Advanced Hadoop: HBase performance optimization and Row Key Design
+----------------------------------------------------------------------------
 
+This is a advanced course and is expected that he user has a good hold on Hadoop platform with HDFS, OS knowledge.
+
+- HBase Architecture Details
+- HBase TroubleShooting
+- HBase use cases.
+- HBase Row key Design
+- HBase coprocessors
+- HBase replica
+- HBase Kerberos Setup
