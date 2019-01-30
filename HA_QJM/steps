@@ -19,8 +19,16 @@ Mode: follower
 4. Format namenode (Do not run this command, if you already have a NN runing and want to update it to HA)
 	- hdfs namenode -format
 
-5. Initialize shared edits for Journal node to see: (namenode must be stopped for this step)
+5. Initialize shared edits for Journal node to see:
         - hdfs namenode -initializeSharedEdits -force
+
+Note:	
+  - namenode must be stopped for this step;
+  - Only run this if you have not executed step4.
+  - Means that there was already a single Namenode and now you need to initialize the shared edits for Journals.
+  - We do not need initialize command if we are formating the Namenode as it will automatically initiallize the Journals node
+    directories, assuming that you have the HA configuration already in place when you execute "format"
+        
 
 6. Format zkFC
 	- hdfs zkfc -formatZK -force
