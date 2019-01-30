@@ -1,7 +1,0 @@
-<configuration>
-<property>
-    <name>fs.defaultFS</name>
-    <value>hdfs://ha-nn1.hacluster1.com:9000</value>
-</property>
-
-</configuration>
