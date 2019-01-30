@@ -25,9 +25,9 @@ Mode: follower
 Note:	
   - namenode must be stopped for this step;
   - Only run this if you have not executed step4.
-  - Means that there was already a single Namenode and now you need to initialize the shared edits for Journals.
-  - We do not need initialize command if we are formating the Namenode as it will automatically initiallize the Journals node
-    directories, assuming that you have the HA configuration already in place when you execute "format"
+  	- Means that there was already a single Namenode and now you need to initialize the shared edits for Journals.
+  	- We do not need initialize command if we are formating the Namenode as it will automatically initiallize the Journals
+	node directories, assuming that you have the HA configuration already in place when you execute "format"
         
 
 6. Format zkFC
