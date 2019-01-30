@@ -11,7 +11,7 @@ I have uploaded a 64-bit version of the latest stable release hadoop-2.9.2 to go
 
 For any help you can reach me at: trainings@netxillon.com
 
-I provide Advanced Hadoop Adminstration, DevOps, HBase, Kafka and other traings.
+I provide Advanced Hadoop Administration, DevOps, HBase, Kafka and other traings.
 
 Advanced Hadoop Training: I will be covering topics like: detailed kerberos, Encryption, Centerlized caching, Storage policy, Ranger, Knox, Hadoop Performance Tuning and Production Use cases. Contact me for details.
 
