@@ -1,6 +1,9 @@
 hadoop
 ======
 
+This is Only Hadoop1 branch
+
+
 Hadoop Cluster Configurations
 
 This is intended to help Hadoop Users, specifically users with System Administration background to setup Hadoop quickly and efficiently. 
