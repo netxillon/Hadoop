@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+
+<property>
+<name>dfs.name.dir</name>
+<value>/data/namenode</value>
+<final>true</final>
+</property>
+
+<property>
+<name>dfs.replication</name>
+<value>1</value>
+</property>
+
+<property>
+<name>dfs.http.address</name>
+<value>nn1.cluster1.com:50070</value>
+</property>
+
+<property>
+<name>dfs.permissions.supergroup</name>
+<value>hadoop</value>
+<description>The name of the group of super-users.</description>
+</property>
+
+<property>
+<name>dfs.permissions.superusergroup</name>
+<value>hadoop</value>
+</property>
+
+<property>
+<name>dfs.block.access.token.enable</name>
+<value>true</value>
+</property>
+
+<!-- NameNode security config -->
+
+<property>
+<name>dfs.namenode.keytab.file</name>
+<value>/home/hadoop/nn.hdfs.keytab</value> 
+</property>
+
+<property>
+<name>dfs.namenode.kerberos.principal</name>
+<value>nn/_HOST@CLUSTER1.COM</value>
+</property>
+
+<property>
+<name>dfs.namenode.kerberos.http.principal</name>
+<value>host/_HOST@CLUSTER1.COM</value>
+</property>
+
+<property>
+<name>dfs.namenode.kerberos.internal.spnego.principal</name>
+<value>HTTP/_HOST@CLUSTER1.COM</value>
+</property>
+
+</configuration>

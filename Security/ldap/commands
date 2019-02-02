@@ -1,0 +1,26 @@
+ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/cosine.ldif
+  962  ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/*
+  963  ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/collective.ldif
+  964  ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/core.ldif
+  965  ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/inetorgperson.ldif
+  966  ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/nis.ldif
+  967  ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/ppolicy.ldif
+  969  ldapadd -f groupadd.ldif -D cn=Manager,dc=cluster1,dc=com -x -w redhat
+  971  ldapadd -f adduser.ldif -D cn=Manager,dc=cluster1,dc=com -x -w redhat
+  972  ldappasswd -s welcome123 -W -D "cn=Manager,dc=cluster1,dc=com" -x "uid=hdfs1,ou=users,dc=cluster1,dc=com"
+  974  yum install pam_ldap -y
+  976  cat /etc/openldap/ldap.conf
+  989  vi /etc/openldap/ldap.conf
+  997  authconfig --enableldap --enableldapauth --ldapserver=repo.cluster1.com --ldapbasedn="dc=cluster1,dc=com" --enablemkhomedir --update
+  998  cat /etc/openldap/ldap.conf
+ 1004  cd ldap/
+ 1006  ldapadd -f groupadd.ldif -D cn=Manager,dc=cluster1,dc=com -x -w redhat
+ 1008  ldapadd -f groupadd.ldif -D cn=Manager,dc=cluster1,dc=com -x -w redhat
+ 1010  ldapsearch -x -W -D "cn=Manager,dc=cluster1,dc=com" -b "uid=hdfs1,ou=users,dc=cluster1,dc=com" "(objectclass=*)"
+ 1011  ldapsearch -x -W -D "cn=Manager,dc=cluster1,dc=com" -b "uid=hdfs1,ou=Users,dc=cluster1,dc=com" "(objectclass=*)"
+ 1012  ldapdelete -W -D "cn=Manager,dc=cluster1,dc=com" "uid=hdfs1,ou=users,dc=cluster1,dc=com"
+ 1013  ldapsearch -x -W -D "cn=Manager,dc=cluster1,dc=com" -b "uid=hdfs1,ou=Users,dc=cluster1,dc=com" "(objectclass=*)"
+ 1016  ldapadd -f groupadd.ldif -D cn=Manager,dc=cluster1,dc=com -x -w redhat
+ 1017  ldapadd -f adduser.ldif -D cn=Manager,dc=cluster1,dc=com -x -w redhat
+ 1020  ldapadd -f addmembers.ldif -D cn=Manager,dc=cluster1,dc=com -x -w redhat
+ 1024  ldapsearch -x -W -D "cn=Manager,dc=cluster1,dc=com" -b "uid=hdfs1,ou=Users,dc=cluster1,dc=com" "(objectclass=*)"

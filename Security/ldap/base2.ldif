@@ -1,0 +1,4 @@
+dn: dc=cluster1,dc=com
+objectClass: top
+objectclass: organization
+o: cluster1

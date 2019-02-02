@@ -1,0 +1,9 @@
+dn:ou=groups, dc=cluster1, dc=com
+objectclass: top
+objectclass: organizationalUnit
+ou: groups
+
+dn:ou=people, dc=cluster1, dc=com
+objectclass: top
+objectclass: organizationalUnit
+ou: people

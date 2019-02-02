@@ -1,0 +1,4 @@
+dn: cn=hadoop,ou=groups,dc=cluster1,dc=com
+changetype: modify
+add: memberuid
+memberuid: hdfs1

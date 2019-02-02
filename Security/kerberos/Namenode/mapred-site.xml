@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+
+<property>
+<name>mapred.job.tracker</name>
+<value>jt1.cluster1.com:9001</value>
+</property>
+
+<property>  
+        <name>mapreduce.jobtracker.kerberos.principal</name>  
+	<value>mapred/_HOST@CLUSTER1.COM</value>
+</property>
+
+<property>
+  <name>mapreduce.jobtracker.kerberos.https.principal</name>
+  <value>host/_HOST@CLUSTER1.COM</value>
+</property>
+
+<property>   
+        <name>mapreduce.jobtracker.keytab.file</name>   
+        <value>/home/hadoop/mapred.keytab</value>   
+</property>
+
+<property>  
+        <name>mapreduce.tasktracker.kerberos.principal</name>   
+        <value>mapred/_HOST@CLUSTER1.COM</value>  
+</property>
+
+<property>
+  <name>mapreduce.tasktracker.kerberos.https.principal</name>
+  <value>host/_HOST@CLUSTER1.COM</value>
+</property>
+
+<property>   
+        <name>mapreduce.tasktracker.keytab.file</name>   
+        <value>/home/hadoop/tt.mapred.keytab</value>   
+</property>
+
+<property>
+        <name>mapred.local.dir</name>
+        <value>/space/tmp</value>
+</property>
+
+<property>
+  <name>mapreduce.tasktracker.group</name>
+  <value>mapred</value>
+</property>
+
+</configuration>

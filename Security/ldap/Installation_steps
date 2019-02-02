@@ -1,0 +1,49 @@
+yum -y install openldap compat-openldap openldap-clients openldap-servers openldap-servers-sql openldap-devel
+yum -y install nss-pam-ldapd pam_ldap
+
+cp /usr/share/openldap-servers/DB_CONFIG.example /var/lib/ldap/DB_CONFIG
+cp /usr/share/openldap-servers/slapd.conf.obsolete slapd.conf
+
+edit "slapd.conf" and add/change the lines as below:
+
+suffix		"dc=cluster1,dc=com"
+rootdn		"cn=Manager,dc=cluster1,dc=com"
+rootpw		{SSHA}2F2+4O43lt9jnPLrh6gjJ8tIVksTSSEg
+
+The password is generated using "slappasswd"
+
+slaptest -f /etc/openldap/slapd.conf -F /etc/openldap/slapd.d/
+
+chown -R ldap:ldap /var/run/openldap/
+chown -R ldap:ldap /var/lib/ldap
+chown -R ldap:ldap /etc/openldap/slap.d
+
+ldapadd -f base.ldif -D cn=Manager,dc=cluster1,dc=com -x -w redhat
+ldapadd -f groupadd.ldif -D cn=Manager,dc=cluster1,dc=com -x -w redhat
+ldapadd -f base1.ldif -D cn=Manager,dc=cluster1,dc=com -x -w redhat
+ldapadd -f users.ldif -D cn=Manager,dc=cluster1,dc=com -x -w redhat
+ldapadd -f adduser.ldif -D cn=Manager,dc=cluster1,dc=com -x -w redhat
+
+#PhpldapAdmin installation; need epel repo
+
+yum -y install httpd php php-ldap phpldapadmin
+
+Then change the files as below:
+
+/etc/phpldapadmin/config.php
+
+$servers->setValue('server','name','Netxillon LDAP Server');
+$servers->setValue('server','host','192.168.1.254');
+$servers->setValue('login','bind_id','cn=Manager,dc=cluster1,dc=com');
+
+comment //$servers->setValue('login','attr','uid');
+uncomment $servers->setValue('login','attr','dn');
+
+Change Deny rule to Allow in the http and restart the httpd
+
+# On Client nodes:
+
+authconfig --enableldap --enableldapauth --ldapserver=repo.cluster1.com --ldapbasedn="dc=cluster1,dc=com" --enablemkhomedir --update
+
+
+

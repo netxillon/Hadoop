@@ -1,0 +1,16 @@
+dn: uid=hdfs1,ou=users,dc=cluster1,dc=com
+objectClass: top
+objectClass: account
+objectClass: posixAccount
+objectClass: shadowAccount
+cn: hdfs1
+uid: hdfs1
+uidNumber: 509
+gidNumber: 509
+homeDirectory: /home/hdfs1
+loginShell: /bin/bash
+gecos: adam
+userPassword: {crypt}x
+shadowLastChange: 0
+shadowMax: 0
+shadowWarning: 0

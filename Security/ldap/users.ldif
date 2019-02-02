@@ -1,0 +1,3 @@
+dn: ou=Users,dc=cluster1,dc=com
+objectClass: organizationalUnit
+ou: Users

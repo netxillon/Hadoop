@@ -1,0 +1,12 @@
+# Start Collector first:
+
+flume-ng agent -c conf -f flume/conf/flume_collector.conf -n collector (Name must match the agent name)
+flume-ng agent -c conf -f flume/conf/web_server_source.conf -n source_agent (Name must match agent name)
+
+
+# Change the hostnames/IPs in the config files accordingly.
+
+
+#Note:
+- New deployments do not use flume any more and kafka is doing lot of things.
+- But, flume is still a good use case for log aggregatio etc and avoid the overhead of kafka cluster.

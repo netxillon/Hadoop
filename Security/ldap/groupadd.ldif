@@ -1,0 +1,4 @@
+dn: cn=hdfs1,ou=groups,dc=cluster1,dc=com
+objectClass: top
+objectClass: posixGroup
+gidNumber: 509
