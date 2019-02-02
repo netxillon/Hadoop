@@ -1,0 +1,47 @@
+rsyslog (base, includes imfile)
+rsyslog-kafka
+
+/etc/rsyslog.conf
+-----------------
+
+
+$WorkDirectory /var/lib/rsyslog # where to place spool files
+
+$MainMsgQueueType LinkedList
+$MainMsgQueueFileName mainmsgq
+$MainMsgQueueSaveOnShutdown on
+$MainMsgQueueSize 15000
+$MainMsgQueueHighWatermark 10000
+$MainMsgQueueLowWatermark 1000
+$MainMsgQueueMaxDiskSpace 53687091 # 512KB, most containers have
+
+
+/etc/rsyslog.d/kafka.conf
+-------------------------
+
+module(load="omkafka")   # provides omkafka
+# Use rainerscript, as below#$ActionQueueSize 1500000
+#$ActionQueueType LinkedList
+#$ActionQueueFileName omkafkaq
+#$ActionResumeRetryCount -1
+#$ActionQueueSaveOnShutdown on
+#$ActionQueueHighWatermark 1000000
+#$ActionQueueLowWatermark 100000
+#$ActionQueueMaxDiskSpace 536870912 # 512MB, most containers have
+#$ActionQueueMaxDiskSpace 536870912 # 512MB, most containers have <8GB of space
+#$MainMsgQueueDiscardMark 400000 # Low < Discard < High < DiskSpace
+#$MainMsgQueueDiscardSeverity 4 # Discard anything lower than warning
+
+*.* action(type="omkafka" topic="rsyslog-prod"
+        broker="kafka1.example.com,kafka2.example.com,kafka3.example.com"
+        queue.filename="omkafkaq" queue.spoolDirectory="/var/lib/rsyslog"
+        queue.size="300000" queue.maxdiskspace="536870912"
+        queue.lowwatermark="20000" queue.highwatermark="200000"
+        queue.discardmark="250000" queue.type="LinkedList"
+        queue.discardseverity="4"
+        queue.saveonshutdown="on" queue.dequeuebatchsize="4"
+        partitions.auto="on" errorFile="/var/log/rsyslog.err"
+        confParam=[ "compression.codec=snappy",
+                "socket.timeout.ms=1000",
+                "socket.keepalive.enable=true"]
+)

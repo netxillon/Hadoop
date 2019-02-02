@@ -1,0 +1,25 @@
+# Make sure to setup the kafka variables like:
+
+export KAFKA_HOME=/home/hadoop/kafka
+PATH=$KAFKA_HOME/bin:$PATH
+
+Commands:
+
+kafka-server-start.sh kafka/config/server.properties
+
+Run as daemon:
+
+kafka-server-start.sh -daemon kafka/config/server.properties
+
+[hadoop@gw1 ~]$ jps
+4581 Kafka
+
+# Stop:
+
+kafka-server-stop.sh
+
+# Useful commands:
+
+
+echo "Hello, Kafka" | kafka-console-producer.sh --broker-list <kafka-brokers>:9092 --topic MyTopic > /dev/null
+kafka-console-consumer.sh --zookeeper <> --topic MyTopic --from-beginning

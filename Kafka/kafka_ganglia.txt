@@ -1,0 +1,911 @@
+{ "servers":
+  [ { "host": "192.168.1.18"
+    , "alias": "custom.kafka.metrics"
+    , "port": 9999
+    , "queries":
+      [
+        { "obj": "kafka.log:type=LogFlushStats,name=LogFlushRateAndTimeMs"
+        , "attr": [ "Count" ]
+        , "resultAlias": "kafka1.kafka.log.LogFlushStats.LogFlush"
+        , "outputWriters":
+          [
+            { "@class": "com.googlecode.jmxtrans.model.output.KeyOutWriter"
+            , "settings":
+              { "outputFile": "/tmp/jmxtrans.out"
+              }
+            }
+          , { "@class" : "com.googlecode.jmxtrans.model.output.GangliaWriter"
+            , "settings":
+              { "host": "192.168.1.250"
+              , "port": 8649
+              , "slope": "POSITIVE"
+              , "units": "calls/second"
+              , "groupName": "dilithium"
+              }
+            }
+          ]
+        }
+      , { "obj": "kafka.log:type=LogFlushStats,name=LogFlushRateAndTimeMs"
+        , "attr": [ "FifteenMinuteRate" ]
+        , "resultAlias": "kafka1.kafka.log.LogFlushStats.LogFlush"
+        , "outputWriters":
+          [
+            { "@class": "com.googlecode.jmxtrans.model.output.KeyOutWriter"
+            , "settings":
+              { "outputFile": "/tmp/jmxtrans.out"
+              }
+            }
+          , { "@class" : "com.googlecode.jmxtrans.model.output.GangliaWriter"
+            , "settings":
+              { "host": "192.168.1.250"
+              , "port": 8649
+              , "slope": "BOTH"
+              , "units": "calls/second"
+              , "groupName": "dilithium"
+              }
+            }
+          ]
+        }
+      , { "obj": "kafka.log:type=LogFlushStats,name=LogFlushRateAndTimeMs"
+        , "attr": [ "FiveMinuteRate" ]
+        , "resultAlias": "kafka1.kafka.log.LogFlushStats.LogFlush"
+        , "outputWriters":
+          [
+            { "@class": "com.googlecode.jmxtrans.model.output.KeyOutWriter"
+            , "settings":
+              { "outputFile": "/tmp/jmxtrans.out"
+              }
+            }
+          , { "@class" : "com.googlecode.jmxtrans.model.output.GangliaWriter"
+            , "settings":
+              { "host": "192.168.1.250"
+              , "port": 8649
+              , "slope": "BOTH"
+              , "units": "calls/second"
+              , "groupName": "dilithium"
+              }
+            }
+          ]
+        }
+      , { "obj": "kafka.log:type=LogFlushStats,name=LogFlushRateAndTimeMs"
+        , "attr": [ "MeanRate" ]
+        , "resultAlias": "kafka1.kafka.log.LogFlushStats.LogFlush"
+        , "outputWriters":
+          [
+            { "@class": "com.googlecode.jmxtrans.model.output.KeyOutWriter"
+            , "settings":
+              { "outputFile": "/tmp/jmxtrans.out"
+              }
+            }
+          , { "@class" : "com.googlecode.jmxtrans.model.output.GangliaWriter"
+            , "settings":
+              { "host": "192.168.1.250"
+              , "port": 8649
+              , "slope": "BOTH"
+              , "units": "calls/second"
+              , "groupName": "dilithium"
+              }
+            }
+          ]
+        }
+      , { "obj": "kafka.log:type=LogFlushStats,name=LogFlushRateAndTimeMs"
+        , "attr": [ "OneMinuteRate" ]
+        , "resultAlias": "kafka1.kafka.log.LogFlushStats.LogFlush"
+        , "outputWriters":
+          [
+            { "@class": "com.googlecode.jmxtrans.model.output.KeyOutWriter"
+            , "settings":
+              { "outputFile": "/tmp/jmxtrans.out"
+              }
+            }
+          , { "@class" : "com.googlecode.jmxtrans.model.output.GangliaWriter"
+            , "settings":
+              { "host": "192.168.1.250"
+              , "port": 8649
+              , "slope": "BOTH"
+              , "units": "calls/second"
+              , "groupName": "dilithium"
+              }
+            }
+          ]
+        }
+      , { "obj": "kafka.server:type=BrokerTopicMetrics,name=*"
+        , "attr": [ "Count" ]
+        , "resultAlias": "kafka1.kafka.server.BrokerTopicMetrics"
+        , "outputWriters":
+          [
+            { "@class": "com.googlecode.jmxtrans.model.output.KeyOutWriter"
+            , "settings":
+              { "outputFile": "/tmp/jmxtrans.out"
+              , "typeNames": ["name"]
+              }
+            }
+          , { "@class" : "com.googlecode.jmxtrans.model.output.GangliaWriter"
+            , "settings":
+              { "host": "192.168.1.250"
+              , "port": 8649
+              , "typeNames": ["name"]
+              , "slope": "POSITIVE"
+              , "groupName": "dilithium"
+              }
+            }
+          ]
+        }
+      , { "obj": "kafka.server:type=BrokerTopicMetrics,name=*"
+        , "attr": [ "FifteenMinuteRate" ]
+        , "resultAlias": "kafka1.kafka.server.BrokerTopicMetrics"
+        , "outputWriters":
+          [
+            { "@class": "com.googlecode.jmxtrans.model.output.KeyOutWriter"
+            , "settings":
+              { "outputFile": "/tmp/jmxtrans.out"
+              , "typeNames": ["name"]
+              }
+            }
+          , { "@class" : "com.googlecode.jmxtrans.model.output.GangliaWriter"
+            , "settings":
+              { "host": "192.168.1.250"
+              , "port": 8649
+              , "typeNames": ["name"]
+              , "slope": "BOTH"
+              , "groupName": "dilithium"
+              }
+            }
+          ]
+        }
+      , { "obj": "kafka.server:type=BrokerTopicMetrics,name=*"
+        , "attr": [ "FiveMinuteRate" ]
+        , "resultAlias": "kafka1.kafka.server.BrokerTopicMetrics"
+        , "outputWriters":
+          [
+            { "@class": "com.googlecode.jmxtrans.model.output.KeyOutWriter"
+            , "settings":
+              { "outputFile": "/tmp/jmxtrans.out"
+              , "typeNames": ["name"]
+              }
+            }
+          , { "@class" : "com.googlecode.jmxtrans.model.output.GangliaWriter"
+            , "settings":
+              { "host": "192.168.1.250"
+              , "port": 8649
+              , "typeNames": ["name"]
+              , "slope": "BOTH"
+              , "groupName": "dilithium"
+              }
+            }
+          ]
+        }
+      , { "obj": "kafka.server:type=BrokerTopicMetrics,name=*"
+        , "attr": [ "MeanRate" ]
+        , "resultAlias": "kafka1.kafka.server.BrokerTopicMetrics"
+        , "outputWriters":
+          [
+            { "@class": "com.googlecode.jmxtrans.model.output.KeyOutWriter"
+            , "settings":
+              { "outputFile": "/tmp/jmxtrans.out"
+              , "typeNames": ["name"]
+              }
+            }
+          , { "@class" : "com.googlecode.jmxtrans.model.output.GangliaWriter"
+            , "settings":
+              { "host": "192.168.1.250"
+              , "port": 8649
+              , "typeNames": ["name"]
+              , "slope": "BOTH"
+              , "groupName": "dilithium"
+              }
+            }
+          ]
+        }
+      , { "obj": "kafka.server:type=BrokerTopicMetrics,name=*"
+        , "attr": [ "OneMinuteRate" ]
+        , "resultAlias": "kafka1.kafka.server.BrokerTopicMetrics"
+        , "outputWriters":
+          [
+            { "@class": "com.googlecode.jmxtrans.model.output.KeyOutWriter"
+            , "settings":
+              { "outputFile": "/tmp/jmxtrans.out"
+              , "typeNames": ["name"]
+              }
+            }
+          , { "@class" : "com.googlecode.jmxtrans.model.output.GangliaWriter"
+            , "settings":
+              { "host": "192.168.1.250"
+              , "port": 8649
+              , "typeNames": ["name"]
+              , "slope": "BOTH"
+              , "groupName": "dilithium"
+              }
+            }
+          ]
+        }
+      , { "obj": "kafka.server:type=ReplicaManager,name=UnderReplicatedPartitions"
+        , "attr": [ "Value" ]
+        , "resultAlias": "kafka1.kafka.server.ReplicaManager.UnderReplicatedPartitions"
+        , "outputWriters":
+          [
+            { "@class": "com.googlecode.jmxtrans.model.output.KeyOutWriter"
+            , "settings":
+              { "outputFile": "/tmp/jmxtrans.out"
+              }
+            }
+          , { "@class" : "com.googlecode.jmxtrans.model.output.GangliaWriter"
+            , "settings":
+              { "host": "192.168.1.250"
+              , "port": 8649
+              , "slope": "BOTH"
+              , "units": "partitions"
+              , "groupName": "dilithium"
+              }
+            }
+          ]
+        }
+      , { "obj": "kafka.server:type=ReplicaManager,name=PartitionCount"
+        , "attr": [ "Value" ]
+        , "resultAlias": "kafka1.kafka.server.ReplicaManager.PartitionCount"
+        , "outputWriters":
+          [
+            { "@class": "com.googlecode.jmxtrans.model.output.KeyOutWriter"
+            , "settings":
+              { "outputFile": "/tmp/jmxtrans.out"
+              }
+            }
+          , { "@class" : "com.googlecode.jmxtrans.model.output.GangliaWriter"
+            , "settings":
+              { "host": "192.168.1.250"
+              , "port": 8649
+              , "slope": "BOTH"
+              , "units": "partitions"
+              , "groupName": "dilithium"
+              }
+            }
+          ]
+        }
+      , { "obj": "kafka.server:type=ReplicaManager,name=LeaderCount"
+        , "attr": [ "Value" ]
+        , "resultAlias": "kafka1.kafka.server.ReplicaManager.LeaderCount"
+        , "outputWriters":
+          [
+            { "@class": "com.googlecode.jmxtrans.model.output.KeyOutWriter"
+            , "settings":
+              { "outputFile": "/tmp/jmxtrans.out"
+              }
+            }
+          , { "@class" : "com.googlecode.jmxtrans.model.output.GangliaWriter"
+            , "settings":
+              { "host": "192.168.1.250"
+              , "port": 8649
+              , "slope": "BOTH"
+              , "units": "leaders"
+              , "groupName": "dilithium"
+              }
+            }
+          ]
+        }
+      , { "obj": "kafka.server:type=ReplicaManager,name=ISRShrinksPerSec"
+        , "attr": [ "Count" ]
+        , "resultAlias": "kafka1.kafka.server.ReplicaManager.ISRShrinks"
+        , "outputWriters":
+          [
+            { "@class": "com.googlecode.jmxtrans.model.output.KeyOutWriter"
+            , "settings":
+              { "outputFile": "/tmp/jmxtrans.out"
+              }
+            }
+          , { "@class" : "com.googlecode.jmxtrans.model.output.GangliaWriter"
+            , "settings":
+              { "host": "192.168.1.250"
+              , "port": 8649
+              , "slope": "POSITIVE"
+              , "units": "shrinks"
+              , "groupName": "dilithium"
+              }
+            }
+          ]
+        }
+      , { "obj": "kafkaserver:type=ReplicaManager,name=ISRShrinksPerSec"
+        , "attr": [ "FifteenMinuteRate" ]
+        , "resultAlias": "kafka1.kafka.server.ReplicaManager.ISRShrinks"
+        , "outputWriters":
+          [
+            { "@class": "com.googlecode.jmxtrans.model.output.KeyOutWriter"
+            , "settings":
+              { "outputFile": "/tmp/jmxtrans.out"
+              }
+            }
+          , { "@class" : "com.googlecode.jmxtrans.model.output.GangliaWriter"
+            , "settings":
+              { "host": "192.168.1.250"
+              , "port": 8649
+              , "slope": "BOTH"
+              , "units": "shrinks/second"
+              , "groupName": "dilithium"
+              }
+            }
+          ]
+        }
+      , { "obj": "kafka.server:type=ReplicaManager,name=ISRShrinksPerSec"
+        , "attr": [ "FiveMinuteRate" ]
+        , "resultAlias": "kafka1.kafka.server.ReplicaManager.ISRShrinks"
+        , "outputWriters":
+          [
+            { "@class": "com.googlecode.jmxtrans.model.output.KeyOutWriter"
+            , "settings":
+              { "outputFile": "/tmp/jmxtrans.out"
+              }
+            }
+          , { "@class" : "com.googlecode.jmxtrans.model.output.GangliaWriter"
+            , "settings":
+              { "host": "192.168.1.250"
+              , "port": 8649
+              , "slope": "BOTH"
+              , "units": "shrinks/second"
+              , "groupName": "dilithium"
+              }
+            }
+          ]
+        }
+      , { "obj": "kafka.server:type=ReplicaManager,name=ISRShrinksPerSec"
+        , "attr": [ "MeanRate" ]
+        , "resultAlias": "kafka1.kafka.server.ReplicaManager.ISRShrinks"
+        , "outputWriters":
+          [
+            { "@class": "com.googlecode.jmxtrans.model.output.KeyOutWriter"
+            , "settings":
+              { "outputFile": "/tmp/jmxtrans.out"
+              }
+            }
+          , { "@class" : "com.googlecode.jmxtrans.model.output.GangliaWriter"
+            , "settings":
+              { "host": "192.168.1.250"
+              , "port": 8649
+              , "slope": "BOTH"
+              , "units": "shrinks/second"
+              , "groupName": "dilithium"
+              }
+            }
+          ]
+        }
+      , { "obj": "kafka.server:type=ReplicaManager,name=ISRShrinksPerSec"
+        , "attr": [ "OneMinuteRate" ]
+        , "resultAlias": "kafka1.kafka.server.ReplicaManager.ISRShrinks"
+        , "outputWriters":
+          [
+            { "@class": "com.googlecode.jmxtrans.model.output.KeyOutWriter"
+            , "settings":
+              { "outputFile": "/tmp/jmxtrans.out"
+              }
+            }
+          , { "@class" : "com.googlecode.jmxtrans.model.output.GangliaWriter"
+            , "settings":
+              { "host": "192.168.1.250"
+              , "port": 8649
+              , "slope": "BOTH"
+              , "units": "shrinks/second"
+              , "groupName": "dilithium"
+              }
+            }
+          ]
+        }
+      , { "obj": "kafka.server:type=ReplicaManager,name=IsrExpandsPerSec"
+        , "attr": [ "Count" ]
+        , "resultAlias": "kafka1.kafka.server.ReplicaManager.IsrExpands"
+        , "outputWriters":
+          [
+            { "@class": "com.googlecode.jmxtrans.model.output.KeyOutWriter"
+            , "settings":
+              { "outputFile": "/tmp/jmxtrans.out"
+              }
+            }
+          , { "@class" : "com.googlecode.jmxtrans.model.output.GangliaWriter"
+            , "settings":
+              { "host": "192.168.1.250"
+              , "port": 8649
+              , "slope": "POSITIVE"
+              , "units": "expands"
+              , "groupName": "dilithium"
+              }
+            }
+          ]
+        }
+      , { "obj": "kafka.server:type=ReplicaManager,name=IsrExpandsPerSec"
+        , "attr": [ "FifteenMinuteRate" ]
+        , "resultAlias": "kafka1.kafka.server.ReplicaManager.IsrExpands"
+        , "outputWriters":
+          [
+            { "@class": "com.googlecode.jmxtrans.model.output.KeyOutWriter"
+            , "settings":
+              { "outputFile": "/tmp/jmxtrans.out"
+              }
+            }
+          , { "@class" : "com.googlecode.jmxtrans.model.output.GangliaWriter"
+            , "settings":
+              { "host": "192.168.1.250"
+              , "port": 8649
+              , "slope": "BOTH"
+              , "units": "expands/second"
+              , "groupName": "dilithium"
+              }
+            }
+          ]
+        }
+      , { "obj": "kafka.server:type=ReplicaManager,name=IsrExpandsPerSec"
+        , "attr": [ "FiveMinuteRate" ]
+        , "resultAlias": "kafka1.kafka.server.ReplicaManager.IsrExpands"
+        , "outputWriters":
+          [
+            { "@class": "com.googlecode.jmxtrans.model.output.KeyOutWriter"
+            , "settings":
+              { "outputFile": "/tmp/jmxtrans.out"
+              }
+            }
+          , { "@class" : "com.googlecode.jmxtrans.model.output.GangliaWriter"
+            , "settings":
+              { "host": "192.168.1.250"
+              , "port": 8649
+              , "slope": "BOTH"
+              , "units": "expands/second"
+              , "groupName": "dilithium"
+              }
+            }
+          ]
+        }
+      , { "obj": "kafka.server:type=ReplicaManager,name=IsrExpandsPerSec"
+        , "attr": [ "MeanRate" ]
+        , "resultAlias": "kafka1.kafka.server.ReplicaManager.IsrExpands"
+        , "outputWriters":
+          [
+            { "@class": "com.googlecode.jmxtrans.model.output.KeyOutWriter"
+            , "settings":
+              { "outputFile": "/tmp/jmxtrans.out"
+              }
+            }
+          , { "@class" : "com.googlecode.jmxtrans.model.output.GangliaWriter"
+            , "settings":
+              { "host": "192.168.1.250"
+              , "port": 8649
+              , "slope": "BOTH"
+              , "units": "expands/second"
+              , "groupName": "dilithium"
+              }
+            }
+          ]
+        }
+      , { "obj": "kafka.server:type=ReplicaManager,name=IsrExpandsPerSec"
+        , "attr": [ "OneMinuteRate" ]
+        , "resultAlias": "kafka1.kafka.server.ReplicaManager.IsrExpands"
+        , "outputWriters":
+          [
+            { "@class": "com.googlecode.jmxtrans.model.output.KeyOutWriter"
+            , "settings":
+              { "outputFile": "/tmp/jmxtrans.out"
+              }
+            }
+          , { "@class" : "com.googlecode.jmxtrans.model.output.GangliaWriter"
+            , "settings":
+              { "host": "192.168.1.250"
+              , "port": 8649
+              , "slope": "BOTH"
+              , "units": "expands/second"
+              , "groupName": "dilithium"
+              }
+            }
+          ]
+        }
+      , { "obj": "kafka.server:type=ReplicaFetcherManager,name=*"
+        , "attr": [ "Value" ]
+        , "resultAlias": "kafka1.kafka.server.ReplicaFetcherManager"
+        , "outputWriters":
+          [
+            { "@class": "com.googlecode.jmxtrans.model.output.KeyOutWriter"
+            , "settings":
+              { "outputFile": "/tmp/jmxtrans.out"
+              , "typeNames": ["name"]
+              }
+            }
+          , { "@class" : "com.googlecode.jmxtrans.model.output.GangliaWriter"
+            , "settings":
+              { "host": "192.168.1.250"
+              , "port": 8649
+              , "typeNames": ["name"]
+              , "slope": "BOTH"
+              , "groupName": "dilithium"
+              }
+            }
+          ]
+        }
+      , { "obj": "kafka.server:type=ProducerRequestPurgatory,name=*"
+        , "attr": [ "Value" ]
+        , "resultAlias": "kafka1.kafka.server.ProducerRequestPurgatory"
+        , "outputWriters":
+          [
+            { "@class": "com.googlecode.jmxtrans.model.output.KeyOutWriter"
+            , "settings":
+              { "outputFile": "/tmp/jmxtrans.out"
+              , "typeNames": ["name"]
+              }
+            }
+          , { "@class" : "com.googlecode.jmxtrans.model.output.GangliaWriter"
+            , "settings":
+              { "host": "192.168.1.250"
+              , "port": 8649
+              , "typeNames": ["name"]
+              , "slope": "BOTH"
+              , "groupName": "dilithium"
+              }
+            }
+          ]
+        }
+      , { "obj": "kafka.server:type=FetchRequestPurgatory,name=*"
+        , "attr": [ "Value" ]
+        , "resultAlias": "kafka1.kafka.server.ProducerRequestPurgatory"
+        , "outputWriters":
+          [
+            { "@class": "com.googlecode.jmxtrans.model.output.KeyOutWriter"
+            , "settings":
+              { "outputFile": "/tmp/jmxtrans.out"
+              , "typeNames": ["name"]
+              }
+            }
+          , { "@class" : "com.googlecode.jmxtrans.model.output.GangliaWriter"
+            , "settings":
+              { "host": "192.168.1.250"
+              , "port": 8649
+              , "typeNames": ["name"]
+              , "slope": "BOTH"
+              , "groupName": "dilithium"
+              }
+            }
+          ]
+        }
+      , { "obj": "kafka.network:type=RequestMetrics,name=*-RequestsPerSec"
+        , "attr": [ "Count" ]
+        , "resultAlias": "kafka1.kafka.network.RequestMetrics"
+        , "outputWriters":
+          [
+            { "@class": "com.googlecode.jmxtrans.model.output.KeyOutWriter"
+            , "settings":
+              { "outputFile": "/tmp/jmxtrans.out"
+              , "typeNames": ["name"]
+              }
+            }
+          , { "@class" : "com.googlecode.jmxtrans.model.output.GangliaWriter"
+            , "settings":
+              { "host": "192.168.1.250"
+              , "port": 8649
+              , "typeNames": ["name"]
+              , "slope": "POSITIVE"
+              , "units": "requests"
+              , "groupName": "dilithium"
+              }
+            }
+          ]
+        }
+      , { "obj": "kafka.network:type=RequestMetrics,name=*-RequestsPerSec"
+        , "attr": [ "FifteenMinuteRate" ]
+        , "resultAlias": "kafka1.kafka.network.RequestMetrics"
+        , "outputWriters":
+          [
+            { "@class": "com.googlecode.jmxtrans.model.output.KeyOutWriter"
+            , "settings":
+              { "outputFile": "/tmp/jmxtrans.out"
+              , "typeNames": ["name"]
+              }
+            }
+          , { "@class" : "com.googlecode.jmxtrans.model.output.GangliaWriter"
+            , "settings":
+              { "host": "192.168.1.250"
+              , "port": 8649
+              , "typeNames": ["name"]
+              , "slope": "BOTH"
+              , "units": "requests/second"
+              , "groupName": "dilithium"
+              }
+            }
+          ]
+        }
+      , { "obj": "kafka.network:type=RequestMetrics,name=*-RequestsPerSec"
+        , "attr": [ "FiveMinuteRate" ]
+        , "resultAlias": "kafka1.kafka.network.RequestMetrics"
+        , "outputWriters":
+          [
+            { "@class": "com.googlecode.jmxtrans.model.output.KeyOutWriter"
+            , "settings":
+              { "outputFile": "/tmp/jmxtrans.out"
+              , "typeNames": ["name"]
+              }
+            }
+          , { "@class" : "com.googlecode.jmxtrans.model.output.GangliaWriter"
+            , "settings":
+              { "host": "192.168.1.250"
+              , "port": 8649
+              , "typeNames": ["name"]
+              , "slope": "BOTH"
+              , "units": "requests/second"
+              , "groupName": "dilithium"
+              }
+            }
+          ]
+        }
+      , { "obj": "kafka.network:type=RequestMetrics,name=*-RequestsPerSec"
+        , "attr": [ "MeanRate" ]
+        , "resultAlias": "kafka1.kafka.network.RequestMetrics"
+        , "outputWriters":
+          [
+            { "@class": "com.googlecode.jmxtrans.model.output.KeyOutWriter"
+            , "settings":
+              { "outputFile": "/tmp/jmxtrans.out"
+              , "typeNames": ["name"]
+              }
+            }
+          , { "@class" : "com.googlecode.jmxtrans.model.output.GangliaWriter"
+            , "settings":
+              { "host": "192.168.1.250"
+              , "port": 8649
+              , "typeNames": ["name"]
+              , "slope": "BOTH"
+              , "units": "requests/second"
+              , "groupName": "dilithium"
+              }
+            }
+          ]
+        }
+      , { "obj": "kafka.network:type=RequestMetrics,name=*-RequestsPerSec"
+        , "attr": [ "OneMinuteRate" ]
+        , "resultAlias": "kafka1.kafka.network.RequestMetrics"
+        , "outputWriters":
+          [
+            { "@class": "com.googlecode.jmxtrans.model.output.KeyOutWriter"
+            , "settings":
+              { "outputFile": "/tmp/jmxtrans.out"
+              , "typeNames": ["name"]
+              }
+            }
+          , { "@class" : "com.googlecode.jmxtrans.model.output.GangliaWriter"
+            , "settings":
+              { "host": "192.168.1.250"
+              , "port": 8649
+              , "typeNames": ["name"]
+              , "slope": "BOTH"
+              , "units": "requests/second"
+              , "groupName": "dilithium"
+              }
+            }
+          ]
+        }
+      , { "obj": "kafka.controller:type=KafkaController,name=*"
+        , "attr": [ "Value" ]
+        , "resultAlias": "kafka1.kafka.controller.KafkaController"
+        , "outputWriters":
+          [
+            { "@class": "com.googlecode.jmxtrans.model.output.KeyOutWriter"
+            , "settings":
+              { "outputFile": "/tmp/jmxtrans.out"
+              , "typeNames": ["name"]
+              }
+            }
+          , { "@class" : "com.googlecode.jmxtrans.model.output.GangliaWriter"
+            , "settings":
+              { "host": "192.168.1.250"
+              , "port": 8649
+              , "typeNames": ["name"]
+              , "slope": "BOTH"
+              , "groupName": "dilithium"
+              }
+            }
+          ]
+        }
+      , { "obj": "kafka.controller:type=ControllerStats,name=LeaderElectionRateAndTimeMs"
+        , "attr": [ "Count" ]
+        , "resultAlias": "kafka1.kafka.controller.ControllerStats.LeaderElection"
+        , "outputWriters":
+          [
+            { "@class": "com.googlecode.jmxtrans.model.output.KeyOutWriter"
+            , "settings":
+              { "outputFile": "/tmp/jmxtrans.out"
+              }
+            }
+          , { "@class" : "com.googlecode.jmxtrans.model.output.GangliaWriter"
+            , "settings":
+              { "host": "192.168.1.250"
+              , "port": 8649
+              , "slope": "POSITIVE"
+              , "units": "calls"
+              , "groupName": "dilithium"
+              }
+            }
+          ]
+        }
+      , { "obj": "kafka.controller:type=ControllerStats,name=LeaderElectionRateAndTimeMs"
+        , "attr": [ "FifteenMinuteRate" ]
+        , "resultAlias": "kafka1.kafka.controller.ControllerStats.LeaderElection"
+        , "outputWriters":
+          [
+            { "@class": "com.googlecode.jmxtrans.model.output.KeyOutWriter"
+            , "settings":
+              { "outputFile": "/tmp/jmxtrans.out"
+              }
+            }
+          , { "@class" : "com.googlecode.jmxtrans.model.output.GangliaWriter"
+            , "settings":
+              { "host": "192.168.1.250"
+              , "port": 8649
+              , "slope": "BOTH"
+              , "units": "calls/second"
+              , "groupName": "dilithium"
+              }
+            }
+          ]
+        }
+      , { "obj": "kafka.controller:type=ControllerStats,name=LeaderElectionRateAndTimeMs"
+        , "attr": [ "FiveMinuteRate" ]
+        , "resultAlias": "kafka1.kafka.controller.ControllerStats.LeaderElection"
+        , "outputWriters":
+          [
+            { "@class": "com.googlecode.jmxtrans.model.output.KeyOutWriter"
+            , "settings":
+              { "outputFile": "/tmp/jmxtrans.out"
+              }
+            }
+          , { "@class" : "com.googlecode.jmxtrans.model.output.GangliaWriter"
+            , "settings":
+              { "host": "192.168.1.250"
+              , "port": 8649
+              , "slope": "BOTH"
+              , "units": "calls/second"
+              , "groupName": "dilithium"
+              }
+            }
+          ]
+        }
+      , { "obj": "kafka.controller:type=ControllerStats,name=LeaderElectionRateAndTimeMs"
+        , "attr": [ "MeanRate" ]
+        , "resultAlias": "kafka1.kafka.controller.ControllerStats.LeaderElection"
+        , "outputWriters":
+          [
+            { "@class": "com.googlecode.jmxtrans.model.output.KeyOutWriter"
+            , "settings":
+              { "outputFile": "/tmp/jmxtrans.out"
+              }
+            }
+          , { "@class" : "com.googlecode.jmxtrans.model.output.GangliaWriter"
+            , "settings":
+              { "host": "192.168.1.250"
+              , "port": 8649
+              , "slope": "BOTH"
+              , "units": "calls/second"
+              , "groupName": "dilithium"
+              }
+            }
+          ]
+        }
+      , { "obj": "kafka.controller:type=ControllerStats,name=LeaderElectionRateAndTimeMs"
+        , "attr": [ "OneMinuteRate" ]
+        , "resultAlias": "kafka1.kafka.controller.ControllerStats.LeaderElection"
+        , "outputWriters":
+          [
+            { "@class": "com.googlecode.jmxtrans.model.output.KeyOutWriter"
+            , "settings":
+              { "outputFile": "/tmp/jmxtrans.out"
+              }
+            }
+          , { "@class" : "com.googlecode.jmxtrans.model.output.GangliaWriter"
+            , "settings":
+              { "host": "192.168.1.250"
+              , "port": 8649
+              , "slope": "BOTH"
+              , "units": "calls/second"
+              , "groupName": "dilithium"
+              }
+            }
+          ]
+        }
+      , { "obj": "kafka.controller:type=ControllerStats,name=UncleanLeaderElectionsPerSec"
+        , "attr": [ "Count" ]
+        , "resultAlias": "kafka1.kafka.controller.ControllerStats.UncleanLeaderElection"
+        , "outputWriters":
+          [
+            { "@class": "com.googlecode.jmxtrans.model.output.KeyOutWriter"
+            , "settings":
+              { "outputFile": "/tmp/jmxtrans.out"
+              }
+            }
+          , { "@class" : "com.googlecode.jmxtrans.model.output.GangliaWriter"
+            , "settings":
+              { "host": "192.168.1.250"
+              , "port": 8649
+              , "slope": "POSITIVE"
+              , "units": "elections"
+              , "groupName": "dilithium"
+              }
+            }
+          ]
+        }
+      , { "obj": "kafka.controller:type=ControllerStats,name=UncleanLeaderElectionsPerSec"
+        , "attr": [ "FifteenMinuteRate" ]
+        , "resultAlias": "kafka1.kafka.controller.ControllerStats.UncleanLeaderElection"
+        , "outputWriters":
+          [
+            { "@class": "com.googlecode.jmxtrans.model.output.KeyOutWriter"
+            , "settings":
+              { "outputFile": "/tmp/jmxtrans.out"
+              }
+            }
+          , { "@class" : "com.googlecode.jmxtrans.model.output.GangliaWriter"
+            , "settings":
+              { "host": "192.168.1.250"
+              , "port": 8649
+              , "slope": "BOTH"
+              , "units": "elections/second"
+              , "groupName": "dilithium"
+              }
+            }
+          ]
+        }
+      , { "obj": "kafka.controller:type=ControllerStats,name=UncleanLeaderElectionsPerSec"
+        , "attr": [ "FiveMinuteRate" ]
+        , "resultAlias": "kafka1.kafka.controller.ControllerStats.UncleanLeaderElection"
+        , "outputWriters":
+          [
+            { "@class": "com.googlecode.jmxtrans.model.output.KeyOutWriter"
+            , "settings":
+              { "outputFile": "/tmp/jmxtrans.out"
+              }
+            }
+          , { "@class" : "com.googlecode.jmxtrans.model.output.GangliaWriter"
+            , "settings":
+              { "host": "192.168.1.250"
+              , "port": 8649
+              , "slope": "BOTH"
+              , "units": "elections/second"
+              , "groupName": "dilithium"
+              }
+            }
+          ]
+        }
+      , { "obj": "kafka.controller:type=ControllerStats,name=UncleanLeaderElectionsPerSec"
+        , "attr": [ "MeanRate" ]
+        , "resultAlias": "kafka1.kafka.controller.ControllerStats.UncleanLeaderElection"
+        , "outputWriters":
+          [
+            { "@class": "com.googlecode.jmxtrans.model.output.KeyOutWriter"
+            , "settings":
+              { "outputFile": "/tmp/jmxtrans.out"
+              }
+            }
+          , { "@class" : "com.googlecode.jmxtrans.model.output.GangliaWriter"
+            , "settings":
+              { "host": "192.168.1.250"
+              , "port": 8649
+              , "slope": "BOTH"
+              , "units": "elections/second"
+              , "groupName": "dilithium"
+              }
+            }
+          ]
+        }
+      , { "obj": "kafka.controller:type=ControllerStats,name=UncleanLeaderElectionsPerSec"
+        , "attr": [ "OneMinuteRate" ]
+        , "resultAlias": "kafka1.kafka.controller.ControllerStats.UncleanLeaderElection"
+        , "outputWriters":
+          [
+            { "@class": "com.googlecode.jmxtrans.model.output.KeyOutWriter"
+            , "settings":
+              { "outputFile": "/tmp/jmxtrans.out"
+              }
+            }
+          , { "@class" : "com.googlecode.jmxtrans.model.output.GangliaWriter"
+            , "settings":
+              { "host": "192.168.1.250"
+              , "port": 8649
+              , "slope": "BOTH"
+              , "units": "elections/second"
+              , "groupName": "dilithium"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

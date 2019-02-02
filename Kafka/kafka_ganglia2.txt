@@ -1,0 +1,58 @@
+{
+  "servers" : [ {
+    "port" : "9999", <--- Defined Kafka JMX Port
+    "host" : "192.168.1.18",  <--- Kafka Server
+    "queries" : [ {
+      "outputWriters" : [ {
+        "@class" :
+"com.googlecode.jmxtrans.model.output.KeyOutWriter",
+          "settings" : {
+                   "outputFile" : "/tmp/bufferPool_direct_stats.txt",
+                   "v31" : false
+                   }
+      } ],
+      "obj" : "java.nio:type=BufferPool,name=direct",
+      "resultAlias": "bufferPool.direct",
+      "attr" : [ "Count", "MemoryUsed", "Name", "ObjectName", "TotalCapacity" ]
+    }, {
+      "outputWriters" : [ {
+        "@class" :
+"com.googlecode.jmxtrans.model.output.KeyOutWriter",
+        "settings" : {
+                   "outputFile" : "/tmp/bufferPool_mapped_stats.txt",
+                   "v31" : false
+                   }
+      } ],
+      "obj" : "java.nio:type=BufferPool,name=mapped",
+      "resultAlias": "bufferPool.mapped",
+      "attr" : [ "Count", "MemoryUsed", "Name", "ObjectName", "TotalCapacity" ]
+    }, {
+      "outputWriters" : [ {
+        "@class" :
+"com.googlecode.jmxtrans.model.output.KeyOutWriter",
+        "settings" : {
+                   "outputFile" : "/tmp/kafka_log4j_stats.txt",
+                   "v31" : false
+                   }
+      } ],
+      "obj" : "kafka:type=kafka.Log4jController",
+      "resultAlias": "kafka.log4jController",
+      "attr" : [ "Loggers" ]
+    }, {
+      "outputWriters" : [ {
+        "@class" :
+"com.googlecode.jmxtrans.model.output.KeyOutWriter",
+          "settings" : {
+                   "outputFile" : "/tmp/kafka_socketServer_stats.txt",
+                   "v31" : false
+                   }
+      } ],
+      "obj" : "kafka:type=kafka.SocketServerStats",
+      "resultAlias": "kafka.socketServerStats",
+      "attr" : [ "AvgFetchRequestMs", "AvgProduceRequestMs", "BytesReadPerSecond", "BytesWrittenPerSecond", "FetchRequestsPerSecond", "MaxFetchRequestMs", "MaxProduceRequestMs" , "NumFetchRequests" , "NumProduceRequests" , "ProduceRequestsPerSecond", "TotalBytesRead", "TotalBytesWritten", "TotalFetchRequestMs", "TotalProduceRequestMs" ]
+    } ],
+    "numQueryThreads" : 2
+  } ]
+}
+}
+
