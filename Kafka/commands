@@ -20,6 +20,24 @@ kafka-server-stop.sh
 
 # Useful commands:
 
+# Create Topic
+kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic test
+
+# List topcis
+kafka-topics.sh --list --zookeeper localhost:2181
+kafka-topics.sh --list --zookeeper n1.dilithium.com:2181
 
 echo "Hello, Kafka" | kafka-console-producer.sh --broker-list <kafka-brokers>:9092 --topic MyTopic > /dev/null
 kafka-console-consumer.sh --zookeeper <> --topic MyTopic --from-beginning
+
+Examples:
+
+[hadoop@gw1 ~]$ kafka-topics.sh --create --zookeeper n1.dilithium.com:2181 --replication-factor 1 --partitions 1 --topic test
+Created topic "test".
+[hadoop@gw1 ~]$ kafka-topics.sh --list --zookeeper n1.dilithium.com:2181
+test
+
+echo "Hello, Kafka" | kafka-console-producer.sh --broker-list gw1.dilithium.com:9092 --topic test > /dev/null
+kafka-console-consumer.sh --bootstrap-server gw1.dilithium.com:9092 --topic test --from-beginning
+
+
