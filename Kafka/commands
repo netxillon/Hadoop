@@ -59,7 +59,6 @@ $ kafka-producer-perf-test.sh --topic bench --num-records 1000000  --throughput 
 
 $ kafka-consumer-perf-test.sh --topic gsd  --broker-list gw1.dilithium.com:9092 --messages 1000000 -threads 1 --num-fetch-threads 1 --print-metrics
 
-
 $ kafka-consumer-perf-test.sh --topic gsd  --broker-list gw1.dilithium.com:9092 --messages 1000000 -threads 1 --num-fetch-threads 1
 start.time, end.time, data.consumed.in.MB, MB.sec, data.consumed.in.nMsg, nMsg.sec, rebalance.time.ms, fetch.time.ms, fetch.MB.sec, fetch.nMsg.sec
 2019-02-11 19:23:15:397, 2019-02-11 19:23:20:199, 95.3787, 19.8623, 1000118, 208271.1370, 51, 4751, 20.0755, 210506.8407
@@ -68,3 +67,16 @@ $ kafka-consumer-perf-test.sh --topic gsd  --broker-list gw1.dilithium.com:9092 
 start.time, end.time, data.consumed.in.MB, MB.sec, data.consumed.in.nMsg, nMsg.sec, rebalance.time.ms, fetch.time.ms, fetch.MB.sec, fetch.nMsg.sec
 2019-02-11 19:23:49:632, 2019-02-11 19:23:54:701, 95.3787, 18.8161, 1000118, 197300.8483, 135, 4934, 19.3309, 202699.2298
 .
+
+Benchmark with various throughtput, message size:
+
+kafka-producer-perf-test.sh --topic gsd --num-records 1000000  --throughput 150000 --record-size 100 --producer-props acks=1 bootstrap.servers=gw1.dilithium.com:9092 buffer.memory=32108864 compression.type=none batch.size=8196
+
+kafka-producer-perf-test.sh --topic gsd --num-records 1000000  --throughput 150000 --record-size 1 --producer-props acks=1 bootstrap.servers=gw1.dilithium.com:9092 buffer.memory=32108864 compression.type=none batch.size=8196
+kafka-producer-perf-test.sh --topic gsd --num-records 1000000  --throughput 15 --record-size 1 --producer-props acks=1 bootstrap.servers=gw1.dilithium.com:9092 buffer.memory=32108864 compression.type=none batch.size=8196
+kafka-producer-perf-test.sh --topic gsd --num-records 1000000  --throughput 1500 -record-size 1 --producer-props acks=1 bootstrap.servers=gw1.dilithium.com:9092 buffer.memory=32108864 compression.type=none batch.size=8196
+kafka-producer-perf-test.sh --topic gsd --num-records 1000000  --throughput 150 --record-size 1 --producer-props acks=1 bootstrap.servers=gw1.dilithium.com:9092 buffer.memory=32108864 compression.type=none batch.size=8196
+kafka-producer-perf-test.sh --topic gsd --num-records 1000000  --throughput 150000 --record-size 1 --producer-props acks=1 bootstrap.servers=gw1.dilithium.com:9092 buffer.memory=32108864 compression.type=none batch.size=8196
+kafka-producer-perf-test.sh --topic gsd --num-records 1000000  --throughput 15000000 --record-size 1 --producer-props acks=1 bootstrap.servers=gw1.dilithium.com:9092 buffer.memory=32108864 compression.type=none batch.size=8196
+kafka-producer-perf-test.sh --topic gsd --num-records 1000000  --throughput 15000000 --record-size 1000 --producer-props acks=1 bootstrap.servers=gw1.dilithium.com:9092 buffer.memory=32108864 compression.type=none batch.size=8196
+kafka-producer-perf-test.sh --topic gsd --num-records 1000000  --throughput -1 --record-size 1000 --producer-props acks=1 bootstrap.servers=gw1.dilithium.com:9092 buffer.memory=32108864 compression.type=none batch.size=8196
