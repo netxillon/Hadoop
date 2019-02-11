@@ -40,8 +40,15 @@ test
 echo "Hello, Kafka" | kafka-console-producer.sh --broker-list gw1.dilithium.com:9092 --topic test > /dev/null
 kafka-console-consumer.sh --bootstrap-server gw1.dilithium.com:9092 --topic test --from-beginning
 
+$ kafka-log-dirs.sh --describe --bootstrap-server gw1.dilithium.com:9092
+Querying brokers for log directories information
+Received log directory information from brokers 0
+{"version":1,"brokers":[{"broker":0,"logDirs":[{"logDir":"/data/kafka","error":null,"partitions":[]}]}]}
+
 
 Benchmarks
+
+These are just on my test lab(1 core VM, 2 GB RAM)
 
 $ kafka-producer-perf-test.sh --topic bench --num-records 1000000  --throughput 150000 --record-size 100 --producer-props acks=1 bootstrap.servers=gw1.dilithium.com:9092 buffer.memory=67108864 compression.type=none batch.size=8196
 71189 records sent, 13945.0 records/sec (1.33 MB/sec), 1090.8 ms avg latency, 1612.0 max latency.
@@ -49,3 +56,15 @@ $ kafka-producer-perf-test.sh --topic bench --num-records 1000000  --throughput 
 186553 records sent, 36882.8 records/sec (3.52 MB/sec), 4227.2 ms avg latency, 5537.0 max latency.
 239463 records sent, 47892.6 records/sec (4.57 MB/sec), 7076.9 ms avg latency, 7590.0 max latency.
 1000000 records sent, 39799.410969 records/sec (3.80 MB/sec), 5569.86 ms avg latency, 8151.00 ms max latency, 6986 ms 50th, 8012 ms 95th, 8107 ms 99th, 8143 ms 99.9th
+
+$ kafka-consumer-perf-test.sh --topic gsd  --broker-list gw1.dilithium.com:9092 --messages 1000000 -threads 1 --num-fetch-threads 1 --print-metrics
+
+
+$ kafka-consumer-perf-test.sh --topic gsd  --broker-list gw1.dilithium.com:9092 --messages 1000000 -threads 1 --num-fetch-threads 1
+start.time, end.time, data.consumed.in.MB, MB.sec, data.consumed.in.nMsg, nMsg.sec, rebalance.time.ms, fetch.time.ms, fetch.MB.sec, fetch.nMsg.sec
+2019-02-11 19:23:15:397, 2019-02-11 19:23:20:199, 95.3787, 19.8623, 1000118, 208271.1370, 51, 4751, 20.0755, 210506.8407
+
+$ kafka-consumer-perf-test.sh --topic gsd  --broker-list gw1.dilithium.com:9092 --messages 1000000 -threads 1 --num-fetch-threads 2
+start.time, end.time, data.consumed.in.MB, MB.sec, data.consumed.in.nMsg, nMsg.sec, rebalance.time.ms, fetch.time.ms, fetch.MB.sec, fetch.nMsg.sec
+2019-02-11 19:23:49:632, 2019-02-11 19:23:54:701, 95.3787, 18.8161, 1000118, 197300.8483, 135, 4934, 19.3309, 202699.2298
+.
