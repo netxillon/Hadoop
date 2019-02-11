@@ -32,12 +32,20 @@ kafka-console-consumer.sh --zookeeper <> --topic MyTopic --from-beginning
 
 Examples:
 
-[hadoop@gw1 ~]$ kafka-topics.sh --create --zookeeper n1.dilithium.com:2181 --replication-factor 1 --partitions 1 --topic test
+$ kafka-topics.sh --create --zookeeper n1.dilithium.com:2181 --replication-factor 1 --partitions 1 --topic test
 Created topic "test".
-[hadoop@gw1 ~]$ kafka-topics.sh --list --zookeeper n1.dilithium.com:2181
+$ kafka-topics.sh --list --zookeeper n1.dilithium.com:2181
 test
 
 echo "Hello, Kafka" | kafka-console-producer.sh --broker-list gw1.dilithium.com:9092 --topic test > /dev/null
 kafka-console-consumer.sh --bootstrap-server gw1.dilithium.com:9092 --topic test --from-beginning
 
 
+Benchmarks
+
+$ kafka-producer-perf-test.sh --topic bench --num-records 1000000  --throughput 150000 --record-size 100 --producer-props acks=1 bootstrap.servers=gw1.dilithium.com:9092 buffer.memory=67108864 compression.type=none batch.size=8196
+71189 records sent, 13945.0 records/sec (1.33 MB/sec), 1090.8 ms avg latency, 1612.0 max latency.
+170124 records sent, 34018.0 records/sec (3.24 MB/sec), 2294.4 ms avg latency, 3198.0 max latency.
+186553 records sent, 36882.8 records/sec (3.52 MB/sec), 4227.2 ms avg latency, 5537.0 max latency.
+239463 records sent, 47892.6 records/sec (4.57 MB/sec), 7076.9 ms avg latency, 7590.0 max latency.
+1000000 records sent, 39799.410969 records/sec (3.80 MB/sec), 5569.86 ms avg latency, 8151.00 ms max latency, 6986 ms 50th, 8012 ms 95th, 8107 ms 99th, 8143 ms 99.9th
