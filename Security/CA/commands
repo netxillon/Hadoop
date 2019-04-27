@@ -1,0 +1,29 @@
+# yum install openssl-devel
+cd /etc/pki/CA/
+
+ls -l crl/
+ls -l newcerts/
+ls -l private/
+vi /etc/pki/tls/openssl.cnf
+touch /etc/pki/CA/index.txt
+echo 01 > /etc/pki/CA/serial
+
+openssl genrsa -out private/myca.key -aes 2048
+penssl genrsa -out private/myca.key -aes128 2048
+openssl req -new -x509 -key private/myca.key -days 365 > CA.crt
+
+mkdir certs
+cd certs/
+openssl req -new -newkey rsa:2048 -nodes -keyout dilithium.key -out dilithium.csr
+
+openssl ca -in dilithium.csr -out dilithium.crt
+openssl req -new -newkey rsa:2048 -nodes -keyout cluster1.key -out cluster1.csr
+openssl ca -in cluster1.csr -out cluster1.crt
+openssl req -new -newkey rsa:2048 -nodes -keyout cluster1.key -out cluster1.csr
+openssl ca -in cluster1.csr -out cluster1.crt
+  
+openssl verify -CAfile /etc/pki/CA/CA.crt certs/dilithium.crt
+
+
+openssl verify cluster1.crt
+openssl verify dilithium.crt
