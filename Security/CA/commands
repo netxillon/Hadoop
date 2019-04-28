@@ -27,3 +27,16 @@ openssl verify -CAfile /etc/pki/CA/CA.crt certs/dilithium.crt
 
 openssl verify cluster1.crt
 openssl verify dilithium.crt
+
+
+Hadoop JKS steps:
+-----------------
+
+C=AU, ST=Victoria, O=Netxillon Technologies, CN=*.netxillon.com
+
+keytool -genkey -alias nn1.cluster1.com -keyalg rsa -keysize 2048 -dname "C=AU, ST=Victoria, O=Netxillon Technologies, CN=*.netxillon.com" -keypass hadoop@123 -keystore nn1keystore.jks -storepass hadoop@123
+
+
+keytool -keystore nn1keystore.jks -certreq -alias nn1.cluster1.com -keyalg rsa -file nn1.csr
+
+openssl ca -policy policy_anything -days 365 -in nn1.csr -out nn1.cer
