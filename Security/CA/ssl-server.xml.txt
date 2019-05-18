@@ -1,0 +1,37 @@
+[hadoop@ip-172-31-15-180 ~]$ cat /etc/hadoop/conf/ssl-server.xml
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<configuration>
+<!-- Server Certificate Store -->
+<property>
+  <name>ssl.server.keystore.type</name>
+     <value>jks</value>
+</property>
+<property>
+  <name>ssl.server.keystore.location</name>
+  <value>/home/hadoop/keystore/keystore.jks</value>
+</property>
+<property>
+  <name>ssl.server.keystore.password</name>
+  <value>password</value>
+</property>
+
+<!-- Server Trust Store -->
+<property>
+  <name>ssl.server.truststore.type</name>
+  <value>jks</value>
+</property>
+<property>
+  <name>ssl.server.truststore.location</name>
+  <value>/home/hadoop/keystore/truststore.jks</value>
+</property>
+<property>
+  <name>ssl.server.truststore.password</name>
+  <value>password</value>
+</property>
+<property>
+  <name>ssl.server.truststore.reload.interval</name>
+  <value>10000</value>
+</property>
+</configuration>
