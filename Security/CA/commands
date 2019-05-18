@@ -36,7 +36,29 @@ C=AU, ST=Victoria, O=Netxillon Technologies, CN=*.netxillon.com
 
 keytool -genkey -alias nn1.cluster1.com -keyalg rsa -keysize 2048 -dname "C=AU, ST=Victoria, O=Netxillon Technologies, CN=*.netxillon.com" -keypass hadoop@123 -keystore nn1keystore.jks -storepass hadoop@123
 
+keytool -genkey -alias `hostname -s` -keyalg RSA -dname "CN=`hostname -f`,OU=Netxillon Technologies,O=Netxillon Technologies,L=Melbourne,ST=Victoria,C=AU" -keypass "password" -keystore keystore.jks -storepass "password"
+keytool -certreq -alias `hostname -s` -keyalg RSA -file /tmp/c6401.csr -keystore keystore.jks -storepass bigdata
 
-keytool -keystore nn1keystore.jks -certreq -alias nn1.cluster1.com -keyalg rsa -file nn1.csr
+steps:
 
-openssl ca -policy policy_anything -days 365 -in nn1.csr -out nn1.cer
+1. Generate a JKS
+keytool -genkey -keyalg RSA -alias `hostname -s` -keystore /tmp/keystore.jks -storepass bigdata -validity 360 -keysize 2048
+ 
+2. Generate CSR from above keystore
+keytool -certreq -alias `hostname -s` -keyalg RSA -file /tmp/`hostname -s`.csr -keystore /tmp/keystore.jks -storepass bigdata
+ 
+3. Now get the singed cert from CA - file name is /tmp/`hostname -s`.crt
+ 
+4. Import the root cert to JKS first. (Ignore if it already present)
+keytool -import -alias root -file /tmp/ca.crt -keystore /tmp/keystore.jks
+Note: here ca.crt is root cert
+ 
+5. Repeat step4 for intermediate cert if there is any.
+ 
+6. Import signed cert into JKS
+keytool -import -alias `hostname -s` -file /tmp/`hostname -s`.crt -keystore /tmp/keystore.jks -storepass bigdata
+ 
+7. Import root to trust store (Here it creates new truststore.jks )
+ keytool -import -alias root -file /tmp/ca.crt -keystore /tmp/truststore.jks -storepass bigdata
+ 
+8. Import intermediate cert (if there is any) to trust store (similar to step 7)
