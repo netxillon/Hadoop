@@ -29,36 +29,18 @@ openssl verify cluster1.crt
 openssl verify dilithium.crt
 
 
-Hadoop JKS steps:
------------------
+Hadoop JKS steps: CA signed
+---------------------------
 
-C=AU, ST=Victoria, O=Netxillon Technologies, CN=*.netxillon.com
+ keytool -genkey -alias `hostname -s` -keyalg RSA -dname "CN=`hostname -f`,OU=Netxillon Technologies,O=Netxillon Technologies,L=Melbourne,ST=Victoria,C=AU" -keypass password -keystore keystore.jks -storepass password
 
-keytool -genkey -alias nn1.cluster1.com -keyalg rsa -keysize 2048 -dname "C=AU, ST=Victoria, O=Netxillon Technologies, CN=*.netxillon.com" -keypass hadoop@123 -keystore nn1keystore.jks -storepass hadoop@123
+ keytool -certreq -alias `hostname -s` -keyalg RSA -file `hostname -s`.csr -keystore keystore.jks -storepass password
 
-keytool -genkey -alias `hostname -s` -keyalg RSA -dname "CN=`hostname -f`,OU=Netxillon Technologies,O=Netxillon Technologies,L=Melbourne,ST=Victoria,C=AU" -keypass "password" -keystore keystore.jks -storepass "password"
-keytool -certreq -alias `hostname -s` -keyalg RSA -file /tmp/c6401.csr -keystore keystore.jks -storepass bigdata
+ openssl ca -batch -passin pass:redhat -in `hostname -s`.csr -out `hostname -s`.crt
+ 
+ keytool -import -keystore keystore.jks -file CA.crt -alias CARoot -storepass password -noprompt
 
-steps:
+ keytool -import -keystore keystore.jks -file `hostname -s`.crt -alias `hostname -s` -keypass password -storepass password -noprompt
 
-1. Generate a JKS
-keytool -genkey -keyalg RSA -alias `hostname -s` -keystore /tmp/keystore.jks -storepass bigdata -validity 360 -keysize 2048
+ keytool -importcert -keystore truststore.jks -file CA.crt -alias CARoot -storepass password -noprompt
  
-2. Generate CSR from above keystore
-keytool -certreq -alias `hostname -s` -keyalg RSA -file /tmp/`hostname -s`.csr -keystore /tmp/keystore.jks -storepass bigdata
- 
-3. Now get the singed cert from CA - file name is /tmp/`hostname -s`.crt
- 
-4. Import the root cert to JKS first. (Ignore if it already present)
-keytool -import -alias root -file /tmp/ca.crt -keystore /tmp/keystore.jks
-Note: here ca.crt is root cert
- 
-5. Repeat step4 for intermediate cert if there is any.
- 
-6. Import signed cert into JKS
-keytool -import -alias `hostname -s` -file /tmp/`hostname -s`.crt -keystore /tmp/keystore.jks -storepass bigdata
- 
-7. Import root to trust store (Here it creates new truststore.jks )
- keytool -import -alias root -file /tmp/ca.crt -keystore /tmp/truststore.jks -storepass bigdata
- 
-8. Import intermediate cert (if there is any) to trust store (similar to step 7)
