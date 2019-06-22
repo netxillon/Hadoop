@@ -1,0 +1,29 @@
+core-site.xml
+
+<property>
+  <name>hadoop.security.key.provider.path</name>
+  <value>kms://http@nn1.cluster1.com:16000/kms</value>
+</property>
+
+hdfs-site.xml file and make the changes shown here:
+<property>
+  <name>dfs.encryption.key.provider.uri</name>
+  <value>kms://http@nn1.cluster1.com:16000/kms</value>
+</property>
+
+/opt/cluster/hadoop/etc/hadoop/kms-env.sh:
+
+ export KMS_TEMP=${KMS_HOME}/temp
+
+
+kms.sh start
+hadoop key list
+hadoop key create key1
+hadoop fs -mkdir /secure_zone
+hdfs crypto -createZone -keyName key1 -path /secure_zone
+
+hdfs crypto -listZones
+
+hadoop fs -put wordcount /secure_zone
+hadoop fs -cat /secure_zone/wordcount
+hadoop fs -mkdir /unsecure
