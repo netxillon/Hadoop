@@ -44,3 +44,6 @@ Hadoop JKS steps: CA signed
 
  keytool -importcert -keystore truststore.jks -file CA.crt -alias CARoot -storepass password -noprompt
  
+Good to do:
+===========
+keytool -exportcert -alias caroot -keystore /etc/security/keys/truststore.jks -file /usr/java/default/jre/lib/security/cacerts
