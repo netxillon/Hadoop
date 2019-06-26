@@ -1,0 +1,12 @@
+export HADOOP_HOME=/usr/local/cluster/hadoop
+
+export HADOOP_MAPRED_HOME=$HADOOP_HOME
+export HADOOP_COMMON_HOME=$HADOOP_HOME
+export HADOOP_HDFS_HOME=$HADOOP_HOME
+export YARN_HOME=$HADOOP_HOME
+export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
+export YARN_CONF_DIR=$HADOOP_HOME/etc/hadoop
+export JAVA_HOME=/usr/java/jdk1.8.0_11
+
+PATH=$HADOOP_HOME/bin/:$HADOOP_HOME/sbin/:$JAVA_HOME/bin/:$PATH
+export PATH

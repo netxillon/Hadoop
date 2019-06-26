@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<configuration>
+
+<property>
+<name>dfs.datanode.data.dir</name>
+<value>file:/space/d1,file:/space/d2.file:/space/d3</value>
+</property>
+
+
+<property>
+<name>dfs.replication</name>
+<value>3</value>
+</property>
+
+</configuration>
