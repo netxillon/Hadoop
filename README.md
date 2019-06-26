@@ -15,7 +15,7 @@ I provide Advanced Hadoop Administration, DevOps, HBase, Kafka and other traings
 
 Advanced Hadoop Training: I will be covering topics like: detailed kerberos, Encryption, Centerlized caching, Storage policy, Ranger, Knox, Hadoop Performance Tuning and Production Use cases. Contact me for details.
 
- "Doing a course is not a guarantee for a job, but having a solid foundation surely is"
+  "Doing a course is not a guarantee for a job, but having a solid foundation surely is"
  
  Course 1: Hadoop Administration
  ------------------------------------------------
