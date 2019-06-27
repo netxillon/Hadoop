@@ -1,0 +1,15 @@
+1. http://commons.apache.org/proper/commons-daemon/download_daemon.cgi
+
+Downlaod package: commons-daemon-1.1.0-native-src.tar.gz
+
+$ tar -xzvf commons-daemon-1.1.0-native-src.tar.gz
+$ cd commons-daemon-1.1.0-native-src/unix
+$ ./configure && make
+$ cp jsvc /usr/lib
+
+
+Under hadoop-env.sh
+
+export JSVC_HOME=/usr/lib
+
+2. Directly download the binary: http://archive.apache.org/dist/commons/daemon/binaries/

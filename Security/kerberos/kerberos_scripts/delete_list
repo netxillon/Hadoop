@@ -1,0 +1,15 @@
+HTTP/dn1.cluster1.com@CLUSTER1.COM
+HTTP/dn2.cluster1.com@CLUSTER1.COM
+HTTP/dn3.cluster1.com@CLUSTER1.COM
+HTTP/dn4.cluster1.com@CLUSTER1.COM
+HTTP/nn1.cluster1.com@CLUSTER1.COM
+dn/dn1.cluster1.com@CLUSTER1.COM
+dn/dn2.cluster1.com@CLUSTER1.COM
+dn/dn3.cluster1.com@CLUSTER1.COM
+dn/dn4.cluster1.com@CLUSTER1.COM
+host/dn1.cluster1.com@CLUSTER1.COM
+host/dn2.cluster1.com@CLUSTER1.COM
+host/dn3.cluster1.com@CLUSTER1.COM
+host/dn4.cluster1.com@CLUSTER1.COM
+host/nn1.cluster1.com@CLUSTER1.COM
+nn/nn1.cluster1.com@CLUSTER1.COM

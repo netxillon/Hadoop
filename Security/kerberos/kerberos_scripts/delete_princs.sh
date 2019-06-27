@@ -6,3 +6,5 @@ for i in `cat delete_list`
 do 
 	kadmin.local -q "delprinc -force $i"
 done
+
+rm -rf *.keytab
