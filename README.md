@@ -1,7 +1,7 @@
 @Netxillon Technologies. You are allowed to use and modify any work here, provided you acknowlege the source back.
 Please contact at trainings@netxillon.com for any questions.
 
-There is no responsibility on any find of damage caused, by using this github. Please make sure you understand the things here before implementing them in prodcution.
+There is no responsibility on any kind for damage caused, by using this github. Please make sure you understand the things here before implementing them in prodcution.
 
 Courses
 =========
