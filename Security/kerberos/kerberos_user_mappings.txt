@@ -1,0 +1,25 @@
+
+
+
+
+
+[hdfs@nn1 ~]$ hadoop org.apache.hadoop.security.HadoopKerberosName host/nn1.cluster1.com@CLUSTER1.COM
+Name: host/nn1.cluster1.com@CLUSTER1.COM to host
+
+After adding the rule as below in core-site.xml:
+
+<property>
+  <name>hadoop.security.auth_to_local</name>
+  <value>
+    RULE:[2:$1/$2@$0](hdfs/.*@.*CLUSTER1.COM)s/.*/hadoop/
+    DEFAULT
+  </value>
+</property>
+
+[hdfs@nn1 hadoop]$ hadoop org.apache.hadoop.security.HadoopKerberosName host/nn1.cluster1.com@CLUSTER1.COM
+Name: host/nn1.cluster1.com@CLUSTER1.COM to host
+[hdfs@nn1 hadoop]$ hadoop org.apache.hadoop.security.HadoopKerberosName hdfs/nn1.cluster1.com@CLUSTER1.COM
+Name: hdfs/nn1.cluster1.com@CLUSTER1.COM to hadoop
+
+
+Good Read: https://www.cloudera.com/documentation/enterprise/5-8-x/topics/cdh_sg_kerbprin_to_sn.html
