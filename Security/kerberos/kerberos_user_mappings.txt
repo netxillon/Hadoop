@@ -1,25 +1,34 @@
+This file talks about mapping the kerberos princial with local users.
 
+We can have a NN principal as:
+nn/_HOST@CLUSTER1.COM or hdfs/_HOST@CLUSTER1.COM
 
+If it is the first way, when Datanode sends the user (dnUsername), it will be as user "dn", which does not exist anywhere. So, NN will complain that the user "dn" is not part of supergroup. Which is right!
 
+For this we need to map users as below on all nodes under core-site.xml
 
 
 [hdfs@nn1 ~]$ hadoop org.apache.hadoop.security.HadoopKerberosName host/nn1.cluster1.com@CLUSTER1.COM
 Name: host/nn1.cluster1.com@CLUSTER1.COM to host
+
+[hdfs@nn1 ~]$ hadoop org.apache.hadoop.security.HadoopKerberosName dn/dn1.cluster1.com@CLUSTER1.COM
+Name: dn/dn1.cluster1.com@CLUSTER1.COM to dn
 
 After adding the rule as below in core-site.xml:
 
 <property>
   <name>hadoop.security.auth_to_local</name>
   <value>
-    RULE:[2:$1/$2@$0](hdfs/.*@.*CLUSTER1.COM)s/.*/hadoop/
+    RULE:[2:$1/$2@$0](dn/.*@.*CLUSTER1.COM)s/.*/hdfs/
     DEFAULT
   </value>
 </property>
 
 [hdfs@nn1 hadoop]$ hadoop org.apache.hadoop.security.HadoopKerberosName host/nn1.cluster1.com@CLUSTER1.COM
 Name: host/nn1.cluster1.com@CLUSTER1.COM to host
-[hdfs@nn1 hadoop]$ hadoop org.apache.hadoop.security.HadoopKerberosName hdfs/nn1.cluster1.com@CLUSTER1.COM
-Name: hdfs/nn1.cluster1.com@CLUSTER1.COM to hadoop
+[hdfs@nn1 ~]$ hadoop org.apache.hadoop.security.HadoopKerberosName dn/dn1.cluster1.com@CLUSTER1.COM
+Name: dn/dn1.cluster1.com@CLUSTER1.COM to hdfs
 
+See above that the user "dn" is translated to user "hdfs", which is part of the supergroup. All Good!
 
 Good Read: https://www.cloudera.com/documentation/enterprise/5-8-x/topics/cdh_sg_kerbprin_to_sn.html
