@@ -1,0 +1,66 @@
+[hadoop@ip-172-31-15-180 ~]$ cat /etc/hadoop/conf/ssl-client.xml
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<configuration>
+
+<property>
+  <name>ssl.client.truststore.location</name>
+  <value>${user.home}/keystore/final.jks</value>
+  <description>Truststore to be used by clients like distcp. Must be
+  specified.
+  </description>
+</property>
+
+<property>
+  <name>ssl.client.truststore.password</name>
+  <value>password</value>
+  <description>Optional. Default value is "".
+  </description>
+</property>
+
+<property>
+  <name>ssl.client.truststore.type</name>
+  <value>jks</value>
+  <description>Optional. The keystore file format, default value is "jks".
+  </description>
+</property>
+
+<property>
+  <name>ssl.client.truststore.reload.interval</name>
+  <value>10000</value>
+  <description>Truststore reload check interval, in milliseconds.
+  Default value is 10000 (10 seconds).
+  </description>
+</property>
+
+<property>
+  <name>ssl.client.keystore.location</name>
+  <value>${user.home}/keystore/keystore.jks</value>
+  <description>Keystore to be used by clients like distcp. Must be
+  specified.
+  </description>
+</property>
+
+<property>
+  <name>ssl.client.keystore.password</name>
+  <value>password</value>
+  <description>Optional. Default value is "".
+  </description>
+</property>
+
+<property>
+  <name>ssl.client.keystore.keypassword</name>
+  <value>password</value>
+  <description>Optional. Default value is "".
+  </description>
+</property>
+
+<property>
+  <name>ssl.client.keystore.type</name>
+  <value>jks</value>
+  <description>Optional. The keystore file format, default value is "jks".
+  </description>
+</property>
+
+</configuration>

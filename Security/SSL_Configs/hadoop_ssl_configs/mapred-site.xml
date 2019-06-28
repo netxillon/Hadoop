@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+
+<property>
+<name>mapreduce.framework.name</name>
+<value>yarn</value>
+</property>
+
+  <property>
+    <name>hadoop.ssl.enabled</name>
+    <value>true</value>
+  </property>
+
+  <property>
+    <name>mapreduce.shuffle.ssl.enabled</name>
+    <value>true</value>
+  </property>
+
+  <property>
+      <name>hadoop.ssl.require.client.cert</name>
+      <value>false</value>
+    </property>
+
+    <property>
+      <name>hadoop.ssl.hostname.verifier</name>
+      <value>DEFAULT</value>
+      <final>true</final>
+    </property>
+
+    <property>
+      <name>hadoop.ssl.keystores.factory.class</name>
+      <value>org.apache.hadoop.security.ssl.FileBasedKeyStoresFactory</value>
+      <final>true</final>
+    </property>
+
+    <property>
+      <name>hadoop.ssl.server.conf</name>
+      <value>ssl-server.xml</value>
+      <final>true</final>
+    </property>
+
+    <property>
+      <name>hadoop.ssl.client.conf</name>
+      <value>ssl-client.xml</value>
+      <final>true</final>
+</property>
+
+
+<property>
+<name>mapreduce.jobhistory.http.policy</name>
+<value>HTTPS_ONLY</value>
+</property>
+
+<property>
+<name>mapreduce.jobhistory.webapp.https.address</name>
+<value>rm1.cluster1.com:19889</value>
+</property>
+
+</configuration>
