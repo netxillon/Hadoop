@@ -18,4 +18,4 @@ Advanced Hadoop Training: I will be covering topics like: detailed kerberos, Enc
   "Doing a course is not a guarantee for a job, but having a solid foundation surely is"
  
 
-For Details on Course offered, please refer to the folder Courses_offered.
+For Details on Courses offered, please refer to the folder "Courses_Offered".
