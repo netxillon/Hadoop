@@ -1,6 +1,7 @@
 #!/bin/bash
 
-echo -e "redhat\nredhat" | kdb5_util create -r DILITHIUM.COM -s
+# Note: Kerberos Realm does not need to be same as domain name. Just update [domain_realm] section mapping correctly.
+echo -e "redhat\nredhat" | kdb5_util create -r NETXILLON.COM -s
 
 echo -e "redhat\nredhat" | kadmin.local -q "addprinc root/admin"
 
