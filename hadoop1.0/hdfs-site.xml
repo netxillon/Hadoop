@@ -1,0 +1,37 @@
+<configuration>
+
+<property>
+<name>dfs.name.dir</name>
+<value>/data/namenode</value>
+<final>true</final>
+</property>
+
+
+<property>
+        <name>dfs.hosts</name>
+        <value>/home/hadoop/include</value>
+        <final>true</final>
+</property>
+
+<property>
+    	<name>dfs.hosts.exclude</name>
+    	<value>/home/hadoop/excludes</value>
+    	<final>true</final>
+</property>
+
+<property>
+<name>dfs.replication</name>
+<value>1</value>
+</property>
+
+<property>
+<name>dfs.block.size</name>
+<value>67108864</value>
+</property>
+
+<property>
+<name>topology.script.file.name</name>
+<value>/home/hadoop/hadoop/conf/topology.sh</value>
+</property>
+
+</configuration>

@@ -1,0 +1,51 @@
+<configuration>
+
+<property>
+<name>mapred.job.tracker</name>
+<value>jt.cluster1.com:9001</value>
+</property>
+
+<property>
+    	<name>mapred.hosts.exclude</name>
+    	<value>/home/hadoop/excludes</value>
+    	<final>true</final>
+</property>
+<property>
+    <name>mapred.child.java.opts</name>
+    <value>-Xmx1024m</value>
+</property>
+
+</configuration>
+
+===================================
+
+Option Parameters
+=================
+
+<property>
+  <name>mapred.tasktracker.map.tasks.maximum</name>
+  <value>8</value>
+   <description>the number of available cores on the tasktracker machines
+for map tasks
+  </description>
+</property>
+<property>
+  <name>mapred.tasktracker.reduce.tasks.maximum</name>
+  <value>8</value>
+   <description>the number of available cores on the tasktracker machines
+for reduce tasks
+  </description>
+</property>
+
+
+
+<property>
+    <name>mapred.cluster.max.map.memory.mb</name>
+    <value>4096</value>
+  </property>
+
+<property>
+    <name>mapred.cluster.max.reduce.memory.mb</name>
+    <value>4096</value>
+</property>
+
