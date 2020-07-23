@@ -4,17 +4,14 @@ Please contact at trainings@netxillon.com for any questions.
 
 Disclaimer: There is no responsibility for any kind of damage caused, by using this github. Please make sure you understand the things here before implementing them in production.
 
-######Courses
 ```
 http://www.netxillon.com
 For any help you can reach me at: trainings@netxillon.com
 ```
 
+####Courses
 Hadoop Cluster Configurations
-
 The config files are from running cluster. Feel free to use them, but please drop an email with your feedback.
-
-For any help you can reach me at: trainings@netxillon.com
 
 I provide Advanced Hadoop Administration and DevOps trainings:
 > - Hadoop, HBase, Kafka, Spark
