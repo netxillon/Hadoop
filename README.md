@@ -9,7 +9,8 @@ http://www.netxillon.com
 For any help you can reach me at: trainings@netxillon.com
 ```
 
-####Courses
+#### Courses
+
 Hadoop Cluster Configurations
 The config files are from running cluster. Feel free to use them, but please drop an email with your feedback.
 
