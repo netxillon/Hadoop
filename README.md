@@ -14,9 +14,9 @@ Hadoop Cluster Configurations
 The config files are from running cluster. Feel free to use them, but please drop an email with your feedback.
 
 I provide Advanced Hadoop Administration and DevOps trainings:
-> - Hadoop, HBase, Kafka, Spark
-> - Ansible automation for Hadoop Stack
-> - Advanced Linux Optmizations
+> Hadoop, HBase, Kafka, Spark
+> Ansible automation for Hadoop Stack
+> Advanced Linux Optmizations
 
 Advanced Hadoop Training: I will be covering topics like: detailed kerberos, Encryption, Centerlized caching, Storage policy, Ranger, Knox, Hadoop Performance Tuning and Production Use cases. Contact me for details.
 
