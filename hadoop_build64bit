@@ -27,7 +27,7 @@ Build 64 bit Hadoop
 
 	tar -xzf hadoop-2.7.2-src.tar.gz -C /opt/
 	cd /opt/hadoop-2.7.2-src
-	mvn package -Pdist,native -DskipTests -Dtar
+	mvn package -Pdist,native -DskipTests -Dtar -Dmaven.skip.test=true -Dmaven.javadoc.skip=true
 	
 	you will see a tar ball under hadoop-2.7.2-src/hadoop-dist/target/
 	
