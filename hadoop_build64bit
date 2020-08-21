@@ -34,5 +34,10 @@ Build 64 bit Hadoop
 	Enjoy !!
 	
 	
+Updated for maven 3.9 and protobuf 3.7.1
+-----------------------------------------
+Supported version hadoop 3.3.3
+
+https://github.com/protocolbuffers/protobuf/releases/download/v3.7.1/protobuf-cpp-3.7.1.tar.gz
 
 	
