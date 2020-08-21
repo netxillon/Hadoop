@@ -35,9 +35,19 @@ Build 64 bit Hadoop
 	
 	
 Updated for maven 3.6.3 and protobuf 3.7.1
------------------------------------------
+------------------------------------------
 Supported version hadoop 3.3.0
 
-https://github.com/protocolbuffers/protobuf/releases/download/v3.7.1/protobuf-cpp-3.7.1.tar.gz
+1. wget http://mirror.intergrid.com.au/apache/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
 
-	
+2. wget https://cmake.org/files/v3.6/cmake-3.6.2.tar.gz
+	tar -zxvf cmake-3.6.2.tar.gz
+	cd cmake-3.6.2
+	./bootstrap --prefix=/usr/local
+	make; make install
+	PATH=/usr/local/bin:$PATH
+
+3. wget https://github.com/protocolbuffers/protobuf/releases/download/v3.7.1/protobuf-cpp-3.7.1.tar.gz
+
+- For all version prior to hadoop 3.3.0, protobuf version = 2.5.0.
+- For Hadoop 3.x and higher cmake version must be greater than 3.2
