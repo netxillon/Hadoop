@@ -56,4 +56,7 @@ Verify PEM format or not
 openssl x509 -inform PEM -in CA.crt
 openssl x509 -inform PEM -in CA.pem
 openssl x509 -inform PEM -in cm1.opta.com-server.pem
-  
+
+Verify cert presented by Server
+--------------------------------
+openssl s_client -verify 100 -showcerts -CAfile <($JAVA_HOME/bin/keytool -list -rfc -keystore $JAVA_HOME/jre/lib/security/jssecacerts -storepass changeit) -connect cm1.opta.com:7183
