@@ -8,8 +8,9 @@ vi /etc/pki/tls/openssl.cnf
 touch /etc/pki/CA/index.txt
 echo 01 > /etc/pki/CA/serial
 
-openssl genrsa -out private/myca.key -aes 2048
-penssl genrsa -out private/myca.key -aes128 2048
+openssl genrsa -out private/myca.key -des3 2048
+or openssl genrsa -out private/myca.key -aes128 2048
+
 openssl req -new -x509 -key private/myca.key -days 365 > CA.crt
 
 mkdir certs
@@ -47,3 +48,12 @@ Hadoop JKS steps: CA signed
 Good to do:
 ===========
 keytool -exportcert -alias caroot -keystore /etc/security/keys/truststore.jks -file /usr/java/default/jre/lib/security/cacerts
+
+
+Verify PEM format or not
+========================
+
+openssl x509 -inform PEM -in CA.crt
+openssl x509 -inform PEM -in CA.pem
+openssl x509 -inform PEM -in cm1.opta.com-server.pem
+  
