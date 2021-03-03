@@ -12,6 +12,11 @@ openssl genrsa -out private/myca.key -des3 2048
 or openssl genrsa -out private/myca.key -aes128 2048
 
 openssl req -new -x509 -key private/myca.key -days 365 > CA.crt
+----------------
+more refined way:
+openssl req -new -sha256 -key private/myca.key -nodes -out rootCA.csr
+openssl x509 -req -days 3650 -extensions v3_ca -in rootCA.csr -signkey private/myca.key -out rootCA.pem
+------------------
 
 mkdir certs
 cd certs/
