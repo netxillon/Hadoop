@@ -1,3 +1,11 @@
+YARN Node Labels:
+
+$ spark-submit --class org.apache.spark.examples.SparkPi --queue root.prod --conf spark.yarn.am.nodeLabelExpression=spark    --conf spark.yarn.executor.nodeLabelExpression=spark --executor-memory 512m --num-executors 1 --driver-memory 512m --master yarn --deploy-mode cluster /opt/cloudera/parcels/CDH/jars/spark-examples*.jar 10
+
+# https://www.ibm.com/support/pages/yarn-node-labels-label-based-scheduling-and-resource-isolation-hadoop-dev
+# https://docs.cloudera.com/runtime/7.0.2/yarn-allocate-resources/topics/yarn-configuring-node-labels.html
+# https://docs.cloudera.com/cdp-private-cloud-base/7.1.5/yarn-allocate-resources/topics/yarn-associate-node-labels-with-queues.html
+
 Start cluster, after settign ssh-passphrase from master (Only for non Yarn cluster)
 
 $ /opt/cluster/spark/sbin/stop-all.sh
