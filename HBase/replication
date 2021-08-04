@@ -12,3 +12,19 @@ hbase(main):003:0> enable_peer("1")
 
 # The above steps are to be used when the soruce cluster already has data/tables.
 # In a new cluster with no data, we do not need to export snapshot and disable_peer (To build backlog for WALs)
+
+
+
+hbase(main):003:0> list_peers
+ PEER_ID CLUSTER_KEY ENDPOINT_CLASSNAME STATE REPLICATE_ALL NAMESPACES TABLE_CFS BANDWIDTH SERIAL
+ 1 d1.aus.cloudera.site,d2.aus.cloudera.site,d3.aus.cloudera.site:2181:/hbase  ENABLED true   0 false
+1 row(s)
+Took 0.0125 seconds
+=> #<Java::JavaUtil::ArrayList:0x17b6ad97>
+
+hbase(main):004:0> list_peer_configs
+ PeerId                               1
+ Cluster Key                          d1.aus.cloudera.site,d2.aus.cloudera.site,d3.aus.cloudera.site:2181:/hbase
+
+Took 0.0090 seconds
+=> {"1"=>#<Java::OrgApacheHadoopHbaseReplication::ReplicationPeerConfig:0x6136e1fc>}
