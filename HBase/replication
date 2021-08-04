@@ -1,13 +1,13 @@
-add_peer '1', CLUSTER_KEY => 'd1.aus.cloudera.site,d2.aus.cloudera.site,d3.aus.cloudera.site:2181:/hbase'
-disable_peer("1")
-enable_table_replication 'emp'
-enable_table_replication 'emp1'
+hbase(main):003:0> add_peer '1', CLUSTER_KEY => 'd1.aus.cloudera.site,d2.aus.cloudera.site,d3.aus.cloudera.site:2181:/hbase'
+hbase(main):003:0> disable_peer("1")
+hbase(main):003:0> enable_table_replication 'emp'
+hbase(main):003:0> enable_table_replication 'emp1'
 
-hbase snapshot create -n emp1_4aug -t emp1
+hbase$ hbase snapshot create -n emp1_4aug -t emp1
 
-hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -snapshot emp1_4aug -copy-to hdfs://d2.aus.cloudera.site:8020/hbase -mappers 2
+hbase$ hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -snapshot emp1_4aug -copy-to hdfs://d2.aus.cloudera.site:8020/hbase -mappers 2
 
-enable_peer("1")
+hbase(main):003:0> enable_peer("1")
 
 
 # The above steps are to be used when the soruce cluster already has data/tables.
