@@ -1,0 +1,19 @@
+#!/bin/sh
+hdd="/dev/sdc /dev/sdd /dev/sde /dev/sdf"
+
+count=0
+
+for disk in $hdd; do
+  #echo -e "n\np\n\n\n\nw\n" | fdisk $disk;
+
+  fs="${disk}1"
+  #mkfs.xfs $fs;
+
+  twoDigitCount=$(printf "%02d" $count)
+  mount="/data/$twoDigitCount"
+  mkdir -p $mount;
+
+  mount $fs $mount;
+
+  count=$((count+1))
+done
